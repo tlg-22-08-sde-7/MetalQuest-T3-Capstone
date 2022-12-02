@@ -42,6 +42,29 @@
         "shed",
         "jalopy"
       ]
+    },
+    {
+      "location": "Master Bedroom",
+      "direction": {
+        "west": "Bathroom"
+      },
+      "description": "The backyard has a lone tree, a shed, and a 1950s jalopy.",
+      "items": [
+        "closet",
+        "bed"
+      ]
+    },
+    {
+      "location": "Bathroom",
+      "direction": {
+        "east": "Master Bedroom"
+      },
+      "description": "There is a sink, toilet, and shower. On the sink there is a toothbrush, a hair brush, and a make-up kit.",
+      "items": [
+        "Hair Brush",
+        "Toothbrush",
+        "Make-up kit"
+      ]
     }
   ]
 }
