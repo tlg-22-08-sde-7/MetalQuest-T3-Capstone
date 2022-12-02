@@ -1,0 +1,47 @@
+{
+  "locations": [
+    {
+      "location": "Living Room",
+      "direction": {
+        "north": "Kitchen",
+        "east": "Garage",
+        "west": "Stairs"
+      },
+      "description": "There is a couch a coffee table and a tv. The tv is on.",
+      "items": [
+        "cellphone"
+      ]
+    },
+    {
+      "location": "Kitchen",
+      "direction": {
+        "south": "Living Room",
+        "east": "Backyard"
+      },
+      "description": "In the kitchen there is a Fridge",
+      "items": [
+        {
+          "Fridge": [
+            "OJ",
+            "Purple Stuff",
+            "Sunny D",
+            "Adult Beverage",
+            "H2O"
+          ]
+        }
+      ]
+    },
+    {
+      "location": "Backyard",
+      "direction": {
+        "west": "Kitchen"
+      },
+      "description": "The backyard has a lone tree, a shed, and a 1950s jalopy.",
+      "items": [
+        "tree",
+        "shed",
+        "jalopy"
+      ]
+    }
+  ]
+}
