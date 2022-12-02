@@ -1,0 +1,14 @@
+You are an aspiring Rockstar whose objective is to move up in the music industry by performing in venues. Each venue will be bigger than the last and will require upgrades to your stats and equipment. You will need to collect and interact with items in order to proceed to the next level.
+
+The game will require your input from a selection of available actions that will be displayed to you like below. Simply type in the command into the console.
+================================
+Current Location: Living Room
+--------------------------------
+> Go East
+> Go West
+> Pick up item
+================================
+
+Your road to stardom begins today! Good luck.
+
+
