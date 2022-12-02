@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 import static com.metalquest.Game.endGame;
 
+//import static com.metalquest.Game.endGame;
+
 class NewGameQuestion {
     public static void newGameQuestion() {
         System.out.println();
@@ -18,6 +20,7 @@ class NewGameQuestion {
             System.out.println("Enter y or n");
             newGameQuestion();
         }
-
     }
+
+
 }
