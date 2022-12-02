@@ -15,7 +15,7 @@ public class Commands {
     }
     public static void showCommands(String location) {
         try {
-            Reader reader = Files.newBufferedReader(Paths.get("resources/commands.json"));
+            Reader reader = Files.newBufferedReader(Paths.get("json/commands.json"));
             JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
 
             for (JsonElement command : parser.get("commands").getAsJsonArray()) {
