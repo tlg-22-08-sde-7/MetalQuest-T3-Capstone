@@ -1,8 +1,11 @@
 package com.metalquest;
 
+import java.util.Scanner;
+
 public class Game {
 
 
+    public static Scanner scan;
 
     public static void endGame(){
         System.out.println("You have exited Metal Quest. Thanks for playing");
