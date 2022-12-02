@@ -1,0 +1,16 @@
+{
+  "commands": [
+    {
+      "keyword": "go",
+      "synonyms": ["move", "run", "walk", "jog"]
+    },
+    {
+      "keyword": "get",
+      "synonyms": ["take", "grab", "pickup", "retrieve", "store"]
+    },
+    {
+      "keyword": "use",
+      "synonyms": ["play", "utilize"]
+    }
+  ]
+}
