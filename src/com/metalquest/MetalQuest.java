@@ -6,7 +6,7 @@ import static com.metalquest.Objective.objectiveMsg;
 
 public class MetalQuest {
     public static void main(String[] args) {
-        splashScreen();    //TODO: update splash screen to correct name - Mark's todo
+        splashScreen();
 //        newGame();
         objectiveMsg();
     }
