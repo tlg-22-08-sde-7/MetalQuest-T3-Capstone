@@ -6,7 +6,7 @@ import java.nio.file.Path;
 
 public class Objective {
 
-    public void objectiveMsg() {
+    public static void objectiveMsg() {
         try {
             String message = Files.readString(Path.of("resources/objective.txt"));
             System.out.println(message);
