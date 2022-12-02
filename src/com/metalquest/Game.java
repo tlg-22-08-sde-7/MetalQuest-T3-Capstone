@@ -4,7 +4,7 @@ public class Game {
 
 
 
-    public void endGame(){
+    public static void endGame(){
         System.out.println("You have exited Metal Quest. Thanks for playing");
         System.exit(0);
     }
