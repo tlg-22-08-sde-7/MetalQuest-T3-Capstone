@@ -15,12 +15,12 @@ public class Commands {
     }
     public static void showCommands(String location) {
         try {
-            Reader reader = Files.newBufferedReader(Paths.get("json/commands.json"));
+            Reader reader = Files.newBufferedReader(Paths.get("json/locations.json"));
             JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
 
-            for (JsonElement command : parser.get("commands").getAsJsonArray()) {
-                JsonObject obj = command.getAsJsonObject();
-                System.out.println(obj.get("keyword").getAsString());
+            for (JsonElement place : parser.get("locations").getAsJsonArray()) {
+                JsonObject obj = place.getAsJsonObject();
+
             }
         } catch (IOException e) {
             e.printStackTrace();
