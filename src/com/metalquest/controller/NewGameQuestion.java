@@ -1,12 +1,12 @@
-package com.metalquest;
+package com.metalquest.controller;
 
 import java.util.Scanner;
 
-import static com.metalquest.Game.endGame;
+import static com.metalquest.controller.Game.endGame;
 
 //import static com.metalquest.Game.endGame;
 
-class NewGameQuestion {
+public class NewGameQuestion {
     public static void newGameQuestion() {
         System.out.println();
         System.out.println("Would you like start a new game? (y/n)");

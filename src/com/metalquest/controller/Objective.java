@@ -1,4 +1,4 @@
-package com.metalquest;
+package com.metalquest.controller;
 
 import java.io.IOException;
 import java.nio.file.Files;

@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: com.metalquest.MetalQuest
+Main-Class: com.metalquest.view.MetalQuest
 
