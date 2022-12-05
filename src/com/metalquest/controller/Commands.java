@@ -1,4 +1,4 @@
-package com.metalquest;
+package com.metalquest.controller;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -36,3 +36,8 @@ public class Commands {
         }
     }
 }
+
+
+
+
+
