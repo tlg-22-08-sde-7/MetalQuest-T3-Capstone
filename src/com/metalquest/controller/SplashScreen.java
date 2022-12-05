@@ -1,10 +1,10 @@
-package com.metalquest;
+package com.metalquest.controller;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-class SplashScreen {
+public class SplashScreen {
     public static void splashScreen() {
         System.out.println();
         System.out.println("Welcome to Metal Quest");
