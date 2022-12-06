@@ -135,6 +135,7 @@ public class Game {
     public void execute() {
         splashScreen();
         objectiveMsg();
+        quitMessageOption();
         while (true) {
             showCommands("Living Room");
             System.out.println("Enter a Command");
@@ -142,11 +143,28 @@ public class Game {
             String commandEntered = scan.nextLine();
             // print items in location
             printItems();
+
             lookAtCommand();
 
             executeCommand(commandEntered);
+
+
             }
         }
+
+    private void quitMessageOption() {
+        System.out.println("At anytime you would like to quit type q)");
+        Scanner scan = new Scanner(System.in);
+        String answer = scan.nextLine();
+        if (answer.equalsIgnoreCase("q") || answer.equalsIgnoreCase("quit")) {
+            System.out.println("You have exited Metal Quest. Thanks for playing");
+        } else if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
+            System.out.println("Ok, let's play");
+        } else {
+            System.out.println("Enter y or n");
+            quitMessageOption();
+        }
+    }
 
     private void executeCommand(String commandEntered) {
         String[] command = commandEntered.split(" ");
