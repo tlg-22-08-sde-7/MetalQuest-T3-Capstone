@@ -6,25 +6,25 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
     public static Scanner scan;
     private String commandEntered;
 
-    private void userInputParser(String input) {
+    public String getUserInput(){
         Scanner userInputScanner = new Scanner(System.in);
-        String input1 = scan.nextLine();
+        System.out.println("Enter a command: ");
+        String input = userInputScanner.nextLine();
+        return input;
+    }
 
-        String input2 = input1.replaceAll("[^a-zA-Z\\\\']+", "")
+    private void userInputParser(String input) {
+        String input2 = input.replaceAll("[^a-zA-Z\\\\']+", "")
                 .replaceAll("of", "")
                 .replaceAll("the", "")
                 .replaceAll("and", "")
                 .replaceAll("a", "");
-
 
         if (input.equals("exit")) {
             endGame();
@@ -36,35 +36,44 @@ public class Game {
         }
         String verb = inputArray[0];
         String noun = inputArray[1];
-        // keyWordIdentifier(verb, noun);
+        keyWordIdentifier(verb, noun);
     }
 
 
-    private ArrayList<String> keyWordIdentifier(String verb, String noun) throws FileNotFoundException {
+    private ArrayList<String> keyWordIdentifier(String verb, String noun) {
         ArrayList<String> action = new ArrayList<>();
-
         Gson gson = new Gson();
-        BufferedReader br = new BufferedReader(new FileReader("./words.json"));
-        Map<String, Object> wordsMap = new HashMap<>();
-        wordsMap = (Map<String, Object>) gson.fromJson(br, wordsMap.getClass());
-        System.out.println(wordsMap);
+        JsonObject parser = null;
+        Map<String, ArrayList> wordsMap = null;
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("/Users/Ebb/Desktop/Team1/json/verbs.json"));
+            wordsMap = new HashMap<>();
+            wordsMap = (Map<String, ArrayList>) gson.fromJson(br, wordsMap.getClass());
 
-        wordsMap.forEach((k, v) -> System.out.println((k)));
-        if (wordsMap.containsKey(verb)) {
+            Reader reader = Files.newBufferedReader(Paths.get("/Users/Ebb/Desktop/Team1/json/commands.json"));
+            parser = JsonParser.parseReader(reader).getAsJsonObject();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (wordsMap.containsKey(verb)){
             action.add(verb);
-        } else if (wordsMap.containsValue(verb)) {
-            for (Map.Entry<String, Object> entry : wordsMap.entrySet()) {
-                if (entry.getValue().equals(verb)) {
-                    action.add(entry.getKey());
-                }
+        }
+            for (Map.Entry<String, ArrayList> entry : wordsMap.entrySet()) {
+             for (Object synonyms : entry.getValue()){
+                 if(synonyms.equals(verb.toLowerCase(Locale.ROOT))){
+                     action.add(entry.getKey());
+                 }
+             }
             }
 
-        } else {
-            System.out.println("Valid command. Please try again.");
-        }
+        action.add(noun);
 
-        return action;
-    }
+            System.out.println(action);
+            return action;
+        }
 
 
     private void endGame() {
@@ -135,88 +144,14 @@ public class Game {
     public void execute() {
         splashScreen();
         objectiveMsg();
-        quitMessageOption();
+        newGameQuestion();
         while (true) {
             showCommands("Living Room");
-            System.out.println("Enter a Command");
-            Scanner scan = new Scanner(System.in);
-            String commandEntered = scan.nextLine();
-            // print items in location
-            printItems();
-
-            lookAtCommand();
-
-            executeCommand(commandEntered);
-
-
-            }
+            String input = getUserInput();
+            userInputParser(input);
+            break;
         }
 
-    private void quitMessageOption() {
-        System.out.println("At anytime you would like to quit type q)");
-        Scanner scan = new Scanner(System.in);
-        String answer = scan.nextLine();
-        if (answer.equalsIgnoreCase("q") || answer.equalsIgnoreCase("quit")) {
-            System.out.println("You have exited Metal Quest. Thanks for playing");
-        } else if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
-            System.out.println("Ok, let's play");
-        } else {
-            System.out.println("Enter y or n");
-            quitMessageOption();
-        }
-    }
-
-    private void executeCommand(String commandEntered) {
-        String[] command = commandEntered.split(" ");
-        if (command.length == 1) {
-            if (command[0].equalsIgnoreCase("look")) {
-                System.out.println("You are in the living room");
-            } else if (command[0].equalsIgnoreCase("exit")) {
-                endGame();
-            } else {
-                System.out.println("Invalid command");
-            }
-        } else if (command.length == 2) {
-            if (command[0].equalsIgnoreCase("go")) {
-                if (command[1].equalsIgnoreCase("north")) {
-                    System.out.println("You are in the kitchen");
-                } else if (command[1].equalsIgnoreCase("south")) {
-                    System.out.println("You are in the bedroom");
-                } else if (command[1].equalsIgnoreCase("east")) {
-                    System.out.println("You are in the bathroom");
-                } else if (command[1].equalsIgnoreCase("west")) {
-                    System.out.println("You are in the garage");
-                } else {
-                    System.out.println("Invalid direction");
-                }
-            } else if (command[0].equalsIgnoreCase("use")) {
-                if (command[1].equalsIgnoreCase("key")) {
-                    System.out.println("You unlocked the door...");
-                } else if (command[1].equalsIgnoreCase("Thor's hammer")) {
-                    System.out.println("You broke the door.... ");
-                } else {
-                    System.out.println("Invalid item");
-                }
-            } else {
-                System.out.println("Invalid command");
-            }
-        } else {
-            System.out.println("Invalid command");
-        }
-    }
-    
-
-    private void lookAtCommand() {
-        System.out.println("Enter 'look at' to learn more about this item");
-        printItems();
-        Scanner scan = new Scanner(System.in);
-        String commandEntered = scan.nextLine();
-        if (commandEntered.equalsIgnoreCase("look at")) {
-            System.out.println("You are in the living room");
-        } else {
-            System.out.println("Invalid command");
-            
-        }
     }
 
 
