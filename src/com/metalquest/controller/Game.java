@@ -30,7 +30,8 @@ public class Game {
         }
         String[] inputArray = input.split(" ");
         if (inputArray.length > 2) {
-            System.out.println("You entered an invalid option. Please enter two words [VERB], [NOUN] that describe what actio you want to take.");
+            System.out.println("You entered an invalid option. Please enter two words [VERB], " +
+                    "[NOUN] that describe what actio you want to take.");
         }
         String verb = inputArray[0];
         String noun = inputArray[1];
