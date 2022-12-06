@@ -1,0 +1,78 @@
+{
+  "go": [
+    "head",
+    "move",
+    "travel",
+    "fly",
+    "flee",
+    "run",
+    "drive",
+    "push",
+    "snap",
+    "act",
+    "maneuver",
+    "step",
+    "proceed",
+    "do"
+  ],
+  "dig": [
+    "cut",
+    "crack"
+  ],
+  "get": [
+    "pickup",
+    "access",
+    "earn",
+    "take",
+    "gain",
+    "grab",
+    "land",
+    "make",
+    "capture",
+    "procure",
+    "net",
+    "win",
+    "fetch",
+    "reap"
+  ],
+  "drink": [
+    "booze",
+    "turnup",
+    "shot",
+    "slug",
+    "swig",
+    "brew",
+    "refresh",
+    "sip",
+    "taste"
+  ],
+  "play": [
+    "hit",
+    "show",
+    "sing",
+    "ballout",
+    "smash"
+  ],
+  "talk": [
+    "lecture",
+    "discourse",
+    "discuss",
+    "debate",
+    "rap",
+    "sermon",
+    "preach",
+    "chalk",
+    "orator",
+    "screed"
+  ],
+  "drop": [
+    "bit",
+    "crumb",
+    "dash",
+    "dewdrop",
+    ""
+  ]
+
+
+
+}
