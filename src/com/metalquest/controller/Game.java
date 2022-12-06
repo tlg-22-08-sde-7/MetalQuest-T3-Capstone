@@ -10,6 +10,7 @@ import java.util.*;
 
 public class Game {
     public static Scanner scan;
+    private String commandEntered;
 
     public String getUserInput(){
         Scanner userInputScanner = new Scanner(System.in);
@@ -30,7 +31,8 @@ public class Game {
         }
         String[] inputArray = input.split(" ");
         if (inputArray.length > 2) {
-            System.out.println("You entered an invalid option. Please enter two words [VERB], [NOUN] that describe what actio you want to take.");
+            System.out.println("You entered an invalid option. Please enter two words [VERB], " +
+                    "[NOUN] that describe what actio you want to take.");
         }
         String verb = inputArray[0];
         String noun = inputArray[1];
@@ -147,14 +149,43 @@ public class Game {
             showCommands("Living Room");
             String input = getUserInput();
             userInputParser(input);
-//            listen for commands
-//            execute commands
             break;
         }
 
     }
 
+
+    private void printItems( ) {
+        // print items from json file
+        System.out.println("Items in the room: ");
+        try {
+            Reader reader = Files.newBufferedReader(Paths.get("json/locations.json"));
+            JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
+
+            for (JsonElement obj : parser.get("locations").getAsJsonArray()) {
+                JsonObject place = obj.getAsJsonObject();
+                if ("Living Room".equals(place.get("location").getAsString())) {
+                    JsonArray items = place.get("items").getAsJsonArray();
+                    for (JsonElement item : items) {
+                        System.out.println(item);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+    }
+        
+    }
 }
+
+
+
+//            execute commands
+//        }
+////        newGameQuestion();
+//    }
+//
+//}
 
 //Process Command: takes the verb and noun and then processes within the game
 
