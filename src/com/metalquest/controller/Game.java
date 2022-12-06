@@ -136,14 +136,43 @@ public class Game {
         objectiveMsg();
         while (true) {
             showCommands("Living Room");
-//            listen for commands
-//            execute commands
-            break;
+            System.out.println("Enter a Command");
+            Scanner scan = new Scanner(System.in);
+            String commandEntered = scan.nextLine();
+            executeCommand(commandEntered);
+            lookAtCommand();
+            }
         }
-        newGameQuestion();
+
+    private void lookAtCommand() {
+        System.out.println("What would you like to look at?");
+        // print out all items
     }
 
+    private void executeCommand(String commandEntered) {
+        String[] command = commandEntered.split(" ");
+        if (command[0].equalsIgnoreCase("go")) {
+            if (command[1].equalsIgnoreCase("north")) {
+                System.out.println("You are now in the Kitchen");
+            } else if (command[1].equalsIgnoreCase("south")) {
+                System.out.println("You are now in the Living Room");
+            } else if (command[1].equalsIgnoreCase("east")) {
+                System.out.println("You are now in the Bedroom");
+            } else if (command[1].equalsIgnoreCase("west")) {
+                System.out.println("You are now in the Bathroom");
+            }
+        }
+    }
 }
+
+
+
+//            execute commands
+//        }
+////        newGameQuestion();
+//    }
+//
+//}
 
 //Process Command: takes the verb and noun and then processes within the game
 
