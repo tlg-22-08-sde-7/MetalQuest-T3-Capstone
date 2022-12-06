@@ -12,14 +12,11 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Game {
-
-
     public static Scanner scan;
 
-
-    private void userInputParser(String input) throws FileNotFoundException {
+    private void userInputParser(String input) {
         Scanner userInputScanner = new Scanner(System.in);
-        String input1 = userInputScanner.nextLine();
+        String input1 = scan.nextLine();
 
         String input2 = input1.replaceAll("[^a-zA-Z\\\\']+", "")
                 .replaceAll("of", "")
@@ -37,7 +34,7 @@ public class Game {
         }
         String verb = inputArray[0];
         String noun = inputArray[1];
-        keyWordIdentifier(verb, noun);
+        // keyWordIdentifier(verb, noun);
     }
 
 
@@ -133,12 +130,11 @@ public class Game {
         }
     }
 
-    public void execute() throws FileNotFoundException {
+    public void execute() {
         splashScreen();
         objectiveMsg();
         while (true) {
             showCommands("Living Room");
-            userInputParser(scan.nextLine());
 //            listen for commands
 //            execute commands
             break;
