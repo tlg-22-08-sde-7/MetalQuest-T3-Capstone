@@ -46,12 +46,9 @@ public class Game {
         JsonObject parser = null;
         Map<String, ArrayList> wordsMap = null;
         try {
-            BufferedReader br = new BufferedReader(new FileReader("/Users/Ebb/Desktop/Team1/json/verbs.json"));
+            BufferedReader br = new BufferedReader(new FileReader("json/verbs.json"));
             wordsMap = new HashMap<>();
             wordsMap = (Map<String, ArrayList>) gson.fromJson(br, wordsMap.getClass());
-
-            Reader reader = Files.newBufferedReader(Paths.get("/Users/Ebb/Desktop/Team1/json/commands.json"));
-            parser = JsonParser.parseReader(reader).getAsJsonObject();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -122,6 +119,9 @@ public class Game {
         try {
             Reader reader = Files.newBufferedReader(Paths.get("json/locations.json"));
             JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
+            System.out.println("================================");
+            System.out.println("Current Location: " + location);
+            System.out.println("--------------------------------");
 
             for (JsonElement obj : parser.get("locations").getAsJsonArray()) {
                 JsonObject place = obj.getAsJsonObject();
@@ -136,6 +136,7 @@ public class Game {
                     }
                 }
             }
+            System.out.println("================================");
         } catch (IOException e) {
             e.printStackTrace();
         }
