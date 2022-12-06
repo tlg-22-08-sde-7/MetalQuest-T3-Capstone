@@ -1,14 +1,11 @@
 package com.metalquest.controller;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import com.google.gson.*;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +17,7 @@ public class Game {
     public static Scanner scan;
 
 
-    public void userInputParser(String input) throws FileNotFoundException {
+    private void userInputParser(String input) throws FileNotFoundException {
         Scanner userInputScanner = new Scanner(System.in);
         String input1 = userInputScanner.nextLine();
 
@@ -44,7 +41,7 @@ public class Game {
     }
 
 
-    public ArrayList<String> keyWordIdentifier(String verb, String noun) throws FileNotFoundException {
+    private ArrayList<String> keyWordIdentifier(String verb, String noun) throws FileNotFoundException {
         ArrayList<String> action = new ArrayList<>();
 
         Gson gson = new Gson();
@@ -71,13 +68,12 @@ public class Game {
     }
 
 
-    public static void endGame() {
-
+    private void endGame() {
         System.out.println("You have exited Metal Quest. Thanks for playing");
         System.exit(0);
     }
 
-    public static void newGameQuestion() {
+    private void newGameQuestion() {
         System.out.println();
         System.out.println("Would you like start a new game? (y/n)");
         Scanner scan = new Scanner(System.in);
@@ -92,17 +88,16 @@ public class Game {
         }
     }
 
-    public static void objectiveMsg() {
+    private void objectiveMsg() {
         try {
             String message = Files.readString(Path.of("resources/objective.txt"));
             System.out.println(message);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void splashScreen() {
+    private void splashScreen() {
         System.out.println();
         System.out.println("Welcome to Metal Quest");
         try (BufferedReader br = new BufferedReader(new FileReader("images/banner.txt"))) {
@@ -115,18 +110,40 @@ public class Game {
         }
     }
 
-    public void execute() {
+    private void showCommands(String location) {
+        try {
+            Reader reader = Files.newBufferedReader(Paths.get("json/locations.json"));
+            JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
+
+            for (JsonElement obj : parser.get("locations").getAsJsonArray()) {
+                JsonObject place = obj.getAsJsonObject();
+                if (location.equals(place.get("location").getAsString())) {
+                    JsonObject directions = place.get("direction").getAsJsonObject();
+                    JsonArray items = place.get("items").getAsJsonArray();
+                    for (Map.Entry<String, JsonElement> move : directions.entrySet()) {
+                        System.out.println("> Go " + move.getKey());
+                    }
+                    for (JsonElement item : items) {
+                        System.out.println("> Use " + item);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void execute() throws FileNotFoundException {
         splashScreen();
         objectiveMsg();
+        while (true) {
+            showCommands("Living Room");
+            userInputParser(scan.nextLine());
+//            listen for commands
+//            execute commands
+            break;
+        }
         newGameQuestion();
-
-        /*
-            while (true) {
-                display environment info
-                listen for commands
-                execute commands
-            }
-         */
     }
 
 }
