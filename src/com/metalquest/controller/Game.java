@@ -6,24 +6,24 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
     public static Scanner scan;
 
-    private void userInputParser(String input) {
+    public String getUserInput(){
         Scanner userInputScanner = new Scanner(System.in);
-        String input1 = scan.nextLine();
+        System.out.println("Enter a command: ");
+        String input = userInputScanner.nextLine();
+        return input;
+    }
 
-        String input2 = input1.replaceAll("[^a-zA-Z\\\\']+", "")
+    private void userInputParser(String input) {
+        String input2 = input.replaceAll("[^a-zA-Z\\\\']+", "")
                 .replaceAll("of", "")
                 .replaceAll("the", "")
                 .replaceAll("and", "")
                 .replaceAll("a", "");
-
 
         if (input.equals("exit")) {
             endGame();
@@ -34,35 +34,44 @@ public class Game {
         }
         String verb = inputArray[0];
         String noun = inputArray[1];
-        // keyWordIdentifier(verb, noun);
+        keyWordIdentifier(verb, noun);
     }
 
 
-    private ArrayList<String> keyWordIdentifier(String verb, String noun) throws FileNotFoundException {
+    private ArrayList<String> keyWordIdentifier(String verb, String noun) {
         ArrayList<String> action = new ArrayList<>();
-
         Gson gson = new Gson();
-        BufferedReader br = new BufferedReader(new FileReader("./words.json"));
-        Map<String, Object> wordsMap = new HashMap<>();
-        wordsMap = (Map<String, Object>) gson.fromJson(br, wordsMap.getClass());
-        System.out.println(wordsMap);
+        JsonObject parser = null;
+        Map<String, ArrayList> wordsMap = null;
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("/Users/Ebb/Desktop/Team1/json/verbs.json"));
+            wordsMap = new HashMap<>();
+            wordsMap = (Map<String, ArrayList>) gson.fromJson(br, wordsMap.getClass());
 
-        wordsMap.forEach((k, v) -> System.out.println((k)));
-        if (wordsMap.containsKey(verb)) {
+            Reader reader = Files.newBufferedReader(Paths.get("/Users/Ebb/Desktop/Team1/json/commands.json"));
+            parser = JsonParser.parseReader(reader).getAsJsonObject();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (wordsMap.containsKey(verb)){
             action.add(verb);
-        } else if (wordsMap.containsValue(verb)) {
-            for (Map.Entry<String, Object> entry : wordsMap.entrySet()) {
-                if (entry.getValue().equals(verb)) {
-                    action.add(entry.getKey());
-                }
+        }
+            for (Map.Entry<String, ArrayList> entry : wordsMap.entrySet()) {
+             for (Object synonyms : entry.getValue()){
+                 if(synonyms.equals(verb.toLowerCase(Locale.ROOT))){
+                     action.add(entry.getKey());
+                 }
+             }
             }
 
-        } else {
-            System.out.println("Valid command. Please try again.");
-        }
+        action.add(noun);
 
-        return action;
-    }
+            System.out.println(action);
+            return action;
+        }
 
 
     private void endGame() {
@@ -133,13 +142,16 @@ public class Game {
     public void execute() {
         splashScreen();
         objectiveMsg();
+        newGameQuestion();
         while (true) {
             showCommands("Living Room");
+            String input = getUserInput();
+            userInputParser(input);
 //            listen for commands
 //            execute commands
             break;
         }
-        newGameQuestion();
+
     }
 
 }
