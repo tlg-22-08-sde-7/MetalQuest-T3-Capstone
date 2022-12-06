@@ -61,9 +61,21 @@
       },
       "description": "There is a sink, toilet, and shower. On the sink there is a toothbrush, a hair brush, and a make-up kit.",
       "items": [
-        "Hair Brush",
-        "Toothbrush",
-        "Make-up kit"
+        {
+          "name": "guitar",
+          "description": "guitar"
+
+        },
+        {
+          "name": "cellphone",
+          "description": "Check your messages"
+
+        },
+        {
+          "name": "leather jacket",
+          "description": "Put this on to increase your reputation"
+
+        }
       ]
     }
   ]
