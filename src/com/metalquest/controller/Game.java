@@ -173,9 +173,9 @@ public class Game {
                 }
             } else if (command[0].equalsIgnoreCase("use")) {
                 if (command[1].equalsIgnoreCase("key")) {
-                    System.out.println("You unlocked the door");
-                } else if (command[1].equalsIgnoreCase("hammer")) {
-                    System.out.println("You broke the door");
+                    System.out.println("You unlocked the door...");
+                } else if (command[1].equalsIgnoreCase("Thor's hammer")) {
+                    System.out.println("You broke the door.... ");
                 } else {
                     System.out.println("Invalid item");
                 }
