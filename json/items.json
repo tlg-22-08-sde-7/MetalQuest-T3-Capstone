@@ -4,17 +4,17 @@
     [
         {
         "name": "guitar",
-        "description": "guitar",
+        "description": "guitar"
 
         },
         {
         "name": "cellphone",
-        "description": "Check your messages",
+        "description": "Check your messages"
 
         },
         {
         "name": "leather jacket",
-        "description": "Put this on to increase your reputation",
+        "description": "Put this on to increase your reputation"
 
         }
     ]
