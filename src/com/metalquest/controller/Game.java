@@ -13,6 +13,7 @@ import java.util.Scanner;
 
 public class Game {
     public static Scanner scan;
+    private String commandEntered;
 
     private void userInputParser(String input) {
         Scanner userInputScanner = new Scanner(System.in);
@@ -139,29 +140,88 @@ public class Game {
             System.out.println("Enter a Command");
             Scanner scan = new Scanner(System.in);
             String commandEntered = scan.nextLine();
-            executeCommand(commandEntered);
+            // print items in location
+            printItems();
             lookAtCommand();
+
+            executeCommand(commandEntered);
             }
         }
-
-    private void lookAtCommand() {
-        System.out.println("What would you like to look at?");
-        // print out all items
-    }
 
     private void executeCommand(String commandEntered) {
         String[] command = commandEntered.split(" ");
-        if (command[0].equalsIgnoreCase("go")) {
-            if (command[1].equalsIgnoreCase("north")) {
-                System.out.println("You are now in the Kitchen");
-            } else if (command[1].equalsIgnoreCase("south")) {
-                System.out.println("You are now in the Living Room");
-            } else if (command[1].equalsIgnoreCase("east")) {
-                System.out.println("You are now in the Bedroom");
-            } else if (command[1].equalsIgnoreCase("west")) {
-                System.out.println("You are now in the Bathroom");
+        if (command.length == 1) {
+            if (command[0].equalsIgnoreCase("look")) {
+                System.out.println("You are in the living room");
+            } else if (command[0].equalsIgnoreCase("exit")) {
+                endGame();
+            } else {
+                System.out.println("Invalid command");
             }
+        } else if (command.length == 2) {
+            if (command[0].equalsIgnoreCase("go")) {
+                if (command[1].equalsIgnoreCase("north")) {
+                    System.out.println("You are in the kitchen");
+                } else if (command[1].equalsIgnoreCase("south")) {
+                    System.out.println("You are in the bedroom");
+                } else if (command[1].equalsIgnoreCase("east")) {
+                    System.out.println("You are in the bathroom");
+                } else if (command[1].equalsIgnoreCase("west")) {
+                    System.out.println("You are in the garage");
+                } else {
+                    System.out.println("Invalid direction");
+                }
+            } else if (command[0].equalsIgnoreCase("use")) {
+                if (command[1].equalsIgnoreCase("key")) {
+                    System.out.println("You unlocked the door");
+                } else if (command[1].equalsIgnoreCase("hammer")) {
+                    System.out.println("You broke the door");
+                } else {
+                    System.out.println("Invalid item");
+                }
+            } else {
+                System.out.println("Invalid command");
+            }
+        } else {
+            System.out.println("Invalid command");
         }
+    }
+    
+
+    private void lookAtCommand() {
+        System.out.println("Enter 'look at' to learn more about this item");
+        printItems();
+        Scanner scan = new Scanner(System.in);
+        String commandEntered = scan.nextLine();
+        if (commandEntered.equalsIgnoreCase("look at")) {
+            System.out.println("You are in the living room");
+        } else {
+            System.out.println("Invalid command");
+            
+        }
+    }
+
+
+    private void printItems( ) {
+        // print items from json file
+        System.out.println("Items in the room: ");
+        try {
+            Reader reader = Files.newBufferedReader(Paths.get("json/locations.json"));
+            JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
+
+            for (JsonElement obj : parser.get("locations").getAsJsonArray()) {
+                JsonObject place = obj.getAsJsonObject();
+                if ("Living Room".equals(place.get("location").getAsString())) {
+                    JsonArray items = place.get("items").getAsJsonArray();
+                    for (JsonElement item : items) {
+                        System.out.println(item);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+    }
+        
     }
 }
 
