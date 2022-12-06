@@ -6,8 +6,6 @@ class Location {
     private String description;
     private Item [] items;
 
-    public Location() {}
-
     public String getLocation() {
         return location;
     }
@@ -42,7 +40,7 @@ class Location {
 
     @Override
     public String toString() {
-        return "";
+        return "Hello World";
     }
 }
 
