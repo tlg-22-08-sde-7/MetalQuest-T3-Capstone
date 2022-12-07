@@ -1,6 +1,7 @@
 package com.metalquest.controller;
 
 import com.google.gson.*;
+import com.metalquest.model.Player;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -196,6 +197,7 @@ public class Game {
         }
 
     }
+
 }
 
 
