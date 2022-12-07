@@ -10,30 +10,21 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class Game {
-    public static Scanner scan;
-    private String commandEntered;
+    public static Scanner scan = new Scanner(System.in);
 
     public String getUserInput() {
-        Scanner userInputScanner = new Scanner(System.in);
-        System.out.println("Enter a command: ");
-        String input = userInputScanner.nextLine();
-        return input;
+        System.out.println("Enter a command or \"quit\" to quit game: ");
+        return scan.nextLine();
     }
 
     private void userInputParser(String input) {
-        String input2 = input.replaceAll("[^a-zA-Z\\\\']+", "")
-                .replaceAll("of", "")
-                .replaceAll("the", "")
-                .replaceAll("and", "")
-                .replaceAll("a", "");
-
-        if (input.equals("exit")) {
-            endGame();
+        if (input.equals("quit") || input.equals("q")) {
+            quitOption();
         }
         String[] inputArray = input.split(" ");
         if (inputArray.length > 2) {
             System.out.println("You entered an invalid option. Please enter two words [VERB], " +
-                    "[NOUN] that describe what actio you want to take.");
+                    "[NOUN] that describe what action you want to take.");
         }
         String verb = inputArray[0];
         String noun = inputArray[1];
@@ -41,10 +32,10 @@ public class Game {
     }
 
 
-    private ArrayList<String> keyWordIdentifier(String verb, String noun) {
-        ArrayList<String> action = new ArrayList<>();
+    private List<String> keyWordIdentifier(String verb, String noun) {
+        List<String> action = new ArrayList<>();
         Gson gson = new Gson();
-        JsonObject parser = null;
+//        JsonObject parser = null;
         Map<String, ArrayList> wordsMap = null;
         try {
             BufferedReader br = new BufferedReader(new FileReader("json/verbs.json"));
@@ -82,7 +73,6 @@ public class Game {
     private void newGameQuestion() {
         System.out.println();
         System.out.println("Would you like start a new game? (y/n)");
-        Scanner scan = new Scanner(System.in);
         String answer = scan.nextLine();
         if (answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")) {
             System.out.println("Starting new game");
@@ -94,16 +84,12 @@ public class Game {
     }
 
     public void quitOption() {
-        System.out.println(" Enter a command to " +
-                " start playing or to quit type quit");
-        Scanner scan = new Scanner(System.in);
+        System.out.println("Are you sure? (yes or no)");
         String answer = scan.nextLine();
-        if (answer.equalsIgnoreCase("quit")) {
+        if (answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")) {
             endGame();
         }
     }
-
-
 
     private void objectiveMsg() {
         try {
@@ -158,7 +144,6 @@ public class Game {
         splashScreen();
         objectiveMsg();
         newGameQuestion();
-        quitOption();
         while (true) {
             showCommands("Living Room");
             String input = getUserInput();
@@ -174,7 +159,6 @@ public class Game {
         }
 
     }
-
 
     private void printItems() {
         // print items from json file
