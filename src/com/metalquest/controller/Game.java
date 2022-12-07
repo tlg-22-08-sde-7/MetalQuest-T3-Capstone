@@ -12,7 +12,7 @@ public class Game {
     public static Scanner scan;
     private String commandEntered;
 
-    public String getUserInput(){
+    public String getUserInput() {
         Scanner userInputScanner = new Scanner(System.in);
         System.out.println("Enter a command: ");
         String input = userInputScanner.nextLine();
@@ -55,22 +55,22 @@ public class Game {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (wordsMap.containsKey(verb)){
+        if (wordsMap.containsKey(verb)) {
             action.add(verb);
         }
-            for (Map.Entry<String, ArrayList> entry : wordsMap.entrySet()) {
-             for (Object synonyms : entry.getValue()){
-                 if(synonyms.equals(verb.toLowerCase(Locale.ROOT))){
-                     action.add(entry.getKey());
-                 }
-             }
+        for (Map.Entry<String, ArrayList> entry : wordsMap.entrySet()) {
+            for (Object synonyms : entry.getValue()) {
+                if (synonyms.equals(verb.toLowerCase(Locale.ROOT))) {
+                    action.add(entry.getKey());
+                }
             }
+        }
 
         action.add(noun);
 
-            System.out.println(action);
-            return action;
-        }
+        System.out.println(action);
+        return action;
+    }
 
 
     private void endGame() {
@@ -89,9 +89,20 @@ public class Game {
             endGame();
         } else {
             System.out.println("Enter y or n");
-            newGameQuestion();
         }
     }
+
+    public void quitOption() {
+        System.out.println(" Enter a command to " +
+                " start playing or to quit type quit");
+        Scanner scan = new Scanner(System.in);
+        String answer = scan.nextLine();
+        if (answer.equalsIgnoreCase("quit")) {
+            endGame();
+        }
+    }
+
+
 
     private void objectiveMsg() {
         try {
@@ -146,17 +157,25 @@ public class Game {
         splashScreen();
         objectiveMsg();
         newGameQuestion();
+        quitOption();
         while (true) {
             showCommands("Living Room");
             String input = getUserInput();
             userInputParser(input);
             break;
+            //When the command “quit” is entered, the player must confirm if they wish to quit.
+            // If They confirm, the game quits. If they do not confirm, the game does not quit
+            // and returns to the command line where they can continue playing.
+//            Write a method so that When the user enters quit, the player must confirm if they
+//            wish to quit.
+
+
         }
 
     }
 
 
-    private void printItems( ) {
+    private void printItems() {
         // print items from json file
         System.out.println("Items in the room: ");
         try {
@@ -174,11 +193,10 @@ public class Game {
             }
         } catch (IOException e) {
             e.printStackTrace();
-    }
-        
+        }
+
     }
 }
-
 
 
 //            execute commands
