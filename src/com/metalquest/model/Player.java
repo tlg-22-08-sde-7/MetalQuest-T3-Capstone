@@ -50,4 +50,15 @@ public class Player {
             this.inventory = inventory;
         }
 
+        public String toString() {
+            return "========================\n" +
+                    "Player Status \n" +
+                    "-----------------------\n" +
+                    "Money: " + getMoney() + "\n" +
+                    "Location: " + getLocation() + "\n" +
+                    "Fame: " + getFame() + "\n" +
+                    "Health: " + getHealth() + "\n" +
+                    "Inventory: " + getInventory() + "\n" +
+                    "========================";
+        }
     }
