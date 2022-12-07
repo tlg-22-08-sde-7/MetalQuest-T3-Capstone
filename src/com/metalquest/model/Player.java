@@ -1,13 +1,14 @@
 package com.metalquest.model;
 import java.util.ArrayList;
+import java.util.List;
 
-    public class Player {
+public class Player {
 
-        double money;
-        String location;
-        double fame;
-        String health;
-        ArrayList inventory = new ArrayList();
+        double money = -20_000.00;
+        String location = "Living Room";
+        double fame = 0.0;
+        int health = 50;
+        List<Item> inventory = new ArrayList<>();
 
         public double getFame() {
             return fame;
@@ -17,11 +18,11 @@ import java.util.ArrayList;
             this.fame = fame;
         }
 
-        public String getHealth() {
+        public int getHealth() {
             return health;
         }
 
-        public void setHealth(String health) {
+        public void setHealth(int health) {
             this.health = health;
         }
 
@@ -41,15 +42,12 @@ import java.util.ArrayList;
             this.location = location;
         }
 
-        public ArrayList getInventory() {
+        public List<Item> getInventory() {
             return inventory;
         }
 
-        public void setInventory(ArrayList inventory) {
+        public void setInventory(List<Item> inventory) {
             this.inventory = inventory;
         }
-
-
-
 
     }
