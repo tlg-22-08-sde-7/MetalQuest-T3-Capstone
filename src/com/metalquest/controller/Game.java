@@ -140,6 +140,11 @@ public class Game {
         }
     }
 
+    private String lookItem(String item) {
+        String itemDescription = "";
+        return itemDescription;
+    }
+
     public void execute() {
         splashScreen();
         objectiveMsg();
