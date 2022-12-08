@@ -1,6 +1,7 @@
 package com.metalquest.controller;
 
 import com.google.gson.*;
+import com.metalquest.model.Movement;
 import com.metalquest.model.Player;
 
 import java.io.*;
@@ -183,6 +184,7 @@ public class Game {
             String input = getUserInput();
             String[] parsedInput = userInputParser(input);
             List<String> keywordsAction = keyWordIdentifier(parsedInput);
+            Movement.commandsRoute(keywordsAction, player, "Living Room");
             break;
             //When the command “quit” is entered, the player must confirm if they wish to quit.
             // If They confirm, the game quits. If they do not confirm, the game does not quit
