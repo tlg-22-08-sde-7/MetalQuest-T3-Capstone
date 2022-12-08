@@ -1,0 +1,24 @@
+{
+  "scenes" : [
+    {
+      "scene" : 1,
+      "location" : "Living Room",
+      "text" : "You wake up in a pool of vomit with a pounding headache and a pain in your abdomen from sleeping on a conch shell all night. Your cellphone is ringing.",
+      "requirements" : ["cellphone"]
+    },
+    {
+      "scene" : 2,
+      "location" : "Kitchen",
+      "text" : "You hobble to the kitchen and make a beeline to the fridge. Fortunately, you bought groceries yesterday and managed to stock up on a selection of beverages.",
+      "requirements" : []
+    },
+    {
+      "scene": 3,
+      "location": "Master Bedroom",
+      "text": "You enter your bedroom ",
+      "requirements": [
+        "cellphone"
+      ]
+    }
+  ]
+}
