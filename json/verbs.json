@@ -51,7 +51,9 @@
     "show",
     "sing",
     "ballout",
-    "smash"
+    "smash",
+    "amuse",
+    "do"
   ],
   "talk": [
     "lecture",
@@ -70,9 +72,24 @@
     "crumb",
     "dash",
     "dewdrop",
-    ""
-  ]
+    "let-fall",
+    "lay",
+    "leave",
+    "relinquish",
+    "sink"
+  ],
+  "use": [
+    "utilize",
+    "employ",
+    "work",
+    "operate",
+    "apply",
+    "maneuver",
+    "handle",
+    "purpose",
+    "call"
 
+  ]
 
 
 }

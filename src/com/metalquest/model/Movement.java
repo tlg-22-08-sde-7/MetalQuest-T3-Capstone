@@ -15,7 +15,7 @@ public class Movement {
     private static JsonObject directions;
     private static JsonArray items;
 
-    public static void getJsonLocationData(String currentLocation) {
+    public void getJsonLocationData(String currentLocation) {
         try {
             Reader reader = Files.newBufferedReader(Paths.get("json/locations.json"));
             JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
@@ -32,7 +32,7 @@ public class Movement {
         }
     }
 
-    public static void moveLocation(String direction, String currentLocation) {
+    public void moveLocation(String direction, String currentLocation) {
         getJsonLocationData(currentLocation);
         for (Map.Entry<String, JsonElement> move : directions.entrySet()) {
             if (direction.equals(move.getKey())) {
@@ -40,5 +40,8 @@ public class Movement {
             }
         }
     }
+
+    public void addToPlayerInventory(){}
+
 
 }
