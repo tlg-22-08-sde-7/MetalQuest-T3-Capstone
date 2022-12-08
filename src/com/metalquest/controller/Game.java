@@ -19,7 +19,7 @@ public class Game {
         return scan.nextLine();
     }
 
-    private void userInputParser(String input) {
+    private String[] userInputParser(String input) {
         if (input.equals("quit") || input.equals("q")) {
             quitOption();
         }
@@ -32,22 +32,21 @@ public class Game {
         String[] inputArray = inputString.split(" ");
         System.out.println(inputArray.length);
 
-        if(inputArray.length != 2){
+        if (inputArray.length != 2) {
             System.out.println("You entered an invalid option. Please enter two words [VERB], " +
                     "[NOUN] that describe what action you want to take.");
             String newInput = getUserInput();
             userInputParser(newInput);
-        }
-        else {
+        } else {
             String verb = inputArray[0];
             String noun = inputArray[1];
-            keyWordIdentifier(verb, noun);
-        }
 
+        }
+        return inputArray;
     }
 
 
-    private List<String> keyWordIdentifier(String verb, String noun) {
+    private List<String> keyWordIdentifier(String[] userInputArray) {
         List<String> action = new ArrayList<>();
         Gson gson = new Gson();
         Map<String, ArrayList> wordsMap = null;
@@ -61,6 +60,8 @@ public class Game {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        String verb = userInputArray[0];
+        String noun = userInputArray[1];
         if (wordsMap.containsKey(verb.toLowerCase(Locale.ROOT))) {
             action.add(verb);
         }
@@ -161,15 +162,14 @@ public class Game {
         while (true) {
             showCommands("Living Room");
             String input = getUserInput();
-            userInputParser(input);
+            String[] parsedInput = userInputParser(input);
+            List<String> keywordsAction = keyWordIdentifier(parsedInput);
             break;
             //When the command “quit” is entered, the player must confirm if they wish to quit.
             // If They confirm, the game quits. If they do not confirm, the game does not quit
             // and returns to the command line where they can continue playing.
 //            Write a method so that When the user enters quit, the player must confirm if they
-//            wish to quit.
-            // and
-            //game
+//            wish to quit
 
 
         }
