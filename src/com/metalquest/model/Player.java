@@ -14,6 +14,7 @@ public class Player {
 //        private Player() {
 //
 //        }
+
     public String talk() {
         return "";
     }
