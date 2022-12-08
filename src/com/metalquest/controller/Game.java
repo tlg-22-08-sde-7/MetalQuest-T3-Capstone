@@ -8,6 +8,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Game {
     public static Scanner scan = new Scanner(System.in);
@@ -21,21 +23,33 @@ public class Game {
         if (input.equals("quit") || input.equals("q")) {
             quitOption();
         }
-        String[] inputArray = input.split(" ");
-        if (inputArray.length > 2) {
+        Pattern wordPattern = Pattern.compile("\\b(I|this|its|and|the|of|a|or|now)\\b\\s?");
+        Matcher matchPattern = wordPattern.matcher(input);
+        String inputString = matchPattern.replaceAll(" ").
+                replaceAll("[\\p{Punct}]", "")
+                .trim().replaceAll("[ ]+", " ");
+
+        String[] inputArray = inputString.split(" ");
+        System.out.println(inputArray.length);
+
+        if(inputArray.length != 2){
             System.out.println("You entered an invalid option. Please enter two words [VERB], " +
                     "[NOUN] that describe what action you want to take.");
+            String newInput = getUserInput();
+            userInputParser(newInput);
         }
-        String verb = inputArray[0];
-        String noun = inputArray[1];
-        keyWordIdentifier(verb, noun);
+        else {
+            String verb = inputArray[0];
+            String noun = inputArray[1];
+            keyWordIdentifier(verb, noun);
+        }
+
     }
 
 
     private List<String> keyWordIdentifier(String verb, String noun) {
         List<String> action = new ArrayList<>();
         Gson gson = new Gson();
-//        JsonObject parser = null;
         Map<String, ArrayList> wordsMap = null;
         try {
             BufferedReader br = new BufferedReader(new FileReader("json/verbs.json"));
@@ -47,7 +61,7 @@ public class Game {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (wordsMap.containsKey(verb)) {
+        if (wordsMap.containsKey(verb.toLowerCase(Locale.ROOT))) {
             action.add(verb);
         }
         for (Map.Entry<String, ArrayList> entry : wordsMap.entrySet()) {
