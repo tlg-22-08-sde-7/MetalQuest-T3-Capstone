@@ -32,13 +32,15 @@ public class Movement {
         }
     }
 
-    public void moveLocation(String direction, String currentLocation) {
+    public String moveLocation(String direction, String currentLocation) {
         getJsonLocationData(currentLocation);
+        String newLocation = "";
         for (Map.Entry<String, JsonElement> move : directions.entrySet()) {
             if (direction.equals(move.getKey())) {
-                currentLocation = move.getValue().getAsString();
+                newLocation = move.getValue().getAsString();
             }
         }
+        return newLocation;
     }
 
     public void addToPlayersInventory(){
