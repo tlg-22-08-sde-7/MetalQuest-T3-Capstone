@@ -34,6 +34,7 @@
       "location": "Master Bedroom",
       "text": "You go back to your room and see that the stranger is still passed out on your bed. If it weren't for the sounds of their snore, you would have thought they were dead. Time to dress up. Make sure to pick the appropriate outfit for the gig. You'll also need to find your guitar.",
       "requirements": [
+
       ]
     },
     {
@@ -41,7 +42,25 @@
       "location": "Master Bedroom",
       "text": "Looking spiffy, if you say so yourself. The only thing left is to find your car keys so you can actually drive to the venue. You curse at your own forgetfulness as you can't remember the last place you put it. Better get a move on.",
       "requirements": [
-        "guitar"
+        "guitar",
+        "leather jacket"
+      ]
+    },
+    {
+      "scene": 8,
+      "location": "Backyard",
+      "text": "Although the chances of your car keys being here is low, with how wild last night was, you wouldn't be surprised about finding them in this place.",
+      "requirements": [
+        "guitar",
+        "leather jacket"
+      ]
+    },
+    {
+      "scene": 9,
+      "location": "Garage",
+      "text": "Your magnificent carriage awaits. With your car keys finally in hand, you unlock the trunk and place your guitar. Putting the key in the ignition, she roars to life and you're able to exit the garage. \n Congrats on making it through this level! Now go be the rockstar you were meant to be.",
+      "requirements": [
+        "car keys"
       ]
     }
   ]

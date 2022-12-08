@@ -77,6 +77,16 @@
 
         }
       ]
+    },
+    {
+      "location": "Garage",
+      "direction": {
+        "west": "Living Room"
+      },
+      "description": "Your car sits in the garage.",
+      "items": [
+        "car"
+      ]
     }
   ]
 }
