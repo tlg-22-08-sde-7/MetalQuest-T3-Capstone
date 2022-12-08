@@ -41,7 +41,9 @@ public class Movement {
         }
     }
 
-    public void addToPlayerInventory(){}
+    public void addToPlayersInventory(){
+
+    }
 
 
 }
