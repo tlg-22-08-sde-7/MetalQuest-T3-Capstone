@@ -32,28 +32,32 @@ public class Movement {
         }
     }
 
-    public void moveLocation(String direction, String currentLocation) {
-        getJsonLocationData(currentLocation);
+    public static void moveLocation(String direction, Player player) {
+        getJsonLocationData(player.getLocation());
         for (Map.Entry<String, JsonElement> move : directions.entrySet()) {
             if (direction.equals(move.getKey())) {
-                currentLocation = move.getValue().getAsString();
+                String currentLocation = move.getValue().getAsString();
+                player.setLocation(currentLocation);
+                System.out.println("Current Location: " + player.getLocation());
             }
         }
     }
 
     public static void editPlayerInventory(Player player, List<String> keywords, String currentLocation) {
-        getJsonLocationData(currentLocation);
+        getJsonLocationData(player.getLocation());
         String command = keywords.get(0);
         String item = keywords.get(1);
-        //player.getInventory().add("rolex");
+        player.getInventory().add("rolex");
         if (command.equals("get")) {
-
             for (int i = 0; i < items.size(); i++) {
-                if (items.toString().contains(item)) {
+                if (items.toString().contains(item) && !player.getInventory().contains(item)) {
                     player.getInventory().add(item);
                     items.remove(i);
                     System.out.println("Items in room: " + items.toString());
                     System.out.println("Added: " + item + " to your inventory");
+                } else{
+                    System.out.println(item + " is already in your inventory");
+                    break;
                 }
             }
             } else if (!items.toString().contains(item)){
@@ -63,20 +67,21 @@ public class Movement {
             player.getInventory().remove(item);
             System.out.println("Removed: " + item + " from your inventory");
         } else if (!player.getInventory().contains(item)) {
-            System.out.println(item + " is not in your inventory, Please select a valid item.");
+            System.out.println(item + " is not in this room, Please select a valid item.");
+            System.out.println("Items in room: " + items);
         }
 
     }
 
 
-    public static void commandsRoute(List<String> keywords, Player player, String currentLocation){
+    public static void commandsRoute(List<String> keywords, Player player){
         switch (keywords.get(0)){
             case "get":
             case "drop":
-                editPlayerInventory(player, keywords, currentLocation);
+                editPlayerInventory(player, keywords, player.getLocation());
                 break;
             case "go":
-                //call move function
+                moveLocation(keywords.get(1), player);
                 break;
             case "play":
                 //play function
@@ -85,16 +90,16 @@ public class Movement {
                 //drink fnc
                 break;
             case "dig":
-                //func
+                // dig func
                 break;
             case "talk":
-                //
+                //talk func
                 break;
             case "use":
-                //
+                //use func
                 break;
             default:
-                System.out.println("error message");
+                System.out.println("error message goes here");
 
         }
 
