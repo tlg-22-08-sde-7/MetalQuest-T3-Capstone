@@ -160,11 +160,12 @@ public class Game {
     }
 
     public void execute() {
+        Player player = new Player();
         splashScreen();
         objectiveMsg();
         newGameQuestion();
         while (true) {
-            showCommands("Living Room");
+            showCommands(player.getLocation());
             String input = getUserInput();
             userInputParser(input);
             break;
