@@ -156,23 +156,7 @@ public class Game {
         }
     }
 
-    private String lookItem(String item) {
-        String itemDescription = "";
-        try {
-            Reader reader = Files.newBufferedReader(Paths.get("json/items.json"));
-            JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
 
-            for (JsonElement obj : parser.get("items").getAsJsonArray()) {
-                JsonObject itemName = obj.getAsJsonObject();
-                if (item.equals(itemName.get("name").getAsString())) {
-                    itemDescription = itemName.get("description").getAsString();
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return itemDescription;
-    }
 
     public void execute() {
         Player player = new Player();

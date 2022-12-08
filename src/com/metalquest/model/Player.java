@@ -1,5 +1,13 @@
 package com.metalquest.model;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +24,35 @@ public class Player {
 //        }
 
     public String talk() {
-        return "";
+//        try {
+//            Reader reader = Files.newBufferedReader(Paths.get("json/npc.json"));
+//            JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
+//
+//            for (JsonElement obj : parser.get("scene").getAsJsonObject()) {
+//                JsonObject itemName = obj.getAsJsonObject();
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        return "Hello";
+    }
+
+    public String lookItem(String item) {
+        String itemDescription = "";
+        try {
+            Reader reader = Files.newBufferedReader(Paths.get("json/items.json"));
+            JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
+
+            for (JsonElement obj : parser.get("items").getAsJsonArray()) {
+                JsonObject itemName = obj.getAsJsonObject();
+                if (item.equals(itemName.get("name").getAsString())) {
+                    itemDescription = itemName.get("description").getAsString();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return itemDescription;
     }
 
     public double getFame() {
