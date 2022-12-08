@@ -9,11 +9,12 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Map;
 
 public class Movement {
-    private static JsonObject directions;
-    private static JsonArray items;
+    protected static JsonObject directions;
+    protected static JsonArray items;
 
     public static void getJsonLocationData(String currentLocation) {
         try {
@@ -26,19 +27,83 @@ public class Movement {
                     items = place.get("items").getAsJsonArray();
                 }
             }
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void moveLocation(String direction, String currentLocation) {
-        getJsonLocationData(currentLocation);
+    public static void moveLocation(String direction, Player player) {
+        getJsonLocationData(player.getLocation());
         for (Map.Entry<String, JsonElement> move : directions.entrySet()) {
             if (direction.equals(move.getKey())) {
-                currentLocation = move.getValue().getAsString();
+                String currentLocation = move.getValue().getAsString();
+                player.setLocation(currentLocation);
+                System.out.println("Current Location: " + player.getLocation());
             }
         }
+    }
+
+    public static void editPlayerInventory(Player player, List<String> keywords, String currentLocation) {
+        getJsonLocationData(player.getLocation());
+        String command = keywords.get(0);
+        String item = keywords.get(1);
+        player.getInventory().add("rolex");
+        if (command.equals("get")) {
+            for (int i = 0; i < items.size(); i++) {
+                if (items.toString().contains(item) && !player.getInventory().contains(item)) {
+                    player.getInventory().add(item);
+                    items.remove(i);
+                    System.out.println("Items in room: " + items.toString());
+                    System.out.println("Added: " + item + " to your inventory");
+                } else{
+                    System.out.println(item + " is already in your inventory");
+                    break;
+                }
+            }
+            } else if (!items.toString().contains(item)){
+            System.out.println(item + " is not in this room. Please select a valid item.");
+        }
+        if(command.equals("drop") && items.toString().contains(item)){
+            player.getInventory().remove(item);
+            System.out.println("Removed: " + item + " from your inventory");
+        } else if (!player.getInventory().contains(item)) {
+            System.out.println(item + " is not in this room, Please select a valid item.");
+            System.out.println("Items in room: " + items);
+        }
+
+    }
+
+
+    public static void commandsRoute(List<String> keywords, Player player){
+        switch (keywords.get(0)){
+            case "get":
+            case "drop":
+                editPlayerInventory(player, keywords, player.getLocation());
+                break;
+            case "go":
+                moveLocation(keywords.get(1), player);
+                break;
+            case "play":
+                //play function
+                break;
+            case "drink":
+                //drink fnc
+                break;
+            case "dig":
+                // dig func
+                break;
+            case "talk":
+                //talk func
+                break;
+            case "use":
+                //use func
+                break;
+            default:
+                System.out.println("error message goes here");
+
+        }
+
+
     }
 
 }

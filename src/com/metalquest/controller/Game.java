@@ -1,6 +1,7 @@
 package com.metalquest.controller;
 
 import com.google.gson.*;
+import com.metalquest.model.Movement;
 import com.metalquest.model.Player;
 
 import java.io.*;
@@ -8,6 +9,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Game {
     public static Scanner scan = new Scanner(System.in);
@@ -17,25 +20,36 @@ public class Game {
         return scan.nextLine();
     }
 
-    private void userInputParser(String input) {
+    private String[] userInputParser(String input) {
         if (input.equals("quit") || input.equals("q")) {
             quitOption();
         }
-        String[] inputArray = input.split(" ");
-        if (inputArray.length > 2) {
+        Pattern wordPattern = Pattern.compile("\\b(I|this|its|and|the|of|a|or|now)\\b\\s?");
+        Matcher matchPattern = wordPattern.matcher(input);
+        String inputString = matchPattern.replaceAll(" ").
+                replaceAll("[\\p{Punct}]", "")
+                .trim().replaceAll("[ ]+", " ");
+
+        String[] inputArray = inputString.split(" ");
+        System.out.println(inputArray.length);
+
+        if (inputArray.length != 2) {
             System.out.println("You entered an invalid option. Please enter two words [VERB], " +
                     "[NOUN] that describe what action you want to take.");
+            String newInput = getUserInput();
+            userInputParser(newInput);
+        } else {
+            String verb = inputArray[0];
+            String noun = inputArray[1];
+
         }
-        String verb = inputArray[0];
-        String noun = inputArray[1];
-        keyWordIdentifier(verb, noun);
+        return inputArray;
     }
 
 
-    private List<String> keyWordIdentifier(String verb, String noun) {
+    private List<String> keyWordIdentifier(String[] userInputArray) {
         List<String> action = new ArrayList<>();
         Gson gson = new Gson();
-//        JsonObject parser = null;
         Map<String, ArrayList> wordsMap = null;
         try {
             BufferedReader br = new BufferedReader(new FileReader("json/verbs.json"));
@@ -47,7 +61,9 @@ public class Game {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (wordsMap.containsKey(verb)) {
+        String verb = userInputArray[0];
+        String noun = userInputArray[1];
+        if (wordsMap.containsKey(verb.toLowerCase(Locale.ROOT))) {
             action.add(verb);
         }
         for (Map.Entry<String, ArrayList> entry : wordsMap.entrySet()) {
@@ -60,7 +76,7 @@ public class Game {
 
         action.add(noun);
 
-        System.out.println(action);
+        //System.out.println(action);
         return action;
     }
 
@@ -140,20 +156,41 @@ public class Game {
         }
     }
 
+    private String lookItem(String item) {
+        String itemDescription = "";
+        try {
+            Reader reader = Files.newBufferedReader(Paths.get("json/items.json"));
+            JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
+
+            for (JsonElement obj : parser.get("items").getAsJsonArray()) {
+                JsonObject itemName = obj.getAsJsonObject();
+                if (item.equals(itemName.get("name").getAsString())) {
+                    itemDescription = itemName.get("description").getAsString();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return itemDescription;
+    }
+
     public void execute() {
+        Player player = new Player();
         splashScreen();
         objectiveMsg();
         newGameQuestion();
         while (true) {
-            showCommands("Living Room");
+            showCommands(player.getLocation());
             String input = getUserInput();
-            userInputParser(input);
+            String[] parsedInput = userInputParser(input);
+            List<String> keywordsAction = keyWordIdentifier(parsedInput);
+            Movement.commandsRoute(keywordsAction, player);
             break;
             //When the command “quit” is entered, the player must confirm if they wish to quit.
             // If They confirm, the game quits. If they do not confirm, the game does not quit
             // and returns to the command line where they can continue playing.
 //            Write a method so that When the user enters quit, the player must confirm if they
-//            wish to quit.
+//            wish to quit
 
 
         }

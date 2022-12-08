@@ -8,7 +8,7 @@ public class Player {
         String location = "Living Room";
         double fame = 0.0;
         int health = 50;
-        List<Item> inventory = new ArrayList<>();
+        List<String> inventory = new ArrayList<>();
 
         public double getFame() {
             return fame;
@@ -42,13 +42,14 @@ public class Player {
             this.location = location;
         }
 
-        public List<Item> getInventory() {
+        public List<String> getInventory() {
             return inventory;
         }
 
-        public void setInventory(List<Item> inventory) {
+        public void setInventory(List<String> inventory) {
             this.inventory = inventory;
         }
+
 
         public String toString() {
             return "========================\n" +
