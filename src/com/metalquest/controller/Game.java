@@ -185,16 +185,7 @@ public class Game {
             String[] parsedInput = userInputParser(input);
             List<String> keywordsAction = keyWordIdentifier(parsedInput);
             Movement.commandsRoute(keywordsAction, player);
-            break;
-            //When the command “quit” is entered, the player must confirm if they wish to quit.
-            // If They confirm, the game quits. If they do not confirm, the game does not quit
-            // and returns to the command line where they can continue playing.
-//            Write a method so that When the user enters quit, the player must confirm if they
-//            wish to quit
-
-
         }
-
     }
 
     private void printItems() {
