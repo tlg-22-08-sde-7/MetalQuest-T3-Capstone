@@ -31,7 +31,6 @@ public class Game {
                 .trim().replaceAll("[ ]+", " ");
 
         String[] inputArray = inputString.split(" ");
-        System.out.println(inputArray.length);
 
         if (inputArray.length != 2) {
             System.out.println("You entered an invalid option. Please enter two words [VERB], " +
@@ -161,6 +160,7 @@ public class Game {
         newGameQuestion();
         while (true) {
             showCommands(player.getLocation());
+            System.out.println(player);
             String input = getUserInput();
             String[] parsedInput = userInputParser(input);
             List<String> keywordsAction = keyWordIdentifier(parsedInput);

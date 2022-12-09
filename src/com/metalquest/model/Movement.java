@@ -39,6 +39,9 @@ public class Movement {
                 String currentLocation = move.getValue().getAsString();
                 player.setLocation(currentLocation);
                 System.out.println("Current Location: " + player.getLocation());
+            } else {
+                System.out.println("Please select a valid move option.");
+                break;
             }
         }
     }
@@ -93,10 +96,13 @@ public class Movement {
                 // dig func
                 break;
             case "talk":
-                //talk func
+                System.out.println(player.talkToNPC(keywords.get(1)));
                 break;
             case "use":
                 //use func
+                break;
+            case "look":
+                System.out.println(player.lookItem(keywords.get(1)));
                 break;
             default:
                 System.out.println("error message goes here");
