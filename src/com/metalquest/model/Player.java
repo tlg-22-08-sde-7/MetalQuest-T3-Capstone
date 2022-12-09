@@ -23,18 +23,8 @@ public class Player {
 //
 //        }
 
-    public String talk() {
-//        try {
-//            Reader reader = Files.newBufferedReader(Paths.get("json/npc.json"));
-//            JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
-//
-//            for (JsonElement obj : parser.get("scene").getAsJsonObject()) {
-//                JsonObject itemName = obj.getAsJsonObject();
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-        return "Hello";
+    public String talkToNPC(String npc) {
+        return "Hello" + npc;
     }
 
     public String lookItem(String item) {
