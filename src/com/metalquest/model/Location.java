@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
-public class Movement {
+public class Location {
     protected static JsonObject directions;
     protected static JsonArray items;
 
@@ -38,10 +38,10 @@ public class Movement {
             if (direction.equals(move.getKey())) {
                 String currentLocation = move.getValue().getAsString();
                 player.setLocation(currentLocation);
-                System.out.println("Current Location: " + player.getLocation());
             } else {
                 System.out.println("Please select a valid move option.");
                 break;
+                //
             }
         }
     }

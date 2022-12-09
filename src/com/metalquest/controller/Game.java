@@ -1,7 +1,7 @@
 package com.metalquest.controller;
 
 import com.google.gson.*;
-import com.metalquest.model.Movement;
+import com.metalquest.model.Location;
 import com.metalquest.model.Player;
 
 import java.io.*;
@@ -164,7 +164,7 @@ public class Game {
             String input = getUserInput();
             String[] parsedInput = userInputParser(input);
             List<String> keywordsAction = keyWordIdentifier(parsedInput);
-            Movement.commandsRoute(keywordsAction, player);
+            Location.commandsRoute(keywordsAction, player);
         }
     }
 
