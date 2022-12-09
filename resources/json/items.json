@@ -1,16 +1,14 @@
-{
-  "items": [
-    {
-      "name": "guitar",
-      "description": "guitar"
-    },
-    {
-      "name": "cellphone",
-      "description": "Check your messages"
-    },
-    {
-      "name": "leather jacket",
-      "description": "Put this on to increase your reputation"
-    }
-  ]
-}
+[
+  {
+    "name": "guitar",
+    "description": "guitar"
+  },
+  {
+    "name": "cellphone",
+    "description": "Check your messages"
+  },
+  {
+    "name": "leather jacket",
+    "description": "Put this on to increase your reputation"
+  }
+]

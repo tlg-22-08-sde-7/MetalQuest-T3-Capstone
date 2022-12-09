@@ -1,15 +1,20 @@
 package com.metalquest.model;
 
 import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ExternalConverter {
     public static void main(String[] args) {
-        getNPCObject();
+        Item item = getItemObject("leather jacket");
+        System.out.println(item.getName());
+        System.out.println(item.getDescription());
     }
 
     public static NPC getNPCObject() {
@@ -24,20 +29,34 @@ public class ExternalConverter {
         return null;
     }
 
-    public static Item getItemObject(String item) {
-        try {
-            Reader reader = Files.newBufferedReader(Paths.get("json/items.json"));
-            JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
+    public static Item getItemObject(String itemToCreate) {
+        // Create an item to return
+        Item itemCreated = null;
 
-            for (JsonElement element : parser.getAsJsonArray("items")) {
-                if (item.equals(element)) {
-                    System.out.println(element);
+        try {
+            // Create a Gson instance
+            Gson gson = new Gson();
+
+            // Create a reader
+            Reader reader = Files.newBufferedReader(Paths.get("resources/json/items.json"));
+
+            // Convert JSON array to list of items
+            List<Item> items = new ArrayList<>();
+            items = new Gson().fromJson(reader, new TypeToken<List<Item>>() {}.getType());
+
+            // Look for item
+            for (Item item : items) {
+                if (item.getName().equals(itemToCreate)) {
+                    itemCreated = item;
                 }
             }
         }
+
         catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+
+        // Return the item
+        return itemCreated;
     }
 }
