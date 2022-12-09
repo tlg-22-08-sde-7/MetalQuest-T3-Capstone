@@ -52,7 +52,7 @@ public class Game {
         Gson gson = new Gson();
         HashMap<String, ArrayList<?>> wordsMap = null;
         try {
-            BufferedReader br = new BufferedReader(new FileReader("json/verbs.json"));
+            BufferedReader br = new BufferedReader(new FileReader("resources/json/verbs.json"));
             wordsMap = new HashMap<>();
             wordsMap = gson.fromJson(br, wordsMap.getClass());
 
@@ -115,7 +115,7 @@ public class Game {
     private void splashScreen() {
         System.out.println();
         System.out.println("Welcome to Metal Quest");
-        try (BufferedReader br = new BufferedReader(new FileReader("images/banner.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("resources/images/banner.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
@@ -127,7 +127,7 @@ public class Game {
 
     private void showCommands(String location) {
         try {
-            Reader reader = Files.newBufferedReader(Paths.get("json/locations.json"));
+            Reader reader = Files.newBufferedReader(Paths.get("resources/json/locations.json"));
             JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
             System.out.println("================================");
             System.out.println("Current Location: " + location);
@@ -172,7 +172,7 @@ public class Game {
         // print items from json file
         System.out.println("Items in the room: ");
         try {
-            Reader reader = Files.newBufferedReader(Paths.get("json/locations.json"));
+            Reader reader = Files.newBufferedReader(Paths.get("resources/json/locations.json"));
             JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
 
             for (JsonElement obj : parser.get("locations").getAsJsonArray()) {

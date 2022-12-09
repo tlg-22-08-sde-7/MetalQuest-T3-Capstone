@@ -18,7 +18,7 @@ public class Movement {
 
     public static void getJsonLocationData(String currentLocation) {
         try {
-            Reader reader = Files.newBufferedReader(Paths.get("json/locations.json"));
+            Reader reader = Files.newBufferedReader(Paths.get("resources/json/locations.json"));
             JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
             for (JsonElement obj : parser.get("locations").getAsJsonArray()) {
                 JsonObject place = obj.getAsJsonObject();
