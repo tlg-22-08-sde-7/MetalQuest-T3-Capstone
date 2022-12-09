@@ -58,7 +58,7 @@ public class Player {
     }
 
     public String talkToNPC(String npc) {
-        return "Hello" + npc;
+        return "Hello " + npc;
     }
 
 
