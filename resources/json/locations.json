@@ -9,7 +9,7 @@
       },
       "description": "There is a couch a coffee table and a tv. The tv is on.",
       "items": [
-        "cellphone", "Rolex"
+        "cellphone", "rolex"
       ]
     },
     {
@@ -76,6 +76,16 @@
           "description": "Put this on to increase your reputation"
 
         }
+      ]
+    },
+    {
+      "location": "Garage",
+      "direction": {
+        "west": "Living Room"
+      },
+      "description": "Your car sits in the garage.",
+      "items": [
+        "car"
       ]
     }
   ]

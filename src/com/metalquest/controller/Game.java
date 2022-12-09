@@ -1,76 +1,79 @@
 package com.metalquest.controller;
 
 import com.google.gson.*;
+import com.metalquest.model.Location;
+import com.metalquest.model.Player;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Game {
-    public static Scanner scan;
-    private String commandEntered;
+    public static Scanner scan = new Scanner(System.in);
 
-    public String getUserInput(){
-        Scanner userInputScanner = new Scanner(System.in);
-        System.out.println("Enter a command: ");
-        String input = userInputScanner.nextLine();
-        return input;
+    public String getUserInput() {
+        System.out.println("Enter a command or \"quit\" to quit game: ");
+        return scan.nextLine();
     }
 
-    private void userInputParser(String input) {
-        String input2 = input.replaceAll("[^a-zA-Z\\\\']+", "")
-                .replaceAll("of", "")
-                .replaceAll("the", "")
-                .replaceAll("and", "")
-                .replaceAll("a", "");
-
-        if (input.equals("exit")) {
-            endGame();
+    private String[] userInputParser(String input) {
+        if (input.equals("quit") || input.equals("q")) {
+            quitOption();
         }
-        String[] inputArray = input.split(" ");
-        if (inputArray.length > 2) {
+        Pattern wordPattern = Pattern.compile("\\b(I|this|its|and|the|of|a|or|now)\\b\\s?");
+        Matcher matchPattern = wordPattern.matcher(input);
+        String inputString = matchPattern.replaceAll(" ").
+                replaceAll("[\\p{Punct}]", "")
+                .trim().replaceAll("[ ]+", " ");
+
+        String[] inputArray = inputString.split(" ");
+
+        if (inputArray.length != 2) {
             System.out.println("You entered an invalid option. Please enter two words [VERB], " +
-                    "[NOUN] that describe what actio you want to take.");
+                    "[NOUN] that describe what action you want to take.");
+            String newInput = getUserInput();
+            userInputParser(newInput);
+        } else {
+            String verb = inputArray[0];
+            String noun = inputArray[1];
+
         }
-        String verb = inputArray[0];
-        String noun = inputArray[1];
-        keyWordIdentifier(verb, noun);
+        return inputArray;
     }
 
 
-    private ArrayList<String> keyWordIdentifier(String verb, String noun) {
-        ArrayList<String> action = new ArrayList<>();
+    private List<String> keyWordIdentifier(String[] userInputArray) {
+        List<String> action = new ArrayList<>();
         Gson gson = new Gson();
-        JsonObject parser = null;
-        Map<String, ArrayList> wordsMap = null;
+        HashMap<String, ArrayList<?>> wordsMap = null;
         try {
-            BufferedReader br = new BufferedReader(new FileReader("json/verbs.json"));
+            BufferedReader br = new BufferedReader(new FileReader("resources/json/verbs.json"));
             wordsMap = new HashMap<>();
-            wordsMap = (Map<String, ArrayList>) gson.fromJson(br, wordsMap.getClass());
+            wordsMap = gson.fromJson(br, wordsMap.getClass());
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
-        if (wordsMap.containsKey(verb)){
+        String verb = userInputArray[0];
+        String noun = userInputArray[1];
+        if (wordsMap.containsKey(verb.toLowerCase(Locale.ROOT))) {
             action.add(verb);
         }
-            for (Map.Entry<String, ArrayList> entry : wordsMap.entrySet()) {
-             for (Object synonyms : entry.getValue()){
-                 if(synonyms.equals(verb.toLowerCase(Locale.ROOT))){
-                     action.add(entry.getKey());
-                 }
-             }
+        for (Map.Entry<String, ArrayList<?>> entry : wordsMap.entrySet()) {
+            for (Object synonyms : entry.getValue()) {
+                if (synonyms.equals(verb.toLowerCase(Locale.ROOT))) {
+                    action.add(entry.getKey());
+                }
             }
+        }
 
         action.add(noun);
-
-            System.out.println(action);
-            return action;
-        }
+        return action;
+    }
 
 
     private void endGame() {
@@ -81,7 +84,6 @@ public class Game {
     private void newGameQuestion() {
         System.out.println();
         System.out.println("Would you like start a new game? (y/n)");
-        Scanner scan = new Scanner(System.in);
         String answer = scan.nextLine();
         if (answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")) {
             System.out.println("Starting new game");
@@ -89,7 +91,14 @@ public class Game {
             endGame();
         } else {
             System.out.println("Enter y or n");
-            newGameQuestion();
+        }
+    }
+
+    public void quitOption() {
+        System.out.println("Are you sure? (yes or no)");
+        String answer = scan.nextLine();
+        if (answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")) {
+            endGame();
         }
     }
 
@@ -105,7 +114,7 @@ public class Game {
     private void splashScreen() {
         System.out.println();
         System.out.println("Welcome to Metal Quest");
-        try (BufferedReader br = new BufferedReader(new FileReader("images/banner.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("resources/images/banner.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
@@ -117,7 +126,7 @@ public class Game {
 
     private void showCommands(String location) {
         try {
-            Reader reader = Files.newBufferedReader(Paths.get("json/locations.json"));
+            Reader reader = Files.newBufferedReader(Paths.get("resources/json/locations.json"));
             JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
             System.out.println("================================");
             System.out.println("Current Location: " + location);
@@ -142,25 +151,28 @@ public class Game {
         }
     }
 
+
+
     public void execute() {
+        Player player = Player.getPlayer(-20_000, 0.0, 50);
         splashScreen();
         objectiveMsg();
         newGameQuestion();
         while (true) {
-            showCommands("Living Room");
+            showCommands(player.getLocation());
+            System.out.println(player);
             String input = getUserInput();
-            userInputParser(input);
-            break;
+            String[] parsedInput = userInputParser(input);
+            List<String> keywordsAction = keyWordIdentifier(parsedInput);
+            Location.commandsRoute(keywordsAction, player);
         }
-
     }
 
-
-    private void printItems( ) {
+    private void printItems() {
         // print items from json file
         System.out.println("Items in the room: ");
         try {
-            Reader reader = Files.newBufferedReader(Paths.get("json/locations.json"));
+            Reader reader = Files.newBufferedReader(Paths.get("resources/json/locations.json"));
             JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
 
             for (JsonElement obj : parser.get("locations").getAsJsonArray()) {
@@ -174,11 +186,11 @@ public class Game {
             }
         } catch (IOException e) {
             e.printStackTrace();
-    }
-        
-    }
-}
+        }
 
+    }
+
+}
 
 
 //            execute commands

@@ -1,0 +1,111 @@
+{
+  "Promoter": {
+    "name": "Promoter",
+    "scene": {
+      "location": "First Venue",
+      "dialogue": [
+        "Make them love your sound, and you'll be a star!"
+      ]
+    }
+  },
+  "CellPhone": {
+    "name": "CellPhone",
+    "scene": {
+      "location": "First Venue",
+      "dialogue": [
+        "You have a text message from your promoter."
+      ]
+    }
+  },
+  "Drummer": {
+    "name": "Drummer",
+    "scene": {
+      "location": "First Venue",
+      "dialogue": [
+        "Your band is only as good as your drummer - Ben Franklin."
+      ]
+    }
+  },
+  "BassPlayer": {
+    "name": "BassPlayer",
+    "scene": {
+      "location": "First Venue",
+      "dialogue": [
+        "The drummer and I make the groove, that makes you move."
+      ]
+    }
+  },
+  "UltimateFan": {
+    "name": "CrazyFan",
+    "scene": {
+      "location": "First Venue",
+      "dialogue": [
+        "Your Music Changed My Life."
+      ]
+    }
+  },
+
+  "player": {
+    "name": "Player",
+    "scene": {
+      "location": "First Venue",
+      "dialogue": [
+        "I'm gonna be a star!"
+      ]
+    }
+  },
+  "choices": [
+    {
+      "text": "Play a song",
+      "next": "Second Venue"
+    },
+    {
+      "text": "Talk to the promoter",
+      "next": "Promoter"
+    }
+  ],
+  "scenes": [
+    {
+      "name": "First Venue",
+      "location": "First Venue",
+      "dialogue": [
+        "You're playing your first gig!"
+      ],
+      "choices": [
+        {
+          "text": "Play a song",
+          "next": "Second Venue"
+        },
+        {
+          "text": "Talk to the promoter",
+          "next": "Promoter"
+        }
+      ]
+    },
+    {
+      "name": "Second Venue",
+      "location": "Second Venue",
+      "dialogue": [
+        "You're playing your second gig!"
+      ],
+      "choices": [
+        {
+          "text": "Play a song",
+          "next": "Third Venue"
+        },
+        {
+          "text": "Talk to the promoter",
+          "next": "Promoter"
+        }
+      ]
+    },
+    {
+      "name": "Third Venue",
+      "location": "Third Venue",
+      "dialogue": [
+        "You're playing your third gig!"
+      ]
+    }
+  ]
+}
+

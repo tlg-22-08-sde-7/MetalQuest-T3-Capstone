@@ -37,7 +37,7 @@
   ],
   "drink": [
     "booze",
-    "turnup",
+    "turn-up",
     "shot",
     "slug",
     "swig",
@@ -51,7 +51,9 @@
     "show",
     "sing",
     "ballout",
-    "smash"
+    "smash",
+    "amuse",
+    "do"
   ],
   "talk": [
     "lecture",
@@ -70,9 +72,42 @@
     "crumb",
     "dash",
     "dewdrop",
-    ""
-  ]
+    "let-fall",
+    "lay",
+    "leave",
+    "relinquish",
+    "sink"
+  ],
+  "use": [
+    "utilize",
+    "employ",
+    "work",
+    "operate",
+    "apply",
+    "maneuver",
+    "handle",
+    "purpose",
+    "call"
 
+  ],
+  "look": [
+    "glance",
+    "stare",
+    "gaze",
+    "peer",
+    "focus",
+    "peep",
+    "survey",
+    "watch",
+    "examine",
+    "study",
+    "inspect",
+    "scrutinize",
+    "consider",
+    "judge",
+    "see",
+    "view"
+  ]
 
 
 }
