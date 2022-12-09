@@ -50,15 +50,13 @@ public class Game {
     private List<String> keyWordIdentifier(String[] userInputArray) {
         List<String> action = new ArrayList<>();
         Gson gson = new Gson();
-        Map<String, ArrayList> wordsMap = null;
+        HashMap<String, ArrayList<?>> wordsMap = null;
         try {
             BufferedReader br = new BufferedReader(new FileReader("json/verbs.json"));
             wordsMap = new HashMap<>();
-            wordsMap = (Map<String, ArrayList>) gson.fromJson(br, wordsMap.getClass());
+            wordsMap = gson.fromJson(br, wordsMap.getClass());
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
             e.printStackTrace();
         }
         String verb = userInputArray[0];
@@ -66,7 +64,7 @@ public class Game {
         if (wordsMap.containsKey(verb.toLowerCase(Locale.ROOT))) {
             action.add(verb);
         }
-        for (Map.Entry<String, ArrayList> entry : wordsMap.entrySet()) {
+        for (Map.Entry<String, ArrayList<?>> entry : wordsMap.entrySet()) {
             for (Object synonyms : entry.getValue()) {
                 if (synonyms.equals(verb.toLowerCase(Locale.ROOT))) {
                     action.add(entry.getKey());
@@ -75,8 +73,6 @@ public class Game {
         }
 
         action.add(noun);
-
-        //System.out.println(action);
         return action;
     }
 
@@ -159,7 +155,7 @@ public class Game {
 
 
     public void execute() {
-        Player player = new Player();
+        Player player = Player.getPlayer(-20_000, 0.0, 50);
         splashScreen();
         objectiveMsg();
         newGameQuestion();
