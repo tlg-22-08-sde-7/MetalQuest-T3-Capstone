@@ -39,6 +39,24 @@ public class Player {
 
     }
 
+    public String lookItem(String item) {
+        String itemDescription = "";
+        try {
+            Reader reader = Files.newBufferedReader(Paths.get("resources/json/items.json"));
+            JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
+
+            for (JsonElement obj : parser.get("items").getAsJsonArray()) {
+                JsonObject itemName = obj.getAsJsonObject();
+                if (item.equals(itemName.get("name").getAsString())) {
+                    itemDescription = itemName.get("description").getAsString();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return itemDescription;
+    }
+
     public String talkToNPC(String npc) {
         return "Hello" + npc;
     }
