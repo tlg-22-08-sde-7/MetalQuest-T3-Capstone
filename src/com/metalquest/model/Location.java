@@ -41,6 +41,7 @@ public class Location {
             } else {
                 System.out.println("Please select a valid move option.");
                 break;
+                //
             }
         }
     }
