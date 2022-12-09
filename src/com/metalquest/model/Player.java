@@ -13,37 +13,37 @@ import java.util.List;
 
 public class Player {
 
+    private static volatile Player player;
     private double money = -20_000.00;
     private String location = "Living Room";
     private double fame = 0.0;
     private int health = 50;
     private List<String> inventory = new ArrayList<>();
 
-//        private Player() {
-//
-//        }
+    private Player(double money, double fame, int health) {
+        this.money = money;
+        this.fame = fame;
+        this.health = health;
+    }
+
+    public static Player getPlayer(double money, double fame, int health){
+        if(player == null) {
+            synchronized (Player.class) {
+                if (player == null) {
+                    player = new Player(money, fame, health);
+                }
+
+            }
+        }
+        return player;
+
+    }
 
     public String talkToNPC(String npc) {
         return "Hello" + npc;
     }
 
-    public String lookItem(String item) {
-        String itemDescription = "";
-        try {
-            Reader reader = Files.newBufferedReader(Paths.get("json/items.json"));
-            JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
 
-            for (JsonElement obj : parser.get("items").getAsJsonArray()) {
-                JsonObject itemName = obj.getAsJsonObject();
-                if (item.equals(itemName.get("name").getAsString())) {
-                    itemDescription = itemName.get("description").getAsString();
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return itemDescription;
-    }
 
     public double getFame() {
         return fame;
