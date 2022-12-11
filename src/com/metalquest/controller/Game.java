@@ -12,6 +12,8 @@ public class Game {
         splashScreen();
         objectiveMsg();
         newGameQuestion();
+        getUserInput();
+        quitOption();
         System.out.println(player);
 //        while (true) {
 //            showCommands(player.getLocation());
