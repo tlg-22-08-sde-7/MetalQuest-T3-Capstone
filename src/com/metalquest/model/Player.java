@@ -1,13 +1,5 @@
 package com.metalquest.model;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +7,8 @@ public class Player {
 
     private static volatile Player player;
     private double money = -20_000.00;
-    private String location = "Living Room";
+    // private String location = "Living Room";
+    private Location location;
     private double fame = 0.0;
     private int health = 50;
     private List<String> inventory = new ArrayList<>();
@@ -26,41 +19,25 @@ public class Player {
         this.health = health;
     }
 
-    public static Player getPlayer(double money, double fame, int health){
-        if(player == null) {
+    public static Player getPlayer(double money, double fame, int health) {
+        if (player == null) {
             synchronized (Player.class) {
                 if (player == null) {
                     player = new Player(money, fame, health);
                 }
-
             }
         }
         return player;
 
     }
 
-    public String lookItem(String item) {
-        String itemDescription = "";
-        try {
-            Reader reader = Files.newBufferedReader(Paths.get("resources/json/items.json"));
-            JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
-
-            for (JsonElement obj : parser.get("items").getAsJsonArray()) {
-                JsonObject itemName = obj.getAsJsonObject();
-                if (item.equals(itemName.get("name").getAsString())) {
-                    itemDescription = itemName.get("description").getAsString();
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return itemDescription;
+    public String lookItem(Item item) {
+        return item.getDescription();
     }
 
     public String talkToNPC(String npc) {
         return "Hello " + npc;
     }
-
 
 
     public double getFame() {
@@ -87,11 +64,11 @@ public class Player {
         this.money = money;
     }
 
-    public String getLocation() {
+    public Location getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Location location) {
         this.location = location;
     }
 

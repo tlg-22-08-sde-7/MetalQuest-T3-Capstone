@@ -10,5 +10,13 @@
   {
     "name": "leather jacket",
     "description": "Put this on to increase your reputation"
+  },
+  {
+    "name": "guitar pick",
+    "description": "Use this to shred some wicked riffs!"
+  },
+  {
+    "name": "van halen t-shirt",
+    "description": "Jump!!"
   }
 ]

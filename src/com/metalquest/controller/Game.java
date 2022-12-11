@@ -76,53 +76,7 @@ public class Game {
     }
 
 
-    private void endGame() {
-        System.out.println("You have exited Metal Quest. Thanks for playing");
-        System.exit(0);
-    }
 
-    private void newGameQuestion() {
-        System.out.println();
-        System.out.println("Would you like start a new game? (y/n)");
-        String answer = scan.nextLine();
-        if (answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")) {
-            System.out.println("Starting new game");
-        } else if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
-            endGame();
-        } else {
-            System.out.println("Enter y or n");
-        }
-    }
-
-    public void quitOption() {
-        System.out.println("Are you sure? (yes or no)");
-        String answer = scan.nextLine();
-        if (answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")) {
-            endGame();
-        }
-    }
-
-    private void objectiveMsg() {
-        try {
-            String message = Files.readString(Path.of("resources/objective.txt"));
-            System.out.println(message);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void splashScreen() {
-        System.out.println();
-        System.out.println("Welcome to Metal Quest");
-        try (BufferedReader br = new BufferedReader(new FileReader("resources/images/banner.txt"))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                System.out.println(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     private void showCommands(String location) {
         try {

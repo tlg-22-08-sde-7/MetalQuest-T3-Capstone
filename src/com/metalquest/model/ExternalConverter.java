@@ -3,30 +3,46 @@ package com.metalquest.model;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ExternalConverter {
     public static void main(String[] args) {
-        Item item = getItemObject("leather jacket");
+        Item item = getItemObject("guitar pick");
         System.out.println(item.getName());
         System.out.println(item.getDescription());
+
+        System.out.println();
+        Item item1 = getItemObject("van halen t-shirt");
+        System.out.println(item1.getDescription());
     }
 
-    public static NPC getNPCObject() {
+    public static NPC getNPCObject(String characterToCreate) {
+        NPC npcCreated = null;
+
         try {
-            Reader reader = Files.newBufferedReader(Paths.get("json/npc.json"));
-            JsonObject NPCJsonObject = JsonParser.parseReader(reader).getAsJsonObject();
-            String NPCJsonString = NPCJsonObject.getAsString();
-            System.out.println(NPCJsonString);
-        } catch (IOException e) {
+            // Create a reader
+            Reader reader = Files.newBufferedReader(Paths.get("resource/json/nonPlayableCharacter.json"));
+
+            // Convert JSON array to list of npcs
+            List<NPC> npcs = new Gson().fromJson(reader, new TypeToken<List<Item>>() {}.getType());
+
+            // Retrieve the NPC
+            for (NPC npc : npcs) {
+                if (npc.getName().equals(characterToCreate)) {
+                    npcCreated = npc;
+                }
+            }
+        }
+
+        catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return npcCreated;
     }
 
     public static Item getItemObject(String itemToCreate) {
@@ -34,17 +50,13 @@ public class ExternalConverter {
         Item itemCreated = null;
 
         try {
-            // Create a Gson instance
-            Gson gson = new Gson();
-
             // Create a reader
             Reader reader = Files.newBufferedReader(Paths.get("resources/json/items.json"));
 
             // Convert JSON array to list of items
-            List<Item> items = new ArrayList<>();
-            items = new Gson().fromJson(reader, new TypeToken<List<Item>>() {}.getType());
+            List<Item> items = new Gson().fromJson(reader, new TypeToken<List<Item>>() {}.getType());
 
-            // Look for item
+            // Retrieve the item
             for (Item item : items) {
                 if (item.getName().equals(itemToCreate)) {
                     itemCreated = item;

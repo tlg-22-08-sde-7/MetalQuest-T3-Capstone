@@ -58,27 +58,25 @@ public class Location {
                     items.remove(i);
                     System.out.println("Items in room: " + items.toString());
                     System.out.println("Added: " + item + " to your inventory");
-                } else{
+                } else {
                     System.out.println(item + " is already in your inventory");
                     break;
                 }
             }
-            } else if (!items.toString().contains(item)){
+        } else if (!items.toString().contains(item)) {
             System.out.println(item + " is not in this room. Please select a valid item.");
         }
-        if(command.equals("drop") && items.toString().contains(item)){
+        if (command.equals("drop") && items.toString().contains(item)) {
             player.getInventory().remove(item);
             System.out.println("Removed: " + item + " from your inventory");
         } else if (!player.getInventory().contains(item)) {
             System.out.println(item + " is not in this room, Please select a valid item.");
             System.out.println("Items in room: " + items);
         }
-
     }
 
-
-    public static void commandsRoute(List<String> keywords, Player player){
-        switch (keywords.get(0)){
+    public static void commandsRoute(List<String> keywords, Player player) {
+        switch (keywords.get(0)) {
             case "get":
             case "drop":
                 editPlayerInventory(player, keywords, player.getLocation());
@@ -108,8 +106,5 @@ public class Location {
                 System.out.println("error message goes here");
 
         }
-
-
     }
-
 }
