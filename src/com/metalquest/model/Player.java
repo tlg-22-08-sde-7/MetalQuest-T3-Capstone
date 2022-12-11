@@ -6,29 +6,24 @@ import java.util.List;
 public class Player {
 
     private static volatile Player player;
-    private double money = -20_000.00;
-    // private String location = "Living Room";
     private Location location;
+    private double money = -20_000.00;
     private double fame = 0.0;
     private int health = 50;
     private List<String> inventory = new ArrayList<>();
 
-    private Player(double money, double fame, int health) {
-        this.money = money;
-        this.fame = fame;
-        this.health = health;
+    private Player() {
     }
 
-    public static Player getPlayer(double money, double fame, int health) {
+    public static Player getPlayer() {
         if (player == null) {
             synchronized (Player.class) {
                 if (player == null) {
-                    player = new Player(money, fame, health);
+                    player = new Player();
                 }
             }
         }
         return player;
-
     }
 
     public String lookItem(Item item) {
@@ -38,7 +33,6 @@ public class Player {
     public String talkToNPC(String npc) {
         return "Hello " + npc;
     }
-
 
     public double getFame() {
         return fame;
@@ -79,7 +73,6 @@ public class Player {
     public void setInventory(List<String> inventory) {
         this.inventory = inventory;
     }
-
 
     public String toString() {
         return "========================\n" +
