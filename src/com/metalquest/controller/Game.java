@@ -13,6 +13,7 @@ public class Game {
 
     public void execute() {
         System.out.println(player);
+        showCommands(player);
         splashScreen();
         objectiveMsg();
         newGameQuestion();
