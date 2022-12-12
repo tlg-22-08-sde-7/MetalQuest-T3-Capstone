@@ -1,36 +1,59 @@
 package com.metalquest.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class Location {
-    private String locationName;
-    private Map<Direction, String> directions;
-    private String description;
-    private List<String> items;
 
-    public String getLocationName() {
-        return locationName;
+    public List<Room> getRooms() {
+        return rooms;
     }
 
-    public Map<Direction, String> getDirectionStringMap() {
-        return directions;
+    private List<Room>rooms;
+
+    public class Room{
+        private String room;
+        private Map<Direction, String> directions;
+        private String description;
+        private ArrayList items;
+
+        public Room() {
+        }
+
+        public String getRoom() {
+            return room;
+        }
+
+        public Map<Direction, String> getDirections() {
+            return directions;
+        }
+
+
+        public String getDescription() {
+            return description;
+        }
+
+        public ArrayList getItems() {
+            return items;
+        }
+
+
+
+
+        @Override
+        public String toString() {
+            return "Location [ locationName=" + getRoom() +
+                    " directions=" + getDirections() + " description=" + getDescription() +
+                    " items=" + getItems() +" ]";
+        }
     }
 
-    public String getDescription() {
-        return description;
-    }
 
-    public List<String> getItems() {
-        return items;
-    }
 
-    @Override
-    public String toString() {
-        return "Location [ locationName=" + getLocationName() +
-                " directions=" + getDirectionStringMap() + " description=" + getDescription() +
-                " items=" + getItems() +" ]";
-    }
+
+
+
 
     //    protected static JsonObject directions;
 //    protected static JsonArray items;
