@@ -6,7 +6,9 @@ import java.util.List;
 public class Player {
 
     private static volatile Player player;
-    private Location location = ExternalConverter.getLocationObject("Living Room");
+    //private Location location = ExternalConverter.getLocationObject("Living Room");
+    private Location.Rooms room = ExternalConverter.getLocationObject("Living Room");
+    //private String location;
     private double money = -20_000.00;
     private double fame = 0.0;
     private int health = 50;
@@ -58,13 +60,11 @@ public class Player {
         this.money = money;
     }
 
-    public Location getLocation() {
-        return location;
+    public Location.Rooms getLocation() {
+        return room;
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
-    }
+
 
     public List<String> getInventory() {
         return inventory;

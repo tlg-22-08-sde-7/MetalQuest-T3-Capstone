@@ -7,29 +7,28 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class ExternalConverter {
     public static void main(String[] args) {
         Item item = getItemObject("guitar pick");
         System.out.println(item.getName());
         System.out.println(item.getDescription());
-
-        System.out.println();
-        Item item1 = getItemObject("van halen t-shirt");
-        System.out.println(item1.getDescription());
-
-        System.out.println();
-        NPC npc = getNPCObject("Stranger");
-        System.out.println(npc.getName());
-
-        System.out.println();
-        Location location = getLocationObject("Living Room");
-        System.out.println(location.getLocationName());
-        System.out.println(location.getDirectionStringMap());
-        System.out.println(location.getDescription());
-        System.out.println(location.getItems());
+//
+//        System.out.println();
+//        Item item1 = getItemObject("van halen t-shirt");
+//        System.out.println(item1.getDescription());
+//
+//        System.out.println();
+//        NPC npc = getNPCObject("Stranger");
+//        System.out.println(npc.getName());
+//
+//        System.out.println();
+//
+        //System.out.println(location.getLocationName());
+        //System.out.println(location.getDirectionStringMap());
+        //System.out.println(location.getDescription());
+        //System.out.println(location.getItems());
+        System.out.println(getLocationObject("Living Room"));
     }
 
     public static NPC getNPCObject(String characterToCreate) {
@@ -83,25 +82,32 @@ public class ExternalConverter {
         return itemCreated;
     }
 
-    public static Location getLocationObject(String locationToCreate) {
+    public static Location.Rooms getLocationObject(String name) {
         // Create an item to return
 //        Location locationCreated = null;
         Location location = null;
+        Location.Rooms room = null;
 
         try {
             // Create a reader
-            Reader reader = Files.newBufferedReader(Paths.get("resources/json/location.json"));
+            Reader reader = Files.newBufferedReader(Paths.get("/Users/Ebb/Desktop/MetalQuest/resources/json/locations.json"));
 
             // Convert JSON array to list of items
             // List<Location> locations = new Gson().fromJson(reader, new TypeToken<List<Location>>() {}.getType());
             location = new Gson().fromJson(reader, Location.class);
+            room = location.getRooms().get(1);
 
+
+           // System.out.println(location.getRooms().size());
             // Retrieve the item
-//            for (Location location : locations) {
-//                if (location.getLocationName().equals(locationToCreate)) {
-//                    locationCreated = location;
-//                }
-//            }
+         for(int i = 0; i < location.getRooms().size(); i++){
+             if(location.getRooms().get(i).getRoom().contains(name)){
+                 room = location.getRooms().get(i);
+
+             }
+
+         }
+            //System.out.println(location.getRooms().get(0).getRoom());
         }
 
         catch (IOException e) {
@@ -110,7 +116,7 @@ public class ExternalConverter {
 
         // Return the item
 //        return locationCreated;
-        return location;
+        return room;
     }
 
 //    private void showCommands(String location) {
