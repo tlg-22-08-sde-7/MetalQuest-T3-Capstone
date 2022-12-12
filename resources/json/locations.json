@@ -15,7 +15,7 @@
   },
   {
     "room": "Kitchen",
-    "direction": {
+    "directions": {
       "SOUTH": "Living Room",
       "EAST": "Backyard"
     },
@@ -34,7 +34,7 @@
   },
   {
     "room": "Backyard",
-    "direction": {
+    "directions": {
       "WEST": "Kitchen"
     },
     "description": "The backyard has a lone tree, a shed, and a 1950s jalopy.",
@@ -46,7 +46,7 @@
   },
   {
     "room": "Master Bedroom",
-    "direction": {
+    "directions": {
       "WEST": "Bathroom"
     },
     "description": "The backyard has a lone tree, a shed, and a 1950s jalopy.",
@@ -57,7 +57,7 @@
   },
   {
     "room": "Bathroom",
-    "direction": {
+    "directions": {
       "EAST": "Master Bedroom"
     },
     "description": "There is a sink, toilet, and shower. On the sink there is a toothbrush, a hair brush, and a make-up kit.",
@@ -78,7 +78,7 @@
   },
   {
     "room": "Garage",
-    "direction": {
+    "directions": {
       "WEST": "Living Room"
     },
     "description": "Your car sits in the garage.",
