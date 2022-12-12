@@ -19,6 +19,10 @@ public class ExternalConverter {
         System.out.println();
         Item item1 = getItemObject("van halen t-shirt");
         System.out.println(item1.getDescription());
+
+        System.out.println();
+        Location location = getLocationObject("Living Room");
+        System.out.println(location.getLocationName());
     }
 
     public static NPC getNPCObject(String characterToCreate) {
@@ -70,6 +74,33 @@ public class ExternalConverter {
 
         // Return the item
         return itemCreated;
+    }
+
+    public static Location getLocationObject(String locationToCreate) {
+        // Create an item to return
+        Location locationCreated = null;
+
+        try {
+            // Create a reader
+            Reader reader = Files.newBufferedReader(Paths.get("resources/json/locations.json"));
+
+            // Convert JSON array to list of items
+            List<Location> locations = new Gson().fromJson(reader, new TypeToken<List<Location>>() {}.getType());
+
+            // Retrieve the item
+            for (Location location : locations) {
+                if (location.getLocationName().equals(locationToCreate)) {
+                    locationCreated = location;
+                }
+            }
+        }
+
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Return the item
+        return locationCreated;
     }
 
 //    private void showCommands(String location) {
