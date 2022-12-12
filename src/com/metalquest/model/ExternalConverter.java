@@ -28,7 +28,8 @@ public class ExternalConverter {
         //System.out.println(location.getDirectionStringMap());
         //System.out.println(location.getDescription());
         //System.out.println(location.getItems());
-        System.out.println(getLocationObject("Living Room"));
+        Location.Room room = getLocationObject("Living Room");
+
     }
 
     public static NPC getNPCObject(String characterToCreate) {
@@ -90,7 +91,7 @@ public class ExternalConverter {
 
         try {
             // Create a reader
-            Reader reader = Files.newBufferedReader(Paths.get("/Users/Ebb/Desktop/MetalQuest/resources/json/locations.json"));
+            Reader reader = Files.newBufferedReader(Paths.get("resources/json/locations.json"));
 
             // Convert JSON array to list of items
             // List<Location> locations = new Gson().fromJson(reader, new TypeToken<List<Location>>() {}.getType());
@@ -118,33 +119,6 @@ public class ExternalConverter {
 //        return locationCreated;
         return room;
     }
-
-//    private void showCommands(String location) {
-//        try {
-//            Reader reader = Files.newBufferedReader(Paths.get("resources/json/locations.json"));
-//            JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
-//            System.out.println("================================");
-//            System.out.println("Current Location: " + location);
-//            System.out.println("--------------------------------");
-//
-//            for (JsonElement obj : parser.get("locations").getAsJsonArray()) {
-//                JsonObject place = obj.getAsJsonObject();
-//                if (location.equals(place.get("location").getAsString())) {
-//                    JsonObject directions = place.get("direction").getAsJsonObject();
-//                    JsonArray items = place.get("items").getAsJsonArray();
-//                    for (Map.Entry<String, JsonElement> move : directions.entrySet()) {
-//                        System.out.println("> Go " + move.getKey());
-//                    }
-//                    for (JsonElement item : items) {
-//                        System.out.println("> Use " + item);
-//                    }
-//                }
-//            }
-//            System.out.println("================================");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
 //
 //    private void printItems() {
 //        // print items from json file

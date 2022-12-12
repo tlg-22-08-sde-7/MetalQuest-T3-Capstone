@@ -1,10 +1,16 @@
 package com.metalquest.view;
 
+import com.metalquest.model.Direction;
+import com.metalquest.model.Location;
+import com.metalquest.model.Player;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
 public class View {
@@ -63,5 +69,18 @@ public class View {
     private static void endGame() {
         System.out.println("You have exited Metal Quest. Thanks for playing");
         System.exit(0);
+    }
+
+    public static void showCommands(Player player) {
+        System.out.println("=====================");
+        System.out.println("Available Commands");
+        System.out.println("---------------------");
+        for (Map.Entry<Direction, String> location : player.getLocation().getDirections().entrySet()) {
+            System.out.println(">Go " + location.getKey());
+        }
+        for (Object item : player.getLocation().getItems()) {
+            System.out.println(">Use " + item);
+        }
+        System.out.println("=====================");
     }
 }
