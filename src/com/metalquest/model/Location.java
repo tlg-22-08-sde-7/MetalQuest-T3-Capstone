@@ -38,9 +38,6 @@ public class Location {
             return items;
         }
 
-
-
-
         @Override
         public String toString() {
             return "Location [ locationName=" + getRoom() +
