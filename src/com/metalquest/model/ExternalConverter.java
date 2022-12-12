@@ -21,8 +21,15 @@ public class ExternalConverter {
         System.out.println(item1.getDescription());
 
         System.out.println();
+        NPC npc = getNPCObject("Stranger");
+        System.out.println(npc.getName());
+
+        System.out.println();
         Location location = getLocationObject("Living Room");
         System.out.println(location.getLocationName());
+        System.out.println(location.getDirectionStringMap());
+        System.out.println(location.getDescription());
+        System.out.println(location.getItems());
     }
 
     public static NPC getNPCObject(String characterToCreate) {
@@ -30,10 +37,10 @@ public class ExternalConverter {
 
         try {
             // Create a reader
-            Reader reader = Files.newBufferedReader(Paths.get("resource/json/nonPlayableCharacter.json"));
+            Reader reader = Files.newBufferedReader(Paths.get("resources/json/nonPlayableCharacter.json"));
 
             // Convert JSON array to list of npcs
-            List<NPC> npcs = new Gson().fromJson(reader, new TypeToken<List<Item>>() {}.getType());
+            List<NPC> npcs = new Gson().fromJson(reader, new TypeToken<List<NPC>>() {}.getType());
 
             // Retrieve the NPC
             for (NPC npc : npcs) {
@@ -78,21 +85,23 @@ public class ExternalConverter {
 
     public static Location getLocationObject(String locationToCreate) {
         // Create an item to return
-        Location locationCreated = null;
+//        Location locationCreated = null;
+        Location location = null;
 
         try {
             // Create a reader
-            Reader reader = Files.newBufferedReader(Paths.get("resources/json/locations.json"));
+            Reader reader = Files.newBufferedReader(Paths.get("resources/json/location.json"));
 
             // Convert JSON array to list of items
-            List<Location> locations = new Gson().fromJson(reader, new TypeToken<List<Location>>() {}.getType());
+            // List<Location> locations = new Gson().fromJson(reader, new TypeToken<List<Location>>() {}.getType());
+            location = new Gson().fromJson(reader, Location.class);
 
             // Retrieve the item
-            for (Location location : locations) {
-                if (location.getLocationName().equals(locationToCreate)) {
-                    locationCreated = location;
-                }
-            }
+//            for (Location location : locations) {
+//                if (location.getLocationName().equals(locationToCreate)) {
+//                    locationCreated = location;
+//                }
+//            }
         }
 
         catch (IOException e) {
@@ -100,7 +109,8 @@ public class ExternalConverter {
         }
 
         // Return the item
-        return locationCreated;
+//        return locationCreated;
+        return location;
     }
 
 //    private void showCommands(String location) {
@@ -179,28 +189,5 @@ public class ExternalConverter {
 //        return action;
 //    }
 //
-//    private String[] userInputParser(String input) {
-//        if (input.equals("quit") || input.equals("q")) {
-//            quitOption();
-//        }
-//        Pattern wordPattern = Pattern.compile("\\b(I|this|its|and|the|of|a|or|now)\\b\\s?");
-//        Matcher matchPattern = wordPattern.matcher(input);
-//        String inputString = matchPattern.replaceAll(" ").
-//                replaceAll("[\\p{Punct}]", "")
-//                .trim().replaceAll("[ ]+", " ");
 //
-//        String[] inputArray = inputString.split(" ");
-//
-//        if (inputArray.length != 2) {
-//            System.out.println("You entered an invalid option. Please enter two words [VERB], " +
-//                    "[NOUN] that describe what action you want to take.");
-//            String newInput = getUserInput();
-//            userInputParser(newInput);
-//        } else {
-//            String verb = inputArray[0];
-//            String noun = inputArray[1];
-//
-//        }
-//        return inputArray;
-//    }
 }

@@ -9,6 +9,7 @@ import java.util.*;
 public class Game {
     public void execute() {
         Player player = Player.getPlayer();
+        System.out.println(player);
         splashScreen();
         objectiveMsg();
         newGameQuestion();

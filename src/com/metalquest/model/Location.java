@@ -25,6 +25,13 @@ public class Location {
         return items;
     }
 
+    @Override
+    public String toString() {
+        return "Location [ locationName=" + getLocationName() +
+                " directions=" + getDirectionStringMap() + " description=" + getDescription() +
+                " items=" + getItems() +" ]";
+    }
+
     //    protected static JsonObject directions;
 //    protected static JsonArray items;
 //
