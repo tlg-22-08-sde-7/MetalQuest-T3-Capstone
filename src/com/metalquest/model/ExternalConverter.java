@@ -82,11 +82,11 @@ public class ExternalConverter {
         return itemCreated;
     }
 
-    public static Location.Rooms getLocationObject(String name) {
+    public static Location.Room getLocationObject(String name) {
         // Create an item to return
 //        Location locationCreated = null;
         Location location = null;
-        Location.Rooms room = null;
+        Location.Room room = null;
 
         try {
             // Create a reader

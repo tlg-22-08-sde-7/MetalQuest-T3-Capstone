@@ -6,28 +6,28 @@ import java.util.Map;
 
 public class Location {
 
-    public List<Rooms> getRooms() {
+    public List<Room> getRooms() {
         return rooms;
     }
 
-    private List<Rooms>rooms;
+    private List<Room>rooms;
 
-    public class Rooms{
+    public class Room{
         private String room;
-        private Direction directions;
+        private Map<Direction, String> directions;
         private String description;
         private ArrayList items;
 
-        public Rooms() {
+        public Room() {
         }
 
         public String getRoom() {
             return room;
         }
 
-       public Direction getDirection(){
+        public Map<Direction, String> getDirections() {
             return directions;
-       }
+        }
 
 
         public String getDescription() {
@@ -39,17 +39,12 @@ public class Location {
         }
 
 
-        class Direction{
-            String north;
-            String south;
-            String west;
-            String east;
-        }
+
 
         @Override
         public String toString() {
             return "Location [ locationName=" + getRoom() +
-                    " directions=" + directions + " description=" + getDescription() +
+                    " directions=" + getDirections() + " description=" + getDescription() +
                     " items=" + getItems() +" ]";
         }
     }

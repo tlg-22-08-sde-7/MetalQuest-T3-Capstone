@@ -7,7 +7,7 @@ public class Player {
 
     private static volatile Player player;
     //private Location location = ExternalConverter.getLocationObject("Living Room");
-    private Location.Rooms room = ExternalConverter.getLocationObject("Living Room");
+    private Location.Room room = ExternalConverter.getLocationObject("Living Room");
     //private String location;
     private double money = -20_000.00;
     private double fame = 0.0;
@@ -60,7 +60,7 @@ public class Player {
         this.money = money;
     }
 
-    public Location.Rooms getLocation() {
+    public Location.Room getLocation() {
         return room;
     }
 
