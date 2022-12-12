@@ -90,7 +90,7 @@ public class ExternalConverter {
 
         try {
             // Create a reader
-            Reader reader = Files.newBufferedReader(Paths.get("/Users/Ebb/Desktop/MetalQuest/resources/json/locations.json"));
+            Reader reader = Files.newBufferedReader(Paths.get("resources/json/locations.json"));
 
             // Convert JSON array to list of items
             // List<Location> locations = new Gson().fromJson(reader, new TypeToken<List<Location>>() {}.getType());

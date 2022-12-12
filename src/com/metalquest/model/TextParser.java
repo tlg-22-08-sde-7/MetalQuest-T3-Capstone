@@ -11,7 +11,7 @@ import com.metalquest.view.View;
  * This class should handle all things related to parsing user input.
  */
 
-class TextParser {
+public class TextParser {
     private Scanner scanner = new Scanner(System.in);
 
     private String[] userInputParser(String input) {
