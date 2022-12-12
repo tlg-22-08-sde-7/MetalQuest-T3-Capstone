@@ -1,5 +1,4 @@
-{
-  "scenes" : [
+[
     {
       "scene" : 1,
       "location" : "Living Room",
@@ -64,4 +63,3 @@
       ]
     }
   ]
-}
