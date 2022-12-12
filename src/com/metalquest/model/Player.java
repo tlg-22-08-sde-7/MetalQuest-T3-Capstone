@@ -2,6 +2,8 @@ package com.metalquest.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 public class Player {
 
@@ -64,7 +66,9 @@ public class Player {
         return room;
     }
 
-
+    public void setLocation(String room){
+        this.room = ExternalConverter.getLocationObject(room);
+    }
 
     public List<String> getInventory() {
         return inventory;
@@ -73,6 +77,54 @@ public class Player {
     public void setInventory(List<String> inventory) {
         this.inventory = inventory;
     }
+
+    //player can move locations
+    public static void moveLocation(String direction, Player player) {
+        Map<Direction, String> dirs = player.getLocation().getDirections();
+        System.out.println(dirs);
+        for (Map.Entry<Direction, String> dir : dirs.entrySet()){
+            if(dir.getKey().toString().toUpperCase(Locale.ROOT).contains(direction)){
+                player.setLocation(dir.getValue());
+                System.out.println(dir.getValue());
+            }
+        }
+
+    }
+
+//player can add and drop items
+    public static void editPlayerInventory(Player player, List<String> keywords, String currentLocation) {
+        String currentLoc= player.getLocation().getRoom();
+        ArrayList itemsInRoom = player.getLocation().getItems();
+        String command = keywords.get(0);
+        String item = keywords.get(1);
+        List<String> inventory = player.getInventory();
+        player.getInventory().add("cellphone");
+
+        if (command.equals("get")) {
+            for (int i = 0; i < itemsInRoom.size(); i++) {
+                if (itemsInRoom.toString().contains(item) && !inventory.contains(item)) {
+                    player.getInventory().add(item);
+                    itemsInRoom.remove(i);
+                    System.out.println("Items in room: " + itemsInRoom.toString());
+                    System.out.println("Added: " + item + " to your inventory");
+                } else {
+                    System.out.println(item + " is already in your inventory");
+                    break;
+                }
+            }
+        } else if (!itemsInRoom.toString().contains(item)) {
+            System.out.println(item + " is not in this room. Please select a valid item.");
+        }
+        if (command.equals("drop") && inventory.contains(item)) {
+            player.getInventory().remove(item);
+            System.out.println("Removed: " + item + " from your inventory");
+        } else if (!inventory.contains(item)) {
+            System.out.println(item + " is not in your inventory.. select a valid item.");
+            System.out.println("Items in inventory: " + inventory);
+        }
+    }
+
+
 
     public String toString() {
         return "========================\n" +
