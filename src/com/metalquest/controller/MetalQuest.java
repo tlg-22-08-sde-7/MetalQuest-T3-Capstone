@@ -1,4 +1,4 @@
-package com.metalquest.view;
+package com.metalquest.controller;
 
 import com.metalquest.controller.Game;
 
