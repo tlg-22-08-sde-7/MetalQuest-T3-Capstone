@@ -143,14 +143,12 @@ public class ExternalConverter {
 
     public static void getScenes(Integer index) {
         try {
-            Reader reader = Files.newBufferedReader(Paths.get("resources/json/scenes.json"));
-            JsonArray parser = JsonParser.parseReader(reader).getAsJsonArray();
-            JsonElement obj = parser.get(index);
-            System.out.println(obj);
-
-        }
-        catch (IOException e) {
+            reader = new BufferedReader(new FileReader("resources/json/scenes.json"));
+            List<Scene> scenes = new Gson().fromJson(reader, new TypeToken<List<Scene>>() {}.getType());
+            System.out.println(scenes.get(index).getText());
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
     }
 }
