@@ -17,7 +17,7 @@ public class Game {
         splashScreen();
         objectiveMsg();
         newGameQuestion();
-        currentScenes("Living Room", player);
+        currentScenes(player);
 //        getUserInput();
 //        quitOption();
 //        System.out.println(player);

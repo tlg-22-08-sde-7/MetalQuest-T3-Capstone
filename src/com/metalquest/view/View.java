@@ -86,27 +86,25 @@ public class View {
         System.out.println("=====================");
     }
 
-    public static void currentScenes(String location, Player player) {
+    public static void currentScenes(Player player) {
         // alreadyPlayed = true
         // if (alreadyPlayed)
         //  getScenes(0)
         //  alreadyPlayed = false
-        // Player.getLocation (description)
-        // Get user input
-        // getLocation
-        // moveLocation(input)
-        // currentScenes(Player.getLocation)
+
         System.out.println(player.getLocation().getDescription());
         showCommands(player);
         String[] userInputArray = TextParser.userInputParser(getUserInput().toLowerCase());
         List<String> input = TextParser.keyWordIdentifier(userInputArray);
         String move = input.get(1).toUpperCase();
-//        System.out.println(move);
         Map<Direction, String> directions = player.getLocation().getDirections();
+
         for (Map.Entry<Direction, String> direction : directions.entrySet()) {
             if (move.equals(direction.getKey().toString())) {
-                System.out.println(direction.getValue());
+                Player.moveLocation(direction.getKey().toString(), player);
+                currentScenes(player);
             }
         }
+
     }
 }
