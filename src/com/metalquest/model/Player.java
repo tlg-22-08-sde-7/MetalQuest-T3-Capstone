@@ -77,14 +77,14 @@ public static void dropItem(Player player, String item){
 
 //drink
 public static void drink(Player player, String item){
-    if(player.getInventory().contains(item)){
-        if(item.equals("OJ") || item.equals("WATER") || item.equals("SUNNYD")){
+    if(player.getInventory().contains(item.toLowerCase(Locale.ROOT))){
+        if(item.equals("oj") || item.equals("water") || item.equals("sunnyd")){
             System.out.println("You drank " + item);
             System.out.println("Good choice, your health just increased.");
             player.setHealth(player.getHealth() + 15);
             player.getInventory().remove(item);
         }
-        if (item.equals("ADULTBEVERAGE") || item.equals("PURPLESTUFF")){
+        if (item.equals("adultbeverage") || item.equals("purplestuff")){
             System.out.println("You drank " + item);
             System.out.println("You feel worse then before. Your health has decreased");
             player.setHealth(player.getHealth() - 20);

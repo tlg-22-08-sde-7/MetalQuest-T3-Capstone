@@ -21,15 +21,11 @@
     },
     "description": "In the kitchen there is a Fridge",
     "items": [
-      {
-        "Fridge": [
-          "OJ",
-          "Purple Stuff",
-          "Sunny D",
-          "Adult Beverage",
-          "H2O"
-        ]
-      }
+          "oj",
+          "purplestuff",
+          "sunnyd",
+          "adultbeverage",
+          "water"
     ]
   },
   {
@@ -72,7 +68,7 @@
         "description": "Check your messages"
       },
       {
-        "name": "leather jacket",
+        "name": "leatherJacket",
         "description": "Put this on to increase your reputation"
       }
     ]

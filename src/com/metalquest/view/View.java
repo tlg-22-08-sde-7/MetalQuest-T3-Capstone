@@ -84,8 +84,8 @@ public class View {
     }
 
     public static void currentScenes(Player player) {
-        System.out.println(player.getLocation().getDescription());
-        showCommands(player);
+        //System.out.println(player.getLocation().getDescription());
+        //showCommands(player);
 
 
     }
