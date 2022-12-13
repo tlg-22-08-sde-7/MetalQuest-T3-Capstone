@@ -9,6 +9,8 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class ExternalConverter {
+    private static Reader reader;
+
     public static void main(String[] args) {
         Item item = getItemObject("guitar pick");
         System.out.println(item.getName());
@@ -29,6 +31,9 @@ public class ExternalConverter {
         //System.out.println(location.getDescription());
         //System.out.println(location.getItems());
         Location.Room room = getLocationObject("Living Room");
+        System.out.println(room.getRoom());
+
+        System.out.println(getVerbList());
 
     }
 
@@ -37,7 +42,7 @@ public class ExternalConverter {
 
         try {
             // Create a reader
-            Reader reader = Files.newBufferedReader(Paths.get("resources/json/nonPlayableCharacter.json"));
+            reader = Files.newBufferedReader(Paths.get("resources/json/nonPlayableCharacter.json"));
 
             // Convert JSON array to list of npcs
             List<NPC> npcs = new Gson().fromJson(reader, new TypeToken<List<NPC>>() {}.getType());
@@ -62,7 +67,7 @@ public class ExternalConverter {
 
         try {
             // Create a reader
-            Reader reader = Files.newBufferedReader(Paths.get("resources/json/items.json"));
+            reader = Files.newBufferedReader(Paths.get("resources/json/items.json"));
 
             // Convert JSON array to list of items
             List<Item> items = new Gson().fromJson(reader, new TypeToken<List<Item>>() {}.getType());
@@ -91,7 +96,7 @@ public class ExternalConverter {
 
         try {
             // Create a reader
-            Reader reader = Files.newBufferedReader(Paths.get("resources/json/locations.json"));
+            reader = Files.newBufferedReader(Paths.get("resources/json/locations.json"));
 
             // Convert JSON array to list of items
             // List<Location> locations = new Gson().fromJson(reader, new TypeToken<List<Location>>() {}.getType());
@@ -119,55 +124,19 @@ public class ExternalConverter {
 //        return locationCreated;
         return room;
     }
-//
-//    private void printItems() {
-//        // print items from json file
-//        System.out.println("Items in the room: ");
-//        try {
-//            Reader reader = Files.newBufferedReader(Paths.get("resources/json/locations.json"));
-//            JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
-//
-//            for (JsonElement obj : parser.get("locations").getAsJsonArray()) {
-//                JsonObject place = obj.getAsJsonObject();
-//                if ("Living Room".equals(place.get("location").getAsString())) {
-//                    JsonArray items = place.get("items").getAsJsonArray();
-//                    for (JsonElement item : items) {
-//                        System.out.println(item);
-//                    }
-//                }
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    private List<String> keyWordIdentifier(String[] userInputArray) {
-//        List<String> action = new ArrayList<>();
-//        Gson gson = new Gson();
-//        HashMap<String, ArrayList<?>> wordsMap = null;
-//        try {
-//            BufferedReader br = new BufferedReader(new FileReader("resources/json/verbs.json"));
-//            wordsMap = new HashMap<>();
-//            wordsMap = gson.fromJson(br, wordsMap.getClass());
-//
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        String verb = userInputArray[0];
-//        String noun = userInputArray[1];
-//        if (wordsMap.containsKey(verb.toLowerCase(Locale.ROOT))) {
-//            action.add(verb);
-//        }
-//        for (Map.Entry<String, ArrayList<?>> entry : wordsMap.entrySet()) {
-//            for (Object synonyms : entry.getValue()) {
-//                if (synonyms.equals(verb.toLowerCase(Locale.ROOT))) {
-//                    action.add(entry.getKey());
-//                }
-//            }
-//        }
-//        action.add(noun);
-//        return action;
-//    }
-//
-//
+
+    public static Map getVerbList() {
+        Gson gson = new Gson();
+        Map wordsMap = new HashMap<>();
+
+        try {
+            reader = new BufferedReader(new FileReader("resources/json/verbs.json"));
+            wordsMap = gson.fromJson(reader, wordsMap.getClass());
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return wordsMap;
+    }
 }
