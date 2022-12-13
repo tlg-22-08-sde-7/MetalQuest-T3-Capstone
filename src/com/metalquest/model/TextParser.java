@@ -1,8 +1,6 @@
 package com.metalquest.model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,7 +11,6 @@ import static com.metalquest.view.View.*;
  */
 
 public class TextParser {
-    private Scanner scanner = new Scanner(System.in);
 
     private String[] userInputParser(String input) {
         if (input.equals("quit") || input.equals("q")) {
@@ -32,23 +29,26 @@ public class TextParser {
                     "[NOUN] that describe what action you want to take.");
             String newInput = getUserInput();
             userInputParser(newInput);
-        } else {
+        }
+        else {
             String verb = inputArray[0];
             String noun = inputArray[1];
-
         }
+
         return inputArray;
     }
 
     private List<String> keyWordIdentifier(String[] userInputArray) {
         List<String> action = new ArrayList<>();
-//
-//        String verb = userInputArray[0];
-//        String noun = userInputArray[1];
-//        if (wordsMap.containsKey(verb.toLowerCase(Locale.ROOT))) {
-//            action.add(verb);
-//        }
-//        for (Map.Entry<String, ArrayList<?>> entry : wordsMap.entrySet()) {
+        HashMap wordMap = ExternalConverter.getVerbList();
+
+        String verb = userInputArray[0];
+        String noun = userInputArray[1];
+
+        if (wordMap.containsKey(verb.toLowerCase(Locale.ROOT))) {
+            action.add(verb);
+        }
+//        for (Map.Entry<String, ArrayList<?>> entry : wordMap.entrySet()) {
 //            for (Object synonyms : entry.getValue()) {
 //                if (synonyms.equals(verb.toLowerCase(Locale.ROOT))) {
 //                    action.add(entry.getKey());
@@ -56,6 +56,7 @@ public class TextParser {
 //            }
 //        }
 //        action.add(noun);
+
         return action;
     }
 }

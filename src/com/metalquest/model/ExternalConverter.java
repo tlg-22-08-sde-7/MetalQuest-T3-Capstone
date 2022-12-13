@@ -125,16 +125,18 @@ public class ExternalConverter {
         return room;
     }
 
-    public static Map<String, ArrayList<?>> getVerbList() {
+    public static HashMap getVerbList() {
         Gson gson = new Gson();
         HashMap wordsMap = new HashMap<>();
+
         try {
             reader = new BufferedReader(new FileReader("resources/json/verbs.json"));
             wordsMap = gson.fromJson(reader, wordsMap.getClass());
-
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
         return wordsMap;
     }
 }
