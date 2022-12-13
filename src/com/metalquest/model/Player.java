@@ -37,9 +37,6 @@ public class Player {
                 player.setLocation(dir.getValue());
                 System.out.println(dir.getValue());
             }
-//            if (direction.equals(dir.getKey().toString().toUpperCase())) {
-//                player.setLocation(dir.getValue());
-//            }
         }
     }
 
