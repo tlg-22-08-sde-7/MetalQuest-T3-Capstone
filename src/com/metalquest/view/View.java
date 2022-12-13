@@ -82,4 +82,15 @@ public class View {
         }
         System.out.println("=====================");
     }
+
+    public static void currentScenes(String location) {
+        // alreadyPlayed = true
+        // if (alreadyPlayed)
+        //  getScenes(0)
+        //  alreadyPlayed = false
+        // Player.getLocation (description)
+        // Get user input
+        // moveLocation(input)
+        // currentScenes(Player.getLocation)
+    }
 }
