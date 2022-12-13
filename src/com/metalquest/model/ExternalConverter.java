@@ -125,9 +125,9 @@ public class ExternalConverter {
         return room;
     }
 
-    public static HashMap getVerbList() {
+    public static Map getVerbList() {
         Gson gson = new Gson();
-        HashMap wordsMap = new HashMap<>();
+        Map wordsMap = new HashMap<>();
 
         try {
             reader = new BufferedReader(new FileReader("resources/json/verbs.json"));

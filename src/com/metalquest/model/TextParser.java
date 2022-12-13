@@ -11,6 +11,10 @@ import static com.metalquest.view.View.*;
  */
 
 public class TextParser {
+    public static void main(String[] args) {
+        String[] userInputArray = { "get", "money" };
+        System.out.println(TextParser.keyWordIdentifier(userInputArray));
+    }
 
     private String[] userInputParser(String input) {
         if (input.equals("quit") || input.equals("q")) {
@@ -38,9 +42,9 @@ public class TextParser {
         return inputArray;
     }
 
-    private List<String> keyWordIdentifier(String[] userInputArray) {
+    public static List<String> keyWordIdentifier(String[] userInputArray) {
         List<String> action = new ArrayList<>();
-        HashMap wordMap = ExternalConverter.getVerbList();
+        Map<String, List<String>> wordMap = ExternalConverter.getVerbList();
 
         String verb = userInputArray[0];
         String noun = userInputArray[1];
@@ -48,14 +52,14 @@ public class TextParser {
         if (wordMap.containsKey(verb.toLowerCase(Locale.ROOT))) {
             action.add(verb);
         }
-//        for (Map.Entry<String, ArrayList<?>> entry : wordMap.entrySet()) {
-//            for (Object synonyms : entry.getValue()) {
-//                if (synonyms.equals(verb.toLowerCase(Locale.ROOT))) {
-//                    action.add(entry.getKey());
-//                }
-//            }
-//        }
-//        action.add(noun);
+        for (Map.Entry<String, List<String>> entry: wordMap.entrySet()) {
+            for (Object synonyms : entry.getValue()) {
+                if (synonyms.equals(verb.toLowerCase(Locale.ROOT))) {
+                    action.add(entry.getKey());
+                }
+            }
+        }
+        action.add(noun);
 
         return action;
     }
