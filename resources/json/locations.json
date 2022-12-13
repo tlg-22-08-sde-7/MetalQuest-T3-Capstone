@@ -5,7 +5,7 @@
     "directions": {
       "NORTH": "Kitchen",
       "EAST": "Garage",
-      "WEST": "Stairs"
+      "WEST": "Master Bedroom"
     },
     "description": "There is a couch a coffee table and a tv. The tv is on.",
     "items": [
@@ -47,7 +47,8 @@
   {
     "room": "Master Bedroom",
     "directions": {
-      "WEST": "Bathroom"
+      "WEST": "Bathroom",
+      "EAST" : "Living Room"
     },
     "description": "The backyard has a lone tree, a shed, and a 1950s jalopy.",
     "items": [

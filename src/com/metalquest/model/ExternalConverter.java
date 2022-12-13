@@ -15,6 +15,7 @@ public class ExternalConverter {
         Item item = getItemObject("guitar pick");
         System.out.println(item.getName());
         System.out.println(item.getDescription());
+        getScenes(0);
 //
 //        System.out.println();
 //        Item item1 = getItemObject("van halen t-shirt");
@@ -138,5 +139,16 @@ public class ExternalConverter {
         }
 
         return wordsMap;
+    }
+
+    public static void getScenes(Integer index) {
+        try {
+            reader = new BufferedReader(new FileReader("resources/json/scenes.json"));
+            List<Scene> scenes = new Gson().fromJson(reader, new TypeToken<List<Scene>>() {}.getType());
+            System.out.println(scenes.get(index).getText());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 }

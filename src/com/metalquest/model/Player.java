@@ -31,7 +31,7 @@ public class Player {
     // player can move locations
     public static void moveLocation(String direction, Player player) {
         Map<Direction, String> dirs = player.getLocation().getDirections();
-        System.out.println(dirs);
+//        System.out.println(dirs);
         for (Map.Entry<Direction, String> dir : dirs.entrySet()) {
             if (dir.getKey().toString().toUpperCase(Locale.ROOT).contains(direction)) {
                 player.setLocation(dir.getValue());
