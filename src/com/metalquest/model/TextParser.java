@@ -1,10 +1,11 @@
 package com.metalquest.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-//import com.apps.util.*;
 import com.metalquest.view.View;
 
 /*
@@ -16,7 +17,7 @@ public class TextParser {
 
     private String[] userInputParser(String input) {
         if (input.equals("quit") || input.equals("q")) {
-            // quitOption();
+            quitOption();
         }
         Pattern wordPattern = Pattern.compile("\\b(I|this|its|and|the|of|a|or|now)\\b\\s?");
         Matcher matchPattern = wordPattern.matcher(input);
@@ -37,5 +38,24 @@ public class TextParser {
 
         }
         return inputArray;
+    }
+
+    private List<String> keyWordIdentifier(String[] userInputArray) {
+        List<String> action = new ArrayList<>();
+//
+//        String verb = userInputArray[0];
+//        String noun = userInputArray[1];
+//        if (wordsMap.containsKey(verb.toLowerCase(Locale.ROOT))) {
+//            action.add(verb);
+//        }
+//        for (Map.Entry<String, ArrayList<?>> entry : wordsMap.entrySet()) {
+//            for (Object synonyms : entry.getValue()) {
+//                if (synonyms.equals(verb.toLowerCase(Locale.ROOT))) {
+//                    action.add(entry.getKey());
+//                }
+//            }
+//        }
+//        action.add(noun);
+        return action;
     }
 }
