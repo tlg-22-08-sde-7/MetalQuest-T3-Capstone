@@ -33,6 +33,8 @@ public class ExternalConverter {
         Location.Room room = getLocationObject("Living Room");
         System.out.println(room.getRoom());
 
+        System.out.println(getVerbList());
+
     }
 
     public static NPC getNPCObject(String characterToCreate) {
@@ -123,9 +125,9 @@ public class ExternalConverter {
         return room;
     }
 
-    public static List<Verb> getVerbList() {
+    public static Map<String, ArrayList<?>> getVerbList() {
         Gson gson = new Gson();
-        HashMap<String, ArrayList<?>> wordsMap = new HashMap<>();
+        HashMap wordsMap = new HashMap<>();
         try {
             reader = new BufferedReader(new FileReader("resources/json/verbs.json"));
             wordsMap = gson.fromJson(reader, wordsMap.getClass());
@@ -133,6 +135,6 @@ public class ExternalConverter {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        return null;
+        return wordsMap;
     }
 }

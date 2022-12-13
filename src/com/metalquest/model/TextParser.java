@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.metalquest.view.View;
+import static com.metalquest.view.View.*;
 
 /*
  * This class should handle all things related to parsing user input.
@@ -30,7 +30,7 @@ public class TextParser {
         if (inputArray.length != 2) {
             System.out.println("You entered an invalid option. Please enter two words [VERB], " +
                     "[NOUN] that describe what action you want to take.");
-            String newInput = View.getUserInput();
+            String newInput = getUserInput();
             userInputParser(newInput);
         } else {
             String verb = inputArray[0];
