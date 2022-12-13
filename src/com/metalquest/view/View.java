@@ -3,12 +3,15 @@ package com.metalquest.view;
 import com.metalquest.model.Direction;
 import com.metalquest.model.Location;
 import com.metalquest.model.Player;
+import com.metalquest.model.TextParser;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -83,14 +86,27 @@ public class View {
         System.out.println("=====================");
     }
 
-    public static void currentScenes(String location) {
+    public static void currentScenes(String location, Player player) {
         // alreadyPlayed = true
         // if (alreadyPlayed)
         //  getScenes(0)
         //  alreadyPlayed = false
         // Player.getLocation (description)
         // Get user input
+        // getLocation
         // moveLocation(input)
         // currentScenes(Player.getLocation)
+        System.out.println(player.getLocation().getDescription());
+        showCommands(player);
+        String[] userInputArray = TextParser.userInputParser(getUserInput().toLowerCase());
+        List<String> input = TextParser.keyWordIdentifier(userInputArray);
+        String move = input.get(1).toUpperCase();
+//        System.out.println(move);
+        Map<Direction, String> directions = player.getLocation().getDirections();
+        for (Map.Entry<Direction, String> direction : directions.entrySet()) {
+            if (move.equals(direction.getKey().toString())) {
+                System.out.println(direction.getValue());
+            }
+        }
     }
 }

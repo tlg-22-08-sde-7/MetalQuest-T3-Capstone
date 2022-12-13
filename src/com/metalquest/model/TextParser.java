@@ -16,7 +16,7 @@ public class TextParser {
         System.out.println(TextParser.keyWordIdentifier(userInputArray));
     }
 
-    private String[] userInputParser(String input) {
+    public static String[] userInputParser(String input) {
         if (input.equals("quit") || input.equals("q")) {
             quitOption();
         }
