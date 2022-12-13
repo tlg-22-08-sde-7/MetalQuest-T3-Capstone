@@ -88,12 +88,13 @@ public class Location {
                 Player.dropItem(player, keywords.get(1));
                 break;
             case "go":
-                player.moveLocation(keywords.get(1), player);
+                Player.moveLocation(keywords.get(1), player);
                 break;
             case "play":
                 //play function
                 break;
             case "drink":
+                Player.drink(player, keywords.get(1));
                 //drink fnc
                 break;
             case "dig":
