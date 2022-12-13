@@ -78,37 +78,39 @@ public class Location {
 
 
 
-//
-//    public static void commandsRoute(List<String> keywords, Player player) {
-//        switch (keywords.get(0)) {
-//            case "get":
-//            case "drop":
-//                editPlayerInventory(player, keywords, player.getLocation());
-//                break;
-//            case "go":
-//                moveLocation(keywords.get(1), player);
-//                break;
-//            case "play":
-//                //play function
-//                break;
-//            case "drink":
-//                //drink fnc
-//                break;
-//            case "dig":
-//                // dig func
-//                break;
-//            case "talk":
-//                System.out.println(player.talkToNPC(keywords.get(1)));
-//                break;
-//            case "use":
-//                //use func
-//                break;
-//            case "look":
-//                System.out.println(player.lookItem(keywords.get(1)));
-//                break;
-//            default:
-//                System.out.println("error message goes here");
-//
-//        }
-//    }
+
+    public static void commandsRoute(List<String> keywords, Player player) {
+        switch (keywords.get(0)) {
+            case "get":
+                Player.getItem(player, keywords.get(1));
+                break;
+            case "drop":
+                Player.dropItem(player, keywords.get(1));
+                break;
+            case "go":
+                player.moveLocation(keywords.get(1), player);
+                break;
+            case "play":
+                //play function
+                break;
+            case "drink":
+                //drink fnc
+                break;
+            case "dig":
+                // dig func
+                break;
+            case "talk":
+               // System.out.println(player.talkToNPC(keywords.get(1)));
+                break;
+            case "use":
+                //use func
+                break;
+            case "look":
+                //System.out.println(player.lookItem(keywords.get(1)));
+                break;
+            default:
+                System.out.println("error message goes here");
+
+        }
+    }
 }

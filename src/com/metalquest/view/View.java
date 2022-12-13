@@ -87,17 +87,6 @@ public class View {
         System.out.println(player.getLocation().getDescription());
         showCommands(player);
 
-        String[] userInputArray = TextParser.userInputParser(getUserInput().toLowerCase());
-        List<String> input = TextParser.keyWordIdentifier(userInputArray);
-        String move = input.get(1).toUpperCase();
-        Map<Direction, String> directions = player.getLocation().getDirections();
-
-        for (Map.Entry<Direction, String> direction : directions.entrySet()) {
-            if (move.equals(direction.getKey().toString())) {
-                Player.moveLocation(direction.getKey().toString(), player);
-                currentScenes(player);
-            }
-        }
 
     }
 }
