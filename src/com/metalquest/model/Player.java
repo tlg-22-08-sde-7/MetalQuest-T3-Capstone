@@ -29,49 +29,77 @@ public class Player {
     }
 
     // player can move locations
-    public static void moveLocation(String direction, Player player) {
-        Map<Direction, String> dirs = player.getLocation().getDirections();
-//        System.out.println(dirs);
-        for (Map.Entry<Direction, String> dir : dirs.entrySet()) {
-            if (dir.getKey().toString().toUpperCase(Locale.ROOT).contains(direction)) {
-                player.setLocation(dir.getValue());
-                System.out.println(dir.getValue());
+    public static void moveLocation(String move, Player player) {
+        Map<Direction, String> directions = player.getLocation().getDirections();
+        for (Map.Entry<Direction, String> direction : directions.entrySet()) {
+            if (move.toUpperCase(Locale.ROOT).equals(direction.getKey().toString().toUpperCase(Locale.ROOT))) {
+                player.setLocation(direction.getValue());
+                System.out.println(direction.getValue());
             }
         }
     }
 
-    // player can add and drop items
-    public static void editPlayerInventory(Player player, List<String> keywords, String currentLocation) {
-        String currentLoc = player.getLocation().getRoom();
+    // player can add items
+    //player can add and drop items
+    public static void getItem(Player player, String item) {
         ArrayList itemsInRoom = player.getLocation().getItems();
-        String command = keywords.get(0);
-        String item = keywords.get(1);
         List<String> inventory = player.getInventory();
-        player.getInventory().add("cellphone");
-
-        if (command.equals("get")) {
-            for (int i = 0; i < itemsInRoom.size(); i++) {
-                if (itemsInRoom.toString().contains(item) && !inventory.contains(item)) {
-                    player.getInventory().add(item);
-                    itemsInRoom.remove(i);
-                    System.out.println("Items in room: " + itemsInRoom.toString());
-                    System.out.println("Added: " + item + " to your inventory");
-                } else {
-                    System.out.println(item + " is already in your inventory");
-                    break;
-                }
+            if (itemsInRoom.toString().contains(item) && !inventory.contains(item)) {
+                inventory.add(item);
+                itemsInRoom.remove(item);
+                System.out.println("Items in room: " + itemsInRoom);
+                System.out.println("Added: " + item + " to your inventory");
+                System.out.println("Your inventory: " + inventory);
             }
-        } else if (!itemsInRoom.toString().contains(item)) {
-            System.out.println(item + " is not in this room. Please select a valid item.");
-        }
-        if (command.equals("drop") && inventory.contains(item)) {
-            player.getInventory().remove(item);
-            System.out.println("Removed: " + item + " from your inventory");
-        } else if (!inventory.contains(item)) {
-            System.out.println(item + " is not in your inventory.. select a valid item.");
-            System.out.println("Items in inventory: " + inventory);
-        }
+            else if (inventory.contains(item)) {
+                System.out.println(item + " is already in your inventory");
+                System.out.println(inventory);
+            } else {
+                System.out.println(item + " is not in this room.");
+            }
     }
+
+//drop items
+public static void dropItem(Player player, String item){
+    ArrayList itemsInRoom = player.getLocation().getItems();
+    List<String> inventory = player.getInventory();
+    if (inventory.contains(item)) {
+        player.getInventory().remove(item);
+        itemsInRoom.add(item);
+        System.out.println("Removed: " + item + " from your inventory");
+        System.out.println(player.getInventory());
+    }
+    else if (!inventory.contains(item)) {
+        System.out.println(item + " is not in your inventory.. select a valid item.");
+        System.out.println("Items in inventory: " + inventory);
+    }
+}
+
+//drink
+public static void drink(Player player, String item){
+    if(player.getInventory().contains(item)){
+        if(item.equals("OJ") || item.equals("WATER") || item.equals("SUNNYD")){
+            System.out.println("You drank " + item);
+            System.out.println("Good choice, your health just increased.");
+            player.setHealth(player.getHealth() + 15);
+            player.getInventory().remove(item);
+        }
+        if (item.equals("ADULTBEVERAGE") || item.equals("PURPLESTUFF")){
+            System.out.println("You drank " + item);
+            System.out.println("You feel worse then before. Your health has decreased");
+            player.setHealth(player.getHealth() - 20);
+            player.getInventory().remove(item);
+        }
+
+    } else if (player.getLocation().getItems().contains(item)){
+        System.out.println("You must first add beverage to you inventory");
+    } else {
+        System.out.println("That is not valid. Try again");
+    }
+}
+
+
+
 
     public String lookItem(Item item) {
         return item.getDescription();

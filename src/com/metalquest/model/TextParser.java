@@ -31,8 +31,6 @@ public class TextParser {
         if (inputArray.length != 2) {
             System.out.println("You entered an invalid option. Please enter two words [VERB], " +
                     "[NOUN] that describe what action you want to take.");
-            String newInput = getUserInput();
-            userInputParser(newInput);
         }
         else {
             String verb = inputArray[0];
@@ -45,10 +43,8 @@ public class TextParser {
     public static List<String> keyWordIdentifier(String[] userInputArray) {
         List<String> action = new ArrayList<>();
         Map<String, List<String>> wordMap = ExternalConverter.getVerbList();
-
         String verb = userInputArray[0];
         String noun = userInputArray[1];
-
         if (wordMap.containsKey(verb.toLowerCase(Locale.ROOT))) {
             action.add(verb);
         }

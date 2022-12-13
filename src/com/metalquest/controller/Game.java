@@ -17,7 +17,14 @@ public class Game {
         splashScreen();
         objectiveMsg();
         newGameQuestion();
-        currentScenes(player);
+        //currentScenes(playe);
+        int i = 0;
+        while (i < 10){  ///just a temp dummy loop for testing
+            play(player);
+            currentScenes(player);
+            i++;
+        }
+
 //        getUserInput();
 //        quitOption();
 //        System.out.println(player);
@@ -29,6 +36,16 @@ public class Game {
 //            List<String> keywordsAction = keyWordIdentifier(parsedInput);
 //            Location.commandsRoute(keywordsAction, player);
 //        }
+    }
+
+    public static void play(Player player) {
+        showCommands(player);
+        String input = getUserInput();
+        String[] arr = TextParser.userInputParser(input);
+        if (arr.length == 2) {
+            List<String> keys = TextParser.keyWordIdentifier(arr);
+            Location.commandsRoute(keys, player);
+        }
     }
 }
 
