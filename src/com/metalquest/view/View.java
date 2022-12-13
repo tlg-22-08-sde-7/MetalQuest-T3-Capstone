@@ -1,9 +1,6 @@
 package com.metalquest.view;
 
-import com.metalquest.model.Direction;
-import com.metalquest.model.Location;
-import com.metalquest.model.Player;
-import com.metalquest.model.TextParser;
+import com.metalquest.model.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -56,7 +53,7 @@ public class View {
     }
 
     public static String getUserInput() {
-        System.out.println("Enter a command or \"quit\" to quit game: ");
+        System.out.println("Enter a command exactly how it's shown or \"quit\" to quit game: ");
         return scan.nextLine();
     }
 
@@ -87,13 +84,9 @@ public class View {
     }
 
     public static void currentScenes(Player player) {
-        // alreadyPlayed = true
-        // if (alreadyPlayed)
-        //  getScenes(0)
-        //  alreadyPlayed = false
-
         System.out.println(player.getLocation().getDescription());
         showCommands(player);
+
         String[] userInputArray = TextParser.userInputParser(getUserInput().toLowerCase());
         List<String> input = TextParser.keyWordIdentifier(userInputArray);
         String move = input.get(1).toUpperCase();
