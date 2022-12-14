@@ -46,7 +46,7 @@
       "WEST": "Bathroom",
       "EAST" : "Living Room"
     },
-    "description": "The backyard has a lone tree, a shed, and a 1950s jalopy.",
+    "description": "You see your freshly made bed and closet.",
     "items": [
       "closet",
       "bed"
