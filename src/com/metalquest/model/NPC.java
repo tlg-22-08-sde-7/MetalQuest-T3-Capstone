@@ -1,8 +1,5 @@
 package com.metalquest.model;
 
-import java.util.HashMap;
-import java.util.Map;
-
 class NPC {
     private String name;
     private String location;
