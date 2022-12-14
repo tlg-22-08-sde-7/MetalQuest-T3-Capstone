@@ -104,7 +104,8 @@ public void drink(Player player, String item){
 
         if (player.getInventory().contains(item)){
             System.out.println("you have used the " + item);
-            player.setFame(getFame() + 8);
+            player.setFame(getFame() + 9);
+            player.getInventory().remove(item);
         } else {
             System.out.println(item + " is not in your inventory");
         }
@@ -176,8 +177,9 @@ public void drink(Player player, String item){
                 "Player Status \n" +
                 "-----------------------\n" +
                 "Money: " + getMoney() + "\n" +
-                "Location: " + getLocation() + "\n" +
-                "Fame: " + getFame() + "\n" +
+                "Location: " + getLocation().getRoom() + "\n " + getLocation().getDescription() + " \n" +
+               "Directions: " + getLocation().getDirections() + " \n" + "Items in room: " + getLocation().getItems() +
+                "\n" + "Fame: " + getFame() + "\n" +
                 "Health: " + getHealth() + "\n" +
                 "Inventory: " + getInventory() + "\n" +
                 "========================";

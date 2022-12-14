@@ -1,5 +1,7 @@
 package com.metalquest.model;
 
+import com.metalquest.view.View;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -41,9 +43,9 @@ public class Location {
 
         @Override
         public String toString() {
-            return "Location [ locationName=" + getRoom() +
-                    " directions=" + getDirections() + " description=" + getDescription() +
-                    " items=" + getItems() +" ]";
+            return " location name= " + getRoom() + "\n" +  "description= " + getDescription() +
+                    "\n" +  " directions= " + getDirections() +
+                    " items= " + getItems() +" ";
         }
     }
 
@@ -57,6 +59,7 @@ public class Location {
                 player.dropItem(player, keywords.get(1));
                 break;
             case "go":
+               // View.currentScenes(player, keywords.get(1));
                 Player.moveLocation(keywords.get(1), player);
                 break;
             case "play":
