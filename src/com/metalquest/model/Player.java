@@ -1,7 +1,5 @@
 package com.metalquest.model;
 
-import com.google.gson.internal.bind.util.ISO8601Utils;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -46,63 +44,61 @@ public class Player {
     public static void getItem(Player player, String item) {
         ArrayList itemsInRoom = player.getLocation().getItems();
         List<String> inventory = player.getInventory();
-            if (itemsInRoom.toString().contains(item) && !inventory.contains(item)) {
-                inventory.add(item);
-                itemsInRoom.remove(item);
-                System.out.println("Items in room: " + itemsInRoom);
-                System.out.println("Added: " + item + " to your inventory");
-                System.out.println("Your inventory: " + inventory);
-            }
-            else if (inventory.contains(item)) {
-                System.out.println(item + " is already in your inventory");
-                System.out.println(inventory);
-            } else {
-                System.out.println(item + " is not in this room.");
-            }
-    }
-
-//drop items
-public void dropItem(Player player, String item){
-    ArrayList itemsInRoom = player.getLocation().getItems();
-    List<String> inventory = player.getInventory();
-    if (inventory.contains(item)) {
-        player.getInventory().remove(item);
-        itemsInRoom.add(item);
-        System.out.println("Removed: " + item + " from your inventory");
-        System.out.println(player.getInventory());
-    }
-    else if (!inventory.contains(item)) {
-        System.out.println(item + " is not in your inventory.. select a valid item.");
-        System.out.println("Items in inventory: " + inventory);
-    }
-}
-
-//drink
-public void drink(Player player, String item){
-    if(player.getInventory().contains(item.toLowerCase(Locale.ROOT))){
-        if(item.equals("oj") || item.equals("water") || item.equals("sunnyd")){
-            System.out.println("You drank " + item);
-            System.out.println("Good choice, your health just increased.");
-            player.setHealth(player.getHealth() + 15);
-            player.getInventory().remove(item);
+        if (itemsInRoom.toString().contains(item) && !inventory.contains(item)) {
+            inventory.add(item);
+            itemsInRoom.remove(item);
+            System.out.println("Items in room: " + itemsInRoom);
+            System.out.println("Added: " + item + " to your inventory");
+            System.out.println("Your inventory: " + inventory);
+        } else if (inventory.contains(item)) {
+            System.out.println(item + " is already in your inventory");
+            System.out.println(inventory);
+        } else {
+            System.out.println(item + " is not in this room.");
         }
-        if (item.equals("adultbeverage") || item.equals("purplestuff")){
-            System.out.println("You drank " + item);
-            System.out.println("You feel worse then before. Your health has decreased");
-            player.setHealth(player.getHealth() - 20);
-            player.getInventory().remove(item);
-        }
-
-    } else if (player.getLocation().getItems().contains(item)){
-        System.out.println("You must first add beverage to you inventory");
-    } else {
-        System.out.println("That is not valid. Try again");
     }
-}
 
-    public void useItem(String item){
+    //drop items
+    public void dropItem(Player player, String item) {
+        ArrayList itemsInRoom = player.getLocation().getItems();
+        List<String> inventory = player.getInventory();
+        if (inventory.contains(item)) {
+            player.getInventory().remove(item);
+            itemsInRoom.add(item);
+            System.out.println("Removed: " + item + " from your inventory");
+            System.out.println(player.getInventory());
+        } else if (!inventory.contains(item)) {
+            System.out.println(item + " is not in your inventory.. select a valid item.");
+            System.out.println("Items in inventory: " + inventory);
+        }
+    }
 
-        if (player.getInventory().contains(item)){
+    //drink
+    public void drink(Player player, String item) {
+        if (player.getInventory().contains(item.toLowerCase(Locale.ROOT))) {
+            if (item.equals("oj") || item.equals("water") || item.equals("sunnyd")) {
+                System.out.println("You drank " + item);
+                System.out.println("Good choice, your health just increased.");
+                player.setHealth(player.getHealth() + 15);
+                player.getInventory().remove(item);
+            }
+            if (item.equals("adultbeverage") || item.equals("purplestuff")) {
+                System.out.println("You drank " + item);
+                System.out.println("You feel worse then before. Your health has decreased");
+                player.setHealth(player.getHealth() - 20);
+                player.getInventory().remove(item);
+            }
+
+        } else if (player.getLocation().getItems().contains(item)) {
+            System.out.println("You must first add beverage to you inventory");
+        } else {
+            System.out.println("That is not valid. Try again");
+        }
+    }
+
+    public void useItem(String item) {
+
+        if (player.getInventory().contains(item)) {
             System.out.println("you have used the " + item);
             player.setFame(getFame() + 9);
             player.getInventory().remove(item);
@@ -111,9 +107,9 @@ public void drink(Player player, String item){
         }
     }
 
-    public void playItem(String item){
-        if(player.getInventory().contains(item)){
-            if (item.toLowerCase(Locale.ROOT).equals("guitar")){
+    public void playItem(String item) {
+        if (player.getInventory().contains(item)) {
+            if (item.toLowerCase(Locale.ROOT).equals("guitar")) {
                 System.out.println("you are playing the guitar");
             } else {
                 System.out.println("This is not a musical item");
@@ -121,12 +117,9 @@ public void drink(Player player, String item){
         }
     }
 
-
     public void lookItem(Item item) {
         System.out.println(item.getDescription());
-        //return item.getDescription().toString();
     }
-
 
     public String talkToNPC(String npc) {
         return "Hello " + npc;
@@ -178,7 +171,7 @@ public void drink(Player player, String item){
                 "-----------------------\n" +
                 "Money: " + getMoney() + "\n" +
                 "Location: " + getLocation().getRoom() + "\n " + getLocation().getDescription() + " \n" +
-               "Directions: " + getLocation().getDirections() + " \n" + "Items in room: " + getLocation().getItems() +
+                "Directions: " + getLocation().getDirections() + " \n" + "Items in room: " + getLocation().getItems() +
                 "\n" + "Fame: " + getFame() + "\n" +
                 "Health: " + getHealth() + "\n" +
                 "Inventory: " + getInventory() + "\n" +

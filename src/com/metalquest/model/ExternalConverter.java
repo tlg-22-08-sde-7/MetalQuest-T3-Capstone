@@ -11,33 +11,6 @@ import java.util.*;
 public class ExternalConverter {
     private static Reader reader;
 
-    public static void main(String[] args) {
-        Item item = getItemObject("guitar pick");
-        System.out.println(item.getName());
-        System.out.println(item.getDescription());
-        getScenes(0);
-//
-//        System.out.println();
-//        Item item1 = getItemObject("van halen t-shirt");
-//        System.out.println(item1.getDescription());
-//
-//        System.out.println();
-//        NPC npc = getNPCObject("Stranger");
-//        System.out.println(npc.getName());
-//
-//        System.out.println();
-//
-        //System.out.println(location.getLocationName());
-        //System.out.println(location.getDirectionStringMap());
-        //System.out.println(location.getDescription());
-        //System.out.println(location.getItems());
-        Location.Room room = getLocationObject("Living Room");
-        System.out.println(room.getRoom());
-
-        System.out.println(getVerbList());
-
-    }
-
     public static NPC getNPCObject(String characterToCreate) {
         NPC npcCreated = null;
 
@@ -46,7 +19,8 @@ public class ExternalConverter {
             reader = Files.newBufferedReader(Paths.get("resources/json/nonPlayableCharacter.json"));
 
             // Convert JSON array to list of npcs
-            List<NPC> npcs = new Gson().fromJson(reader, new TypeToken<List<NPC>>() {}.getType());
+            List<NPC> npcs = new Gson().fromJson(reader, new TypeToken<List<NPC>>() {
+            }.getType());
 
             // Retrieve the NPC
             for (NPC npc : npcs) {
@@ -54,9 +28,7 @@ public class ExternalConverter {
                     npcCreated = npc;
                 }
             }
-        }
-
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return npcCreated;
@@ -71,7 +43,8 @@ public class ExternalConverter {
             reader = Files.newBufferedReader(Paths.get("resources/json/items.json"));
 
             // Convert JSON array to list of items
-            List<Item> items = new Gson().fromJson(reader, new TypeToken<List<Item>>() {}.getType());
+            List<Item> items = new Gson().fromJson(reader, new TypeToken<List<Item>>() {
+            }.getType());
 
             // Retrieve the item
             for (Item item : items) {
@@ -79,9 +52,7 @@ public class ExternalConverter {
                     itemCreated = item;
                 }
             }
-        }
-
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -91,7 +62,6 @@ public class ExternalConverter {
 
     public static Location.Room getLocationObject(String name) {
         // Create an item to return
-//        Location locationCreated = null;
         Location location = null;
         Location.Room room = null;
 
@@ -99,30 +69,22 @@ public class ExternalConverter {
             // Create a reader
             reader = Files.newBufferedReader(Paths.get("resources/json/locations.json"));
 
-            // Convert JSON array to list of items
-            // List<Location> locations = new Gson().fromJson(reader, new TypeToken<List<Location>>() {}.getType());
             location = new Gson().fromJson(reader, Location.class);
             room = location.getRooms().get(1);
 
-
-           // System.out.println(location.getRooms().size());
             // Retrieve the item
-         for(int i = 0; i < location.getRooms().size(); i++){
-             if(location.getRooms().get(i).getRoom().contains(name)){
-                 room = location.getRooms().get(i);
+            for (int i = 0; i < location.getRooms().size(); i++) {
+                if (location.getRooms().get(i).getRoom().contains(name)) {
+                    room = location.getRooms().get(i);
 
-             }
+                }
 
-         }
-            //System.out.println(location.getRooms().get(0).getRoom());
-        }
-
-        catch (IOException e) {
+            }
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
         // Return the item
-//        return locationCreated;
         return room;
     }
 
@@ -133,18 +95,17 @@ public class ExternalConverter {
         try {
             reader = new BufferedReader(new FileReader("resources/json/verbs.json"));
             wordsMap = gson.fromJson(reader, wordsMap.getClass());
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
         return wordsMap;
     }
 
     public static void getScenes(Integer index) {
         try {
             reader = new BufferedReader(new FileReader("resources/json/scenes.json"));
-            List<Scene> scenes = new Gson().fromJson(reader, new TypeToken<List<Scene>>() {}.getType());
+            List<Scene> scenes = new Gson().fromJson(reader, new TypeToken<List<Scene>>() {
+            }.getType());
             System.out.println(scenes.get(index).getText());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
