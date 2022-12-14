@@ -1,10 +1,7 @@
 package com.metalquest.model;
 
-import com.metalquest.view.View;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 public class Location {
@@ -13,9 +10,9 @@ public class Location {
         return rooms;
     }
 
-    private List<Room>rooms;
+    private List<Room> rooms;
 
-    public class Room{
+    public class Room {
         private String room;
         private Map<Direction, String> directions;
         private String description;
@@ -43,12 +40,11 @@ public class Location {
 
         @Override
         public String toString() {
-            return " location name= " + getRoom() + "\n" +  "description= " + getDescription() +
-                    "\n" +  " directions= " + getDirections() +
-                    " items= " + getItems() +" ";
+            return " location name= " + getRoom() + "\n" + "description= " + getDescription() +
+                    "\n" + " directions= " + getDirections() +
+                    " items= " + getItems() + " ";
         }
     }
-
 
     public static void commandsRoute(List<String> keywords, Player player) {
         switch (keywords.get(0)) {
@@ -59,7 +55,6 @@ public class Location {
                 player.dropItem(player, keywords.get(1));
                 break;
             case "go":
-               // View.currentScenes(player, keywords.get(1));
                 Player.moveLocation(keywords.get(1), player);
                 break;
             case "play":
@@ -72,13 +67,13 @@ public class Location {
                 // dig func
                 break;
             case "talk":
-               player.talkToNPC(keywords.get(1));
+                player.talkToNPC(keywords.get(1));
                 break;
             case "use":
                 player.useItem(keywords.get(1));
                 break;
             case "look":
-               // System.out.println(player.lookItem(keywords.get(1)));
+                // System.out.println(player.lookItem(keywords.get(1)));
                 break;
             default:
                 System.out.println("error message goes here");
