@@ -48,66 +48,34 @@ public class Location {
     }
 
 
-
-
-
-
-
-    //    protected static JsonObject directions;
-//    protected static JsonArray items;
-//
-//    public static void getJsonLocationData(String currentLocation) {
-//        try {
-//            Reader reader = Files.newBufferedReader(Paths.get("resources/json/locations.json"));
-//            JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
-//            for (JsonElement obj : parser.get("locations").getAsJsonArray()) {
-//                JsonObject place = obj.getAsJsonObject();
-//                if (currentLocation.equals(place.get("location").getAsString())) {
-//                    directions = place.get("direction").getAsJsonObject();
-//                    items = place.get("items").getAsJsonArray();
-//                }
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-
-//
-
-
-
-
-
     public static void commandsRoute(List<String> keywords, Player player) {
         switch (keywords.get(0)) {
             case "get":
                 Player.getItem(player, keywords.get(1));
                 break;
             case "drop":
-                Player.dropItem(player, keywords.get(1));
+                player.dropItem(player, keywords.get(1));
                 break;
             case "go":
                 Player.moveLocation(keywords.get(1), player);
                 break;
             case "play":
-                //play function
+                player.playItem(keywords.get(1));
                 break;
             case "drink":
-                Player.drink(player, keywords.get(1));
-                //drink fnc
+                player.drink(player, keywords.get(1));
                 break;
             case "dig":
                 // dig func
                 break;
             case "talk":
-               // System.out.println(player.talkToNPC(keywords.get(1)));
+               player.talkToNPC(keywords.get(1));
                 break;
             case "use":
-                //use func
+                player.useItem(keywords.get(1));
                 break;
             case "look":
-                //System.out.println(player.lookItem(keywords.get(1)));
+               // System.out.println(player.lookItem(keywords.get(1)));
                 break;
             default:
                 System.out.println("error message goes here");

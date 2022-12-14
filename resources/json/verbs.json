@@ -87,7 +87,10 @@
     "maneuver",
     "handle",
     "purpose",
-    "call"
+    "call",
+    "dress",
+    "wear",
+    "put-on"
 
   ],
   "look": [
