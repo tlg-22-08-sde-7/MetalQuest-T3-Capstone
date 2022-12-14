@@ -53,7 +53,7 @@ public class View {
 
 
     public static String getUserInput() {
-        System.out.println("Enter a command exactly how it's shown or \"quit\" to quit game: ");
+        System.out.println("Enter a command to take action, or type \"help\" to show command  \"quit\" to quit game: ");
         return scan.nextLine();
     }
 
@@ -65,12 +65,13 @@ public class View {
         }
     }
 
+
     private static void endGame() {
         System.out.println("You have exited Metal Quest. Thanks for playing");
         System.exit(0);
     }
 
-    public static void showCommands(Player player) {
+    public static void getHelp(Player player) {
         System.out.println("=====================");
         System.out.println("Available Commands");
         System.out.println("---------------------");
@@ -103,19 +104,19 @@ public class View {
         }
     }
 
-    public static void currentScenes(Player player) {
+    public static void currentScenes(Player player, String move) {
         System.out.println(player.getLocation().getDescription());
-        showCommands(player);
+        //showCommands(player);
 
-        String[] userInputArray = TextParser.userInputParser(getUserInput().toLowerCase());
-        List<String> input = TextParser.keyWordIdentifier(userInputArray);
-        String move = input.get(1).toUpperCase();
+//        String[] userInputArray = TextParser.userInputParser(getUserInput().toLowerCase());
+//        List<String> input = TextParser.keyWordIdentifier(userInputArray);
+//        String move = input.get(1).toUpperCase();
         Map<Direction, String> directions = player.getLocation().getDirections();
-
         for (Map.Entry<Direction, String> direction : directions.entrySet()) {
             if (move.equals(direction.getKey().toString())) {
-                Player.moveLocation(direction.getKey().toString(), player);
-                currentScenes(player);
+                //Player.moveLocation(direction.getKey().toString(), player);
+                currentScenes(player, move);
+
             }
         }
     }

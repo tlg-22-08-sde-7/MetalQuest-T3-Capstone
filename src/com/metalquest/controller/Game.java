@@ -12,8 +12,8 @@ public class Game {
     private TextParser textParser = new TextParser();
 
     public void execute() {
-        System.out.println(player);
-        showCommands(player);
+        //System.out.println(player);
+        //showCommands(player);
         splashScreen();
         objectiveMsg();
         boolean answer = newGameQuestion();
@@ -22,7 +22,6 @@ public class Game {
         while (answer){  ///just a temp dummy loop for testing
             play(player);
             //currentScenes(player);
-
         }
 
 //        getUserInput();
@@ -39,7 +38,8 @@ public class Game {
     }
 
     public void play(Player player) {
-        showCommands(player);
+        //showCommands(player);
+        System.out.println(player);
         String input = getUserInput();
         String[] arr = TextParser.userInputParser(input);
         if (arr.length == 2) {

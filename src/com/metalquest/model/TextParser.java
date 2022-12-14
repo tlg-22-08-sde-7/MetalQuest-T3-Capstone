@@ -1,5 +1,8 @@
 package com.metalquest.model;
 
+import com.metalquest.view.View;
+
+import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,8 +20,14 @@ public class TextParser {
     }
 
     public static String[] userInputParser(String input) {
+
         if (input.equals("quit") || input.equals("q")) {
             quitOption();
+        }
+        if (input.equals("help") || input.equals("h")){
+            View.getHelp(Player.getPlayer());
+            input = getUserInput();
+            userInputParser(input);
         }
         Pattern wordPattern = Pattern.compile("\\b(I|this|its|and|the|of|a|or|now)\\b\\s?");
         Matcher matchPattern = wordPattern.matcher(input);
