@@ -7,7 +7,7 @@ Current Location: Living Room
 --------------------------------
 > Go East
 > Go West
-> Pick up item
+> GET item
 ================================
 
 Your road to stardom begins today! Good luck.

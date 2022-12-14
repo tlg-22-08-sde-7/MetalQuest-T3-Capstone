@@ -1,5 +1,7 @@
 package com.metalquest.model;
 
+import com.google.gson.internal.bind.util.ISO8601Utils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -60,7 +62,7 @@ public class Player {
     }
 
 //drop items
-public static void dropItem(Player player, String item){
+public void dropItem(Player player, String item){
     ArrayList itemsInRoom = player.getLocation().getItems();
     List<String> inventory = player.getInventory();
     if (inventory.contains(item)) {
@@ -76,7 +78,7 @@ public static void dropItem(Player player, String item){
 }
 
 //drink
-public static void drink(Player player, String item){
+public void drink(Player player, String item){
     if(player.getInventory().contains(item.toLowerCase(Locale.ROOT))){
         if(item.equals("oj") || item.equals("water") || item.equals("sunnyd")){
             System.out.println("You drank " + item);
@@ -98,12 +100,32 @@ public static void drink(Player player, String item){
     }
 }
 
+    public void useItem(String item){
 
-
-
-    public String lookItem(Item item) {
-        return item.getDescription();
+        if (player.getInventory().contains(item)){
+            System.out.println("you have used the " + item);
+            player.setFame(getFame() + 8);
+        } else {
+            System.out.println(item + " is not in your inventory");
+        }
     }
+
+    public void playItem(String item){
+        if(player.getInventory().contains(item)){
+            if (item.toLowerCase(Locale.ROOT).equals("guitar")){
+                System.out.println("you are playing the guitar");
+            } else {
+                System.out.println("This is not a musical item");
+            }
+        }
+    }
+
+
+    public void lookItem(Item item) {
+        System.out.println(item.getDescription());
+        //return item.getDescription().toString();
+    }
+
 
     public String talkToNPC(String npc) {
         return "Hello " + npc;

@@ -7,10 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class View {
     public static Scanner scan = new Scanner(System.in);
@@ -39,18 +36,21 @@ public class View {
         }
     }
 
-    public static void newGameQuestion() {
+    public static boolean newGameQuestion() {
         System.out.println();
         System.out.println("Would you like start a new game? (y/n)");
         String answer = scan.nextLine();
         if (answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")) {
             System.out.println("Starting new game");
+            return true;
         } else if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
             endGame();
         } else {
             System.out.println("Enter y or n");
         }
+        return false;
     }
+
 
     public static String getUserInput() {
         System.out.println("Enter a command exactly how it's shown or \"quit\" to quit game: ");
@@ -78,9 +78,29 @@ public class View {
             System.out.println(">Go " + location.getKey());
         }
         for (Object item : player.getLocation().getItems()) {
-            System.out.println(">Use " + item);
+            System.out.println(">Get " + item);
         }
+        moreCommands(player);
+
         System.out.println("=====================");
+    }
+
+    public static void moreCommands(Player player){
+        ArrayList<String > drinks = new ArrayList<>(
+                Arrays.asList("oj", "water", "adultbeverage", "sunnyd", "purplestuff"));
+
+      if (player.getInventory().size() >= 1) {
+          for (int i = 0; i < drinks.size() - 1; i++) {
+              if (player.getInventory().contains(drinks.get(i))) {
+                  System.out.println(">Drink " + drinks.get(i));
+              }
+          }
+      }
+        for (Object item : player.getInventory()) {
+            if (!drinks.contains(item)){
+                System.out.println(">Use " + item);
+            }
+        }
     }
 
     public static void currentScenes(Player player) {

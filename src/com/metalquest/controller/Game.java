@@ -13,16 +13,16 @@ public class Game {
 
     public void execute() {
         System.out.println(player);
-        //showCommands(player);
+        showCommands(player);
         splashScreen();
         objectiveMsg();
-        newGameQuestion();
-        //currentScenes(playe);
-        int i = 0;
-        while (i < 10){  ///just a temp dummy loop for testing
+        boolean answer = newGameQuestion();
+        //currentScenes(player);
+
+        while (answer){  ///just a temp dummy loop for testing
             play(player);
-            currentScenes(player);
-            i++;
+            //currentScenes(player);
+
         }
 
 //        getUserInput();
@@ -38,7 +38,7 @@ public class Game {
 //        }
     }
 
-    public static void play(Player player) {
+    public void play(Player player) {
         showCommands(player);
         String input = getUserInput();
         String[] arr = TextParser.userInputParser(input);
