@@ -1,6 +1,4 @@
-package com.metalquest.view;
-
-import com.metalquest.controller.Game;
+package com.metalquest.controller;
 
 public class MetalQuest {
     public static void main(String[] args) {

@@ -1,9 +1,25 @@
 package com.metalquest.model;
 
-import java.util.HashMap;
-import java.util.Map;
-
 class NPC {
     private String name;
-    private Map<String, String> scene = new HashMap<>();
+    private String location;
+    private String dialogue;
+
+    public NPC(String name, String location, String dialogue) {
+        this.name = name;
+        this.location = location;
+        this.dialogue = dialogue;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public String getDialogue() {
+        return dialogue;
+    }
 }

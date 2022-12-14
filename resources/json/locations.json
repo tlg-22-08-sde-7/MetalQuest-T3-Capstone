@@ -1,92 +1,87 @@
-{
-  "locations": [
-    {
-      "location": "Living Room",
-      "direction": {
-        "north": "Kitchen",
-        "east": "Garage",
-        "west": "Stairs"
-      },
-      "description": "There is a couch a coffee table and a tv. The tv is on.",
-      "items": [
-        "cellphone", "rolex"
-      ]
+{ "rooms":
+[
+  {
+    "room": "Living Room",
+    "directions": {
+      "NORTH": "Kitchen",
+      "EAST": "Garage",
+      "WEST": "Master Bedroom"
     },
-    {
-      "location": "Kitchen",
-      "direction": {
-        "south": "Living Room",
-        "east": "Backyard"
-      },
-      "description": "In the kitchen there is a Fridge",
-      "items": [
-        {
-          "Fridge": [
-            "OJ",
-            "Purple Stuff",
-            "Sunny D",
-            "Adult Beverage",
-            "H2O"
-          ]
-        }
-      ]
+    "description": "There is a couch a coffee table and a tv. The tv is on.",
+    "items": [
+      "cellphone",
+      "rolex"
+    ]
+  },
+  {
+    "room": "Kitchen",
+    "directions": {
+      "SOUTH": "Living Room",
+      "EAST": "Backyard"
     },
-    {
-      "location": "Backyard",
-      "direction": {
-        "west": "Kitchen"
-      },
-      "description": "The backyard has a lone tree, a shed, and a 1950s jalopy.",
-      "items": [
-        "tree",
-        "shed",
-        "jalopy"
-      ]
+    "description": "In the kitchen there is a Fridge",
+    "items": [
+          "oj",
+          "purplestuff",
+          "sunnyd",
+          "adultbeverage",
+          "water"
+    ]
+  },
+  {
+    "room": "Backyard",
+    "directions": {
+      "WEST": "Kitchen"
     },
-    {
-      "location": "Master Bedroom",
-      "direction": {
-        "west": "Bathroom"
-      },
-      "description": "The backyard has a lone tree, a shed, and a 1950s jalopy.",
-      "items": [
-        "closet",
-        "bed"
-      ]
+    "description": "The backyard has a lone tree, a shed, and a 1950s jalopy.",
+    "items": [
+      "tree",
+      "shed",
+      "jalopy"
+    ]
+  },
+  {
+    "room": "Master Bedroom",
+    "directions": {
+      "WEST": "Bathroom",
+      "EAST" : "Living Room"
     },
-    {
-      "location": "Bathroom",
-      "direction": {
-        "east": "Master Bedroom"
-      },
-      "description": "There is a sink, toilet, and shower. On the sink there is a toothbrush, a hair brush, and a make-up kit.",
-      "items": [
-        {
-          "name": "guitar",
-          "description": "guitar"
-
-        },
-        {
-          "name": "cellphone",
-          "description": "Check your messages"
-
-        },
-        {
-          "name": "leather jacket",
-          "description": "Put this on to increase your reputation"
-
-        }
-      ]
+    "description": "You see your freshly made bed and closet.",
+    "items": [
+      "closet",
+      "bed"
+    ]
+  },
+  {
+    "room": "Bathroom",
+    "directions": {
+      "EAST": "Master Bedroom"
     },
-    {
-      "location": "Garage",
-      "direction": {
-        "west": "Living Room"
+    "description": "There is a sink, toilet, and shower. On the sink there is a toothbrush, a hair brush, and a make-up kit.",
+    "items": [
+      {
+        "name": "guitar",
+        "description": "guitar"
       },
-      "description": "Your car sits in the garage.",
-      "items": [
-        "car"
-      ]
-    }
-  ]
+      {
+        "name": "cellphone",
+        "description": "Check your messages"
+      },
+      {
+        "name": "leatherJacket",
+        "description": "Put this on to increase your reputation"
+      }
+    ]
+  },
+  {
+    "room": "Garage",
+    "directions": {
+      "WEST": "Living Room"
+    },
+    "description": "Your car sits in the garage.",
+    "items": [
+      "car"
+    ]
+  }
+]
 }

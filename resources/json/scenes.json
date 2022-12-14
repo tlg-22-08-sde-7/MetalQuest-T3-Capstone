@@ -1,33 +1,36 @@
-{
-  "scenes" : [
+[
     {
       "scene" : 1,
       "location" : "Living Room",
       "text" : "You wake up in a pool of vomit with a pounding headache and a pain in your abdomen from sleeping on a conch shell all night. Your cellphone is ringing.",
       "requirements" : [
         "cellphone"
-      ]
+      ],
+      "played" : true
     },
     {
       "scene" : 2,
       "location" : "Kitchen",
       "text" : "You hobble to the kitchen and make a beeline to the fridge. Fortunately, you bought groceries yesterday and managed to stock up on a selection of beverages. Time to start getting your life together and hydrate.",
       "requirements" : [
-      ]
+      ],
+      "played" : true
     },
     {
       "scene": 3,
       "location": "Master Bedroom",
       "text": "You enter your bedroom and almost scream in surprise at seeing a stranger snoring soundly in your bed. You wonder how they ended up here yet feel slightly annoyed that they took over your comfy Tempur-Pedic mattress instead of the couch. Rather than wake them up, you decide to maneuver around the room quietly.",
       "requirements": [
-      ]
+      ],
+      "played" : true
     },
     {
       "scene": 4,
       "location": "Bathroom",
       "text": "Looking at the mirror, you grimace at how much of a mess you look. Not only that, but you become aware of the unpleasant odor emanating from yourself after taking a whiff of air. Did you even shower the whole week? Disgusting. Go take a shower and make yourself look presentable.",
       "requirements": [
-      ]
+      ],
+      "played" : true
     },
     {
       "scene": 5,
@@ -35,7 +38,8 @@
       "text": "You go back to your room and see that the stranger is still passed out on your bed. If it weren't for the sounds of their snore, you would have thought they were dead. Time to dress up. Make sure to pick the appropriate outfit for the gig. You'll also need to find your guitar.",
       "requirements": [
 
-      ]
+      ],
+      "played" : true
     },
     {
       "scene": 7,
@@ -44,7 +48,8 @@
       "requirements": [
         "guitar",
         "leather jacket"
-      ]
+      ],
+      "played" : true
     },
     {
       "scene": 8,
@@ -53,7 +58,8 @@
       "requirements": [
         "guitar",
         "leather jacket"
-      ]
+      ],
+      "played" : true
     },
     {
       "scene": 9,
@@ -61,7 +67,7 @@
       "text": "Your magnificent carriage awaits. With your car keys finally in hand, you unlock the trunk and place your guitar. Putting the key in the ignition, she roars to life and you're able to exit the garage. \n Congrats on making it through this level! Now go be the rockstar you were meant to be.",
       "requirements": [
         "car keys"
-      ]
+      ],
+      "played" : true
     }
   ]
-}
