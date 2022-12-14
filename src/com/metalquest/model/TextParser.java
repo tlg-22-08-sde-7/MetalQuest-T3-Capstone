@@ -2,7 +2,6 @@ package com.metalquest.model;
 
 import com.metalquest.view.View;
 
-import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -14,10 +13,6 @@ import static com.metalquest.view.View.*;
  */
 
 public class TextParser {
-    public static void main(String[] args) {
-        String[] userInputArray = { "get", "money" };
-        System.out.println(TextParser.keyWordIdentifier(userInputArray));
-    }
 
     public static String[] userInputParser(String input) {
 
