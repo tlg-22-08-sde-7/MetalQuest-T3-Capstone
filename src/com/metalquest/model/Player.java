@@ -29,7 +29,7 @@ public class Player {
     }
 
     // player can move locations
-    public static void moveLocation(String move, Player player) {
+    public void moveLocation(String move, Player player) {
         Map<Direction, String> directions = player.getLocation().getDirections();
         for (Map.Entry<Direction, String> direction : directions.entrySet()) {
             if (move.toUpperCase(Locale.ROOT).equals(direction.getKey().toString().toUpperCase(Locale.ROOT))) {
@@ -41,7 +41,7 @@ public class Player {
 
     // player can add items
     //player can add and drop items
-    public static void getItem(Player player, String item) {
+    public void getItem(Player player, String item) {
         ArrayList itemsInRoom = player.getLocation().getItems();
         List<String> inventory = player.getInventory();
         if (itemsInRoom.toString().contains(item) && !inventory.contains(item)) {
