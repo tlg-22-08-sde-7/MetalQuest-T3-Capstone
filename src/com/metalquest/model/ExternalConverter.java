@@ -88,9 +88,9 @@ public class ExternalConverter {
         return room;
     }
 
-    public static Map getVerbList() {
+    public static Map<String, List<String>> getVerbList() {
         Gson gson = new Gson();
-        Map wordsMap = new HashMap<>();
+        Map<String, List<String>> wordsMap = new HashMap<>();
 
         try {
             reader = new BufferedReader(new FileReader("resources/json/verbs.json"));

@@ -29,7 +29,6 @@ public class Location {
             return directions;
         }
 
-
         public String getDescription() {
             return description;
         }

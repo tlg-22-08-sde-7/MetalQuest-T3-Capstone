@@ -8,7 +8,7 @@ import static com.metalquest.view.View.*;
 import java.util.*;
 
 public class Game {
-    private Player player = Player.getPlayer();
+    private final Player player = Player.getPlayer();
 
     public void execute() {
         splashScreen();

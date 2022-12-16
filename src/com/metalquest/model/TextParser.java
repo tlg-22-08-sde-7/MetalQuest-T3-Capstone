@@ -37,6 +37,7 @@ public class TextParser {
                     "[NOUN] that describe what action you want to take.");
         }
         else {
+            //TODO: Find out the intention of verb and noun
             String verb = inputArray[0];
             String noun = inputArray[1];
         }
