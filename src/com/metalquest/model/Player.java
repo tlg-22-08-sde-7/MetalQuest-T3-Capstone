@@ -44,7 +44,7 @@ public class Player {
     public void getItem(Player player, String item) {
         ArrayList itemsInRoom = player.getLocation().getItems();
         List<String> inventory = player.getInventory();
-        if (itemsInRoom.toString().contains(item) && !inventory.contains(item)) {
+        if (itemsInRoom.contains(item) && !inventory.contains(item)) {
             inventory.add(item);
             itemsInRoom.remove(item);
             System.out.println("Items in room: " + itemsInRoom);
