@@ -22,5 +22,6 @@
     </orderEntry>
     <orderEntry type="library" exported="" name="gson-2.10" level="project" />
     <orderEntry type="library" exported="" name="app-utils-1.1" level="project" />
+    <orderEntry type="library" name="google.code.gson" level="project" />
   </component>
 </module>

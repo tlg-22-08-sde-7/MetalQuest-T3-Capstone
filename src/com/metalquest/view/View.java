@@ -36,30 +36,33 @@ public class View {
         }
     }
 
-    public static boolean newGameQuestion() {
+    public static String newGameQuestion() {
         System.out.println();
-        System.out.println("Would you like start a new game? (y/n)");
-        String answer = scan.nextLine();
-        if (answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")) {
-            System.out.println("Starting new game");
-            return true;
-        } else if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
+        //System.out.println("Would you like start a new game? (y/n)");
+        String answer = getUserInput("Would you like start a new game? (y/n)");
+
+        if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
             endGame();
-            return false;
-        } else {
-            System.out.println("Enter y or n");
-            return newGameQuestion();
+        } else if (answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")){
+            System.out.println("Starting a new game");
+        }else {
+            while (!answer.equalsIgnoreCase("y") || !answer.equalsIgnoreCase("n")) {
+                answer = getUserInput("Enter y or n");
+                if (answer.equals("y")){
+                    return answer;
+                }
+            }
         }
+        return answer;
     }
 
-    public static String getUserInput() {
-        System.out.println("Enter a command to take action, or type \"help\" to show command  \"quit\" to quit game: ");
-        return scan.nextLine();
+    public static String getUserInput(String str) {
+        System.out.println(str);
+        return scan.next();
     }
 
     public static void quitOption() {
-        System.out.println("Are you sure? (yes or no)");
-        String answer = scan.nextLine();
+        String answer = getUserInput("Are you sure? (yes or no)");
         if (answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")) {
             endGame();
         }

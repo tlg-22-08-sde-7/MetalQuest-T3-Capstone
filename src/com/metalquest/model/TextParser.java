@@ -21,7 +21,7 @@ public class TextParser {
         }
         if (input.equals("help") || input.equals("h")){
             View.getHelp(Player.getPlayer());
-            input = getUserInput();
+            input = getUserInput("");
             userInputParser(input);
         }
         Pattern wordPattern = Pattern.compile("\\b(I|this|its|and|the|of|a|or|now)\\b\\s?");
