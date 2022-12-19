@@ -1,5 +1,6 @@
 package com.metalquest.model;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +30,6 @@ public class Location {
             return directions;
         }
 
-
         public String getDescription() {
             return description;
         }
@@ -49,13 +49,13 @@ public class Location {
     public static void commandsRoute(List<String> keywords, Player player) {
         switch (keywords.get(0)) {
             case "get":
-                Player.getItem(player, keywords.get(1));
+                player.getItem(player, keywords.get(1));
                 break;
             case "drop":
                 player.dropItem(player, keywords.get(1));
                 break;
             case "go":
-                Player.moveLocation(keywords.get(1), player);
+                player.moveLocation(keywords.get(1), player);
                 break;
             case "play":
                 player.playItem(keywords.get(1));
@@ -76,8 +76,8 @@ public class Location {
                 // System.out.println(player.lookItem(keywords.get(1)));
                 break;
             default:
-                System.out.println("error message goes here");
-
+                System.out.println("Location.commandsRoute could not find a matching keyword" +
+                        " for your entry of: " + keywords.get(0));
         }
     }
 }

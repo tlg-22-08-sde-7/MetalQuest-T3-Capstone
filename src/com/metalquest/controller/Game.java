@@ -8,21 +8,21 @@ import static com.metalquest.view.View.*;
 import java.util.*;
 
 public class Game {
-    private Player player = Player.getPlayer();
+    private final Player player = Player.getPlayer();
 
     public void execute() {
         splashScreen();
         objectiveMsg();
-        boolean answer = newGameQuestion();
+        String answer = newGameQuestion();
 
-        while (answer){
+        while (answer.equals("y")||answer.equals("yes")){
             play(player);
         }
     }
 
     public void play(Player player) {
         System.out.println(player);
-        String input = getUserInput();
+        String input = getUserInput("Enter a command to take action, or type \"help\" to show command  \"quit\" to quit game: ");
         String[] arr = TextParser.userInputParser(input);
         if (arr.length == 2) {
             List<String> keys = TextParser.keyWordIdentifier(arr);

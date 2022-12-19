@@ -21,7 +21,7 @@ public class TextParser {
         }
         if (input.equals("help") || input.equals("h")){
             View.getHelp(Player.getPlayer());
-            input = getUserInput();
+            input = getUserInput("");
             userInputParser(input);
         }
         Pattern wordPattern = Pattern.compile("\\b(I|this|its|and|the|of|a|or|now)\\b\\s?");
@@ -37,6 +37,7 @@ public class TextParser {
                     "[NOUN] that describe what action you want to take.");
         }
         else {
+            //TODO: Find out the intention of verb and noun
             String verb = inputArray[0];
             String noun = inputArray[1];
         }

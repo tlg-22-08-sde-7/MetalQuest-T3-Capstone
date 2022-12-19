@@ -15,7 +15,7 @@ public class View {
     public static void splashScreen() {
         System.out.println();
         System.out.println("Welcome to Metal Quest");
-        try (BufferedReader br = new BufferedReader(new FileReader("resources/images/banner.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("C:\\StudentWork\\MetalQuest\\MetalQuest-T3-Capstone\\resources\\images\\banner.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
@@ -28,7 +28,7 @@ public class View {
 
     public static void objectiveMsg() {
         try {
-            String message = Files.readString(Path.of("resources/objective.txt"));
+            String message = Files.readString(Path.of("C:\\StudentWork\\MetalQuest\\MetalQuest-T3-Capstone\\resources\\objective.txt"));
             System.out.println(message);
         }
         catch (IOException e) {
@@ -36,30 +36,33 @@ public class View {
         }
     }
 
-    public static boolean newGameQuestion() {
+    public static String newGameQuestion() {
         System.out.println();
-        System.out.println("Would you like start a new game? (y/n)");
-        String answer = scan.nextLine();
-        if (answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")) {
-            System.out.println("Starting new game");
-            return true;
-        } else if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
+        //System.out.println("Would you like start a new game? (y/n)");
+        String answer = getUserInput("Would you like start a new game? (y/n)");
+
+        if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
             endGame();
-        } else {
-            System.out.println("Enter y or n");
+        } else if (answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")){
+            System.out.println("Starting a new game");
+        }else {
+            while (!answer.equalsIgnoreCase("y") || !answer.equalsIgnoreCase("n")) {
+                answer = getUserInput("Enter y or n");
+                if (answer.equals("y")){
+                    return answer;
+                }
+            }
         }
-        return false;
+        return answer;
     }
 
-
-    public static String getUserInput() {
-        System.out.println("Enter a command to take action, or type \"help\" to show command  \"quit\" to quit game: ");
-        return scan.nextLine();
+    public static String getUserInput(String str) {
+        System.out.println(str);
+        return scan.next();
     }
 
     public static void quitOption() {
-        System.out.println("Are you sure? (yes or no)");
-        String answer = scan.nextLine();
+        String answer = getUserInput("Are you sure? (yes or no)");
         if (answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")) {
             endGame();
         }

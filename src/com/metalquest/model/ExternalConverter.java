@@ -67,7 +67,7 @@ public class ExternalConverter {
 
         try {
             // Create a reader
-            reader = Files.newBufferedReader(Paths.get("resources/json/locations.json"));
+            reader = Files.newBufferedReader(Paths.get("C:\\StudentWork\\MetalQuest\\MetalQuest-T3-Capstone\\resources\\json\\locations.json"));
 
             location = new Gson().fromJson(reader, Location.class);
             room = location.getRooms().get(1);
@@ -88,12 +88,12 @@ public class ExternalConverter {
         return room;
     }
 
-    public static Map getVerbList() {
+    public static Map<String, List<String>> getVerbList() {
         Gson gson = new Gson();
-        Map wordsMap = new HashMap<>();
+        Map<String, List<String>> wordsMap = new HashMap<>();
 
         try {
-            reader = new BufferedReader(new FileReader("resources/json/verbs.json"));
+            reader = new BufferedReader(new FileReader("C:\\StudentWork\\MetalQuest\\MetalQuest-T3-Capstone\\resources\\json\\verbs.json"));
             wordsMap = gson.fromJson(reader, wordsMap.getClass());
         } catch (FileNotFoundException e) {
             e.printStackTrace();

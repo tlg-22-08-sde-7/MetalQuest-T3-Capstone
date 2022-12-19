@@ -17,6 +17,9 @@
 # - build output
 /out/
 
+# - iml
+*.iml
+project.iml
 
 ### Eclipse ###
 
