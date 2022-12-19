@@ -45,12 +45,12 @@ public class View {
             return true;
         } else if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
             endGame();
+            return false;
         } else {
             System.out.println("Enter y or n");
+            return newGameQuestion();
         }
-        return false;
     }
-
 
     public static String getUserInput() {
         System.out.println("Enter a command to take action, or type \"help\" to show command  \"quit\" to quit game: ");

@@ -30,12 +30,18 @@ public class Player {
 
     // player can move locations
     public void moveLocation(String move, Player player) {
+        boolean locationFound = false;
+
         Map<Direction, String> directions = player.getLocation().getDirections();
         for (Map.Entry<Direction, String> direction : directions.entrySet()) {
             if (move.toUpperCase(Locale.ROOT).equals(direction.getKey().toString().toUpperCase(Locale.ROOT))) {
                 player.setLocation(direction.getValue());
                 System.out.println(direction.getValue());
+                locationFound = true;
             }
+        }
+        if (!locationFound) {
+            System.out.println(move + " is an invalid direction. Please try again.");
         }
     }
 
