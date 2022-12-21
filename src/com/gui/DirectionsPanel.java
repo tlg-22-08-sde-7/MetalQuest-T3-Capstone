@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
-public class MasterPanel extends JPanel {
+public class DirectionsPanel extends JPanel {
 
     private final Border border = BorderFactory.createLineBorder(Color.red, 3);
     private int frameWidth;
@@ -13,7 +13,7 @@ public class MasterPanel extends JPanel {
     private int xValue;
     private int yValue;
 
-    public MasterPanel(String title, int x, int y, int width, int height) {
+    public DirectionsPanel(String title, int x, int y, int width, int height) {
         // Set properties
         setFrameHeight(height);
         setFrameWidth(width);
@@ -27,23 +27,21 @@ public class MasterPanel extends JPanel {
 
     private void init() {
         this.setBounds(getxValue(), getyValue(), getFrameWidth(), getFrameHeight());
-        this.setBackground(Color.BLACK);
+        this.setBackground(Color.ORANGE);
         this.setLayout(null);
         this.setBorder(border);
     }
 
-
-    // Getters and Setters
     public int getFrameWidth() {
         return frameWidth;
     }
 
-    public int getFrameHeight() {
-        return frameHeight;
-    }
-
     public void setFrameWidth(int frameWidth) {
         this.frameWidth = frameWidth;
+    }
+
+    public int getFrameHeight() {
+        return frameHeight;
     }
 
     public void setFrameHeight(int frameHeight) {
