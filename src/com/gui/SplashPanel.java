@@ -4,16 +4,19 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
-public class MasterPanel extends JPanel {
+public class SplashPanel extends JPanel {
 
+    private final JLabel label = new JLabel();
     private final Border border = BorderFactory.createLineBorder(Color.red, 3);
+    private final ImageIcon logo = new ImageIcon("C:\\StudentWork\\MetalQuest\\MetalQuest-T3-Capstone\\resources\\images\\rockstar.png");
     private int frameWidth;
     private int frameHeight;
     private String gameTitle;
     private int xValue;
     private int yValue;
 
-    public MasterPanel(String title, int x, int y, int width, int height) {
+
+    public SplashPanel(String title, int x, int y, int width, int height) {
         // Set properties
         setFrameHeight(height);
         setFrameWidth(width);
@@ -23,6 +26,11 @@ public class MasterPanel extends JPanel {
 
         // Initialize
         init();
+
+        // Add Label
+        createLabel();
+
+        this.add(label);
     }
 
     private void init() {
@@ -32,6 +40,18 @@ public class MasterPanel extends JPanel {
         this.setBorder(border);
     }
 
+    private void createLabel() {
+        label.setBounds(0, 0, getFrameWidth(), getFrameHeight());
+        label.setIcon(logo);
+        label.setHorizontalTextPosition(JLabel.CENTER); //set text CENTER of image icon
+        label.setVerticalTextPosition(JLabel.TOP); // set text TOP of image
+        label.setForeground(Color.red); // changes font color
+        label.setFont(new Font("Serif", Font.BOLD, 40)); // set font of text
+        label.setIconTextGap(-20); // set gap of text to image
+        label.setVerticalAlignment(JLabel.CENTER); // set vertical position of icon + text
+        label.setHorizontalAlignment(JLabel.CENTER); // set horizontal position within label
+        label.setText(getGameTitle());
+    }
 
     // Getters and Setters
     public int getFrameWidth() {
