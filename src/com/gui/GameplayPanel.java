@@ -15,20 +15,19 @@ public class GameplayPanel extends JPanel{
 
     public GameplayPanel(String title, int x, int y, int width, int height) {
         // Set properties
-        setFrameHeight(height);
-        setFrameWidth(width);
-        setGameTitle(title);
-        setxValue(x);
-        setyValue(y);
+//        setFrameHeight(height);
+//        setFrameWidth(width);
+//        setGameTitle(title);
+//        setxValue(x);
+//        setyValue(y);
 
         // Initialize
         init();
     }
 
     private void init() {
-        this.setBounds(getxValue(), getyValue(), getFrameWidth(), getFrameHeight());
+        //this.setBounds(getxValue(), getyValue(), getFrameWidth(), getFrameHeight());
         this.setBackground(Color.GREEN);
-        this.setLayout(null);
         this.setBorder(border);
     }
 

@@ -14,6 +14,7 @@ public class MasterPanel extends JPanel {
     private int yValue;
 
     public MasterPanel(String title, int x, int y, int width, int height) {
+        /*
         // Set properties
         setFrameHeight(height);
         setFrameWidth(width);
@@ -23,12 +24,17 @@ public class MasterPanel extends JPanel {
 
         // Initialize
         init();
+         */
+        //this.setLayout(new GridLayout(2, 2));
     }
 
     private void init() {
+        this.setLayout(new GridBagLayout());
+
+        GridBagConstraints gbc = new GridBagConstraints();
         this.setBounds(getxValue(), getyValue(), getFrameWidth(), getFrameHeight());
         this.setBackground(Color.BLACK);
-        this.setLayout(null);
+
         this.setBorder(border);
     }
 

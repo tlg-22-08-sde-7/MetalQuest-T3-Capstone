@@ -8,7 +8,7 @@ public class SplashPanel extends JPanel {
 
     private final JLabel label = new JLabel();
     private final Border border = BorderFactory.createLineBorder(Color.red, 3);
-    private final ImageIcon logo = new ImageIcon("C:\\StudentWork\\MetalQuest\\MetalQuest-T3-Capstone\\resources\\images\\rockstar.png");
+    private final ImageIcon logo = new ImageIcon("resources/images/rockstar.png");
     private int frameWidth;
     private int frameHeight;
     private String gameTitle;
@@ -17,26 +17,24 @@ public class SplashPanel extends JPanel {
 
 
     public SplashPanel(String title, int x, int y, int width, int height) {
-        // Set properties
-        setFrameHeight(height);
-        setFrameWidth(width);
         setGameTitle(title);
-        setxValue(x);
-        setyValue(y);
 
-        // Initialize
         init();
 
+        setLayout(new GridLayout());
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
         // Add Label
         createLabel();
 
-        this.add(label);
+        this.add(label, gbc);
     }
 
     private void init() {
         this.setBounds(getxValue(), getyValue(), getFrameWidth(), getFrameHeight());
         this.setBackground(Color.BLACK);
-        this.setLayout(null);
         this.setBorder(border);
     }
 
