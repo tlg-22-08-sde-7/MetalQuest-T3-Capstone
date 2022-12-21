@@ -33,7 +33,6 @@ public class Frame extends JFrame{
     private KeyStroke escapeKey;
     private final GridBagConstraints gbc = new GridBagConstraints();
 
-
     // C-Tor
     Frame() {
         init();
