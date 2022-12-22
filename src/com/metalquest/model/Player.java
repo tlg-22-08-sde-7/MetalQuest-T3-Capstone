@@ -9,12 +9,15 @@ public class Player {
 
     private static volatile Player player;
     private Location.Room room = ExternalConverter.getLocationObject("Living Room");
+
     private double money = -20_000.00;
     private double fame = 0.0;
     private int health = 50;
     private List<String> inventory = new ArrayList<>();
 
+
     private Player() {
+
     }
 
     public static Player getPlayer() {
@@ -44,6 +47,8 @@ public class Player {
             System.out.println(move + " is an invalid direction. Please try again.");
         }
     }
+
+
 
     // player can add items
     //player can add and drop items

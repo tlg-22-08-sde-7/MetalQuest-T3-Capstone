@@ -15,7 +15,7 @@ public class View {
     public static void splashScreen() {
         System.out.println();
         System.out.println("Welcome to Metal Quest");
-        try (BufferedReader br = new BufferedReader(new FileReader("C:\\StudentWork\\MetalQuest\\MetalQuest-T3-Capstone\\resources\\images\\banner.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("MetalQuest-T3-Capstone/resources/images/banner.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
@@ -28,7 +28,7 @@ public class View {
 
     public static void objectiveMsg() {
         try {
-            String message = Files.readString(Path.of("C:\\StudentWork\\MetalQuest\\MetalQuest-T3-Capstone\\resources\\objective.txt"));
+            String message = Files.readString(Path.of("MetalQuest-T3-Capstone/resources/objective.txt"));
             System.out.println(message);
         }
         catch (IOException e) {
