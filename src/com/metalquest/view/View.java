@@ -77,10 +77,10 @@ public class View {
         System.out.println("=====================");
         System.out.println("Available Commands");
         System.out.println("---------------------");
-        for (Map.Entry<Direction, String> location : player.getLocation().getDirections().entrySet()) {
+        for (Map.Entry<Direction, String> location : player.getRoomLocation().getDirections().entrySet()) {
             System.out.println(">Go " + location.getKey());
         }
-        for (Object item : player.getLocation().getItems()) {
+        for (Object item : player.getRoomLocation().getItems()) {
             System.out.println(">Get " + item);
         }
         moreCommands(player);
@@ -107,8 +107,8 @@ public class View {
     }
 
     public static void currentScenes(Player player, String move) {
-        System.out.println(player.getLocation().getDescription());
-        Map<Direction, String> directions = player.getLocation().getDirections();
+        System.out.println(player.getRoomLocation().getDescription());
+        Map<Direction, String> directions = player.getRoomLocation().getDirections();
         for (Map.Entry<Direction, String> direction : directions.entrySet()) {
             if (move.equals(direction.getKey().toString())) {
                 currentScenes(player, move);
