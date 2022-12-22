@@ -1,6 +1,8 @@
 package com.gui;
 
-import com.metalquest.model.LocationsEnum;
+import com.metalquest.controller.GUIControllerPane;
+import com.metalquest.model.Player;
+import com.metalquest.model.TextParser;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +11,7 @@ import java.awt.event.ActionEvent;
 public class Frame extends JFrame{
     /*
      * This frame, Frame holds all JPanels that are used within the game.
-     * Currently, child, or subsequent, panels are called in a cascading fashion starting with SplashPanel.
+     * Currently, child, or subsequent, panels are called in a cascading fashion starting with SplashPane.
      * Each panel has a RemovePanelAction class that removes the panel from the container (if needed) and calls
      * its child panel.
      *  EG:
@@ -19,20 +21,24 @@ public class Frame extends JFrame{
     private final String gameTitle = "Metal Quest";
     private final int frameWidth = 800;
     private final int frameHeight = 500;
-    private final SplashPanel splashPanel = new SplashPanel(gameTitle, 0, 0, frameWidth, frameHeight);
-    private final GameplayPanel gameplayPanel =
-            new GameplayPanel(gameTitle, 2, 2, (int) (frameWidth * .65), (int) (frameHeight * .63));
-    private final InventoryPanel inventoryPanel =
-            new InventoryPanel(gameTitle, 546, 2, (int) (frameWidth * .30), (int) (frameHeight * .63));
-    private final DescriptionPanel descriptionPanel =
-            new DescriptionPanel(gameTitle, 2, 338, (int) (frameWidth * .65), (int) (frameHeight * .25));
-    private final DirectionsPanel directionsPanel =
-            new DirectionsPanel(gameTitle, 546, 338, (int) (frameWidth * .30), (int) (frameHeight * .25));
-    private final MasterPanel masterPanel = new MasterPanel(gameTitle, 0, 0, frameWidth, (int) (frameHeight * .95));
+    private final SplashPane splashPane = new SplashPane(gameTitle, 0, 0, frameWidth, frameHeight);
+    private final GameplayPane gameplayPane = new GameplayPane();
+    private final InventoryPane inventoryPane = new InventoryPane();
+    private final DescriptionPane descriptionPane = new DescriptionPane();
+    private final DirectionsPane directionsPane = new DirectionsPane();
+    private final com.metalquest.controller.GUIControllerPane GUIControllerPane = new GUIControllerPane();
     private Action removeSplashPanelAction;
-    private KeyStroke escapeKey;
+    private Action upAction, downAction, rightAction, leftAction;
+    private KeyStroke escapeKey, upKey, downKey, leftKey, rightKey;
     private final GridBagConstraints gbc = new GridBagConstraints();
+    private final Player player = Player.getPlayer();
 
+    enum Locations {
+        UP,
+        DOWN,
+        LEFT,
+        RIGHT
+    }
 
     // C-Tor
     Frame() {
@@ -44,12 +50,33 @@ public class Frame extends JFrame{
     }
 
     // Business Methods
+    private String captureLocationRequest(Locations location) {
+        String direction = null;
+
+        switch (location) {
+            case UP:
+                break;
+            case DOWN:
+                break;
+            case LEFT:
+                break;
+            case RIGHT:
+                break;
+            default:
+                direction = "ERROR: an invalid location was passed to Frame.changeLocation. This" +
+                        " is an application error";
+        }
+
+        return direction;
+    }
+
+
     private void enterLivingRoom() {
         // gameplay panel
 
 
         // description panel
-        descriptionPanel.describe(LocationsEnum.KITCHEN);
+
 
         // direction panel
 
@@ -78,32 +105,33 @@ public class Frame extends JFrame{
 
     // Splash panel
     private void addSplashPanel() {
-        // Add welcomePanel to masterPanel
-        masterPanel.setLayout(new GridLayout(1, 1));
+        // Add welcomePanel to GUIControllerPane
+        GUIControllerPane.setLayout(new GridLayout(1, 1));
 
-        masterPanel.add(splashPanel);
+        GUIControllerPane.add(splashPane);
 
-        // Add escape key binding to master panel
-        masterPanel.getInputMap().put(escapeKey, "removeAction");
-        masterPanel.getActionMap().put("removeAction", removeSplashPanelAction);
+        // Add escape key binding to GUIControllerPane
+        GUIControllerPane.getInputMap().put(escapeKey, "removeAction");
+        GUIControllerPane.getActionMap().put("removeAction", removeSplashPanelAction);
 
-
+        // Revalidate and repaint
         revalidate();
         repaint();
     }
 
+    // Action classes
     private class RemoveSplashPanelAction extends AbstractAction {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            // Remove welcome panel from masterPanel
-            masterPanel.remove(splashPanel);
+            // Remove welcome panel from GUIControllerPane
+            GUIControllerPane.remove(splashPane);
 
             // Remove keybindings
-            masterPanel.getInputMap().remove(escapeKey);
-            masterPanel.getActionMap().remove("removeAction");
+            GUIControllerPane.getInputMap().remove(escapeKey);
+            GUIControllerPane.getActionMap().remove("removeAction");
 
-            masterPanel.setLayout(new GridBagLayout());
+            GUIControllerPane.setLayout(new GridBagLayout());
 
             // Add game frames
             addInventoryPanel();
@@ -111,8 +139,65 @@ public class Frame extends JFrame{
             addDescriptionPanel();
             addDirectionsPanel();
 
+            // Add direction bindings to GUIControllerPane
+            // up
+            GUIControllerPane.getInputMap().put(upKey, "upAction");
+            GUIControllerPane.getActionMap().put("upAction", upAction);
+
+            // down
+            GUIControllerPane.getInputMap().put(downKey, "downAction");
+            GUIControllerPane.getActionMap().put("downAction", downAction);
+
+            // left
+            GUIControllerPane.getInputMap().put(leftKey, "leftAction");
+            GUIControllerPane.getActionMap().put("leftAction", leftAction);
+
+            // right
+            GUIControllerPane.getInputMap().put(rightKey, "rightAction");
+            GUIControllerPane.getActionMap().put("rightAction", rightAction);
+
             revalidate();
             repaint();
+        }
+    }
+
+    private class UpAction extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            player.moveLocation("north", player);
+
+            descriptionPane.setLabelText(player.getLocation().getDescription());
+        }
+    }
+
+    private class DownAction extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            player.moveLocation("south", player);
+
+            descriptionPane.setLabelText(player.getLocation().getDescription());
+        }
+    }
+
+    private class LeftAction extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            player.moveLocation("west", player);
+
+            descriptionPane.setLabelText(player.getLocation().getDescription());
+        }
+    }
+
+    private class RightAction extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            player.moveLocation("east", player);
+
+            descriptionPane.setLabelText(player.getLocation().getDescription());
         }
     }
 
@@ -123,9 +208,9 @@ public class Frame extends JFrame{
         gbc.gridwidth = 2;
         gbc.gridheight = 2;
         gbc.anchor = GridBagConstraints.FIRST_LINE_START;
-        gbc.weightx = .25;
+        gbc.weightx = .10;
         gbc.weighty = .25;
-        masterPanel.add(gameplayPanel, gbc);
+        GUIControllerPane.add(gameplayPane, gbc);
 
         gbc.weightx = .1;
         gbc.weighty = .1;
@@ -138,7 +223,7 @@ public class Frame extends JFrame{
             // TODO: fill this method
             /*
                 // Remove welcome panel from masterPanel
-                masterPanel.remove(splashPanel);
+                masterPanel.remove(splashPane);
 
                 // Remove keybindings
                 masterPanel.getInputMap().remove(escapeKey);
@@ -161,7 +246,7 @@ public class Frame extends JFrame{
         gbc.gridheight = 2;
         gbc.fill = GridBagConstraints.BOTH;
         gbc.anchor = GridBagConstraints.FIRST_LINE_END;
-        masterPanel.add(inventoryPanel, gbc);
+        GUIControllerPane.add(inventoryPane, gbc);
     }
 
     private class RemoveInventoryPanelAction extends AbstractAction {
@@ -171,7 +256,7 @@ public class Frame extends JFrame{
             // TODO: fill this method
             /*
                 // Remove welcome panel from masterPanel
-                masterPanel.remove(splashPanel);
+                masterPanel.remove(splashPane);
 
                 // Remove keybindings
                 masterPanel.getInputMap().remove(escapeKey);
@@ -193,7 +278,7 @@ public class Frame extends JFrame{
         gbc.gridwidth = 2;
         gbc.gridheight = 1;
 
-        masterPanel.add(descriptionPanel, gbc);
+        GUIControllerPane.add(descriptionPane, gbc);
 
     }
 
@@ -204,7 +289,7 @@ public class Frame extends JFrame{
             // TODO: fill this method
             /*
                 // Remove welcome panel from masterPanel
-                masterPanel.remove(splashPanel);
+                masterPanel.remove(splashPane);
 
                 // Remove keybindings
                 masterPanel.getInputMap().remove(escapeKey);
@@ -224,7 +309,7 @@ public class Frame extends JFrame{
         gbc.gridy = 2;
         gbc.gridwidth = 2;
         gbc.gridheight = 1;
-        masterPanel.add(directionsPanel, gbc);
+        GUIControllerPane.add(directionsPane, gbc);
     }
 
     private class RemoveDirectionsPanelAction extends AbstractAction {
@@ -234,7 +319,7 @@ public class Frame extends JFrame{
             // TODO: fill this method
             /*
                 // Remove welcome panel from masterPanel
-                masterPanel.remove(splashPanel);
+                masterPanel.remove(splashPane);
 
                 // Remove keybindings
                 masterPanel.getInputMap().remove(escapeKey);
@@ -252,7 +337,17 @@ public class Frame extends JFrame{
     private void init() {
         // Assignments
         escapeKey = KeyStroke.getKeyStroke("ESCAPE");
+        upKey = KeyStroke.getKeyStroke("UP");
+        downKey = KeyStroke.getKeyStroke("DOWN");
+        leftKey = KeyStroke.getKeyStroke("LEFT");
+        rightKey = KeyStroke.getKeyStroke("RIGHT");
+
         removeSplashPanelAction = new RemoveSplashPanelAction();
+        upAction = new UpAction();
+        downAction = new DownAction();
+        leftAction = new LeftAction();
+        rightAction = new RightAction();
+
         ImageIcon imageIcon = new ImageIcon(
                 "C:\\StudentWork\\MetalQuest\\MetalQuest-T3-Capstone\\resources\\images\\rockstar.png"); // creates Image Icon
 
@@ -262,13 +357,11 @@ public class Frame extends JFrame{
         this.setTitle(gameTitle);
         this.setSize(frameWidth, frameHeight);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // exits app
-        //this.setResizable(false); // prevents frame from
         this.setVisible(true); //make frame visible
-        ///this.setLayout(null);
         this.setIconImage(imageIcon.getImage()); // change icon of frame
         this.getContentPane().setBackground(Color.black); // change color of background
 
         // Add masterPanel to Frame
-        this.add(masterPanel);
+        this.add(GUIControllerPane);
     }
 }
