@@ -1,11 +1,5 @@
 package com.metalquest.model;
 
-import com.gui.GameplayPanel;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -41,10 +35,10 @@ public class Player {
     public void moveLocation(String move, Player player) {
         boolean locationFound = false;
 
-        Map<Direction, String> directions = player.getRoomLocation().getDirections();
+        Map<Direction, String> directions = player.getLocation().getDirections();
         for (Map.Entry<Direction, String> direction : directions.entrySet()) {
             if (move.toUpperCase(Locale.ROOT).equals(direction.getKey().toString().toUpperCase(Locale.ROOT))) {
-                player.setRoomLocation(direction.getValue());
+                player.setLocation(direction.getValue());
                 System.out.println(direction.getValue());
                 locationFound = true;
             }
@@ -59,7 +53,7 @@ public class Player {
     // player can add items
     //player can add and drop items
     public void getItem(Player player, String item) {
-        ArrayList itemsInRoom = player.getRoomLocation().getItems();
+        ArrayList itemsInRoom = player.getLocation().getItems();
         List<String> inventory = player.getInventory();
         if (itemsInRoom.contains(item) && !inventory.contains(item)) {
             inventory.add(item);
@@ -77,7 +71,7 @@ public class Player {
 
     //drop items
     public void dropItem(Player player, String item) {
-        ArrayList itemsInRoom = player.getRoomLocation().getItems();
+        ArrayList itemsInRoom = player.getLocation().getItems();
         List<String> inventory = player.getInventory();
         if (inventory.contains(item)) {
             player.getInventory().remove(item);
@@ -106,7 +100,7 @@ public class Player {
                 player.getInventory().remove(item);
             }
 
-        } else if (player.getRoomLocation().getItems().contains(item)) {
+        } else if (player.getLocation().getItems().contains(item)) {
             System.out.println("You must first add beverage to you inventory");
         } else {
             System.out.println("That is not valid. Try again");
@@ -166,11 +160,11 @@ public class Player {
         this.money = money;
     }
 
-    public Location.Room getRoomLocation() {
+    public Location.Room getLocation() {
         return room;
     }
 
-    public void setRoomLocation(String room) {
+    public void setLocation(String room) {
         this.room = ExternalConverter.getLocationObject(room);
     }
 
@@ -187,8 +181,8 @@ public class Player {
                 "Player Status \n" +
                 "-----------------------\n" +
                 "Money: " + getMoney() + "\n" +
-                "Location: " + getRoomLocation().getRoom() + "\n " + getRoomLocation().getDescription() + " \n" +
-                "Directions: " + getRoomLocation().getDirections() + " \n" + "Items in room: " + getRoomLocation().getItems() +
+                "Location: " + getLocation().getRoom() + "\n " + getLocation().getDescription() + " \n" +
+                "Directions: " + getLocation().getDirections() + " \n" + "Items in room: " + getLocation().getItems() +
                 "\n" + "Fame: " + getFame() + "\n" +
                 "Health: " + getHealth() + "\n" +
                 "Inventory: " + getInventory() + "\n" +
