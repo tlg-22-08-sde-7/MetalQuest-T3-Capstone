@@ -167,7 +167,7 @@ public class Frame extends JFrame{
         public void actionPerformed(ActionEvent e) {
             player.moveLocation("north", player);
 
-            descriptionPane.setLabelText(player.getLocation().getDescription());
+            descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
         }
     }
 
@@ -177,7 +177,7 @@ public class Frame extends JFrame{
         public void actionPerformed(ActionEvent e) {
             player.moveLocation("south", player);
 
-            descriptionPane.setLabelText(player.getLocation().getDescription());
+            descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
         }
     }
 
@@ -187,7 +187,7 @@ public class Frame extends JFrame{
         public void actionPerformed(ActionEvent e) {
             player.moveLocation("west", player);
 
-            descriptionPane.setLabelText(player.getLocation().getDescription());
+            descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
         }
     }
 
@@ -197,7 +197,7 @@ public class Frame extends JFrame{
         public void actionPerformed(ActionEvent e) {
             player.moveLocation("east", player);
 
-            descriptionPane.setLabelText(player.getLocation().getDescription());
+            descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
         }
     }
 
