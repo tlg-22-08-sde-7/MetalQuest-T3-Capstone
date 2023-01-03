@@ -1,20 +1,19 @@
 package com.gui;
 
+import com.metalquest.controller.GUIControllerPane;
 import com.metalquest.model.Player;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class GameplayPane extends JPanel{
 
-    Player player = Player.getPlayer();
-    String room = player.getLocation().getRoom();
-    private BufferedImage currentRoomImage;
+
+    private Room room;
     private final Border border = BorderFactory.createLineBorder(Color.red, 3);
     private int frameWidth;
     private int frameHeight;
@@ -23,31 +22,57 @@ public class GameplayPane extends JPanel{
     private int yValue;
 
 
+
     public GameplayPane(){
+        this.setOpaque(true);
+        setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
+        JLayeredPane jLayeredPane = new JLayeredPane();
+        room = new Room();
+        room.setVerticalAlignment(JLabel.TOP);
+        room.setHorizontalAlignment(JLabel.CENTER);
+        room.setBounds(0,0,525,300);
+        jLayeredPane.add(room,Integer.valueOf(0),0);
+        add(jLayeredPane);
 
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(getCurrentRoomImage().getScaledInstance(574,310,Image.SCALE_DEFAULT), 0, 0, this);
-        repaint();
-        revalidate();
+
+    public JLabel createItem(String itemName){
+        JLabel item = new JLabel();
+        BufferedImage img = getItemImage(itemName);
+        //img.getScaledInstance(100,75,Image.SCALE_SMOOTH);
+        ImageIcon imageIcon = new ImageIcon(getItemImage(itemName));
+        item.setIcon(imageIcon);
+        //item.setSize(75,100);
+
+        return item;
     }
-    public BufferedImage readCurrentRoomImage(String room){
-        String filePath = "MetalQuest-T3-Capstone/resources/images/"+ room +".jpg";
-        if (room != null) {
-            try {
-                currentRoomImage = ImageIO.read(new File(filePath));
-            } catch (IOException ex) {
-                System.out.println(ex);
-            }
+    
+    public BufferedImage getItemSprite(String item){
+        String filePath = "resources/images/"+ item +"_spritesheet.png";
+        ImageLoader loader = new ImageLoader();
+        BufferedImage spriteSheet = null;
+        BufferedImage sprite = null;
+        try {
+            spriteSheet = loader.loadImage(filePath);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return currentRoomImage;
+        SpriteSheet ss = new SpriteSheet(spriteSheet);
+        return sprite = ss.grabSprite(0,0,20,15);
     }
+   
 
-    public BufferedImage getCurrentRoomImage() {
-        return readCurrentRoomImage(player.getLocation().getRoom());
+    public BufferedImage getItemImage(String item){
+        String filePath = "resources/images/"+ item +".png";
+        ImageLoader loader = new ImageLoader();
+        BufferedImage itemImage = null;
+        try {
+            itemImage = loader.loadImage(filePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return itemImage;
     }
 
     public int getFrameWidth() {
