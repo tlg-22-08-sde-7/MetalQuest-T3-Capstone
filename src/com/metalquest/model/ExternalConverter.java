@@ -40,7 +40,7 @@ public class ExternalConverter {
 
         try {
             // Create a reader
-            reader = Files.newBufferedReader(Paths.get("resources/json/items.json"));
+            reader = Files.newBufferedReader(Paths.get("MetalQuest-T3-Capstone/resources/json/locations.json"));
 
             // Convert JSON array to list of items
             List<Item> items = new Gson().fromJson(reader, new TypeToken<List<Item>>() {
@@ -67,7 +67,7 @@ public class ExternalConverter {
 
         try {
             // Create a reader
-            reader = Files.newBufferedReader(Paths.get("resources/json/locations.json"));
+            reader = Files.newBufferedReader(Paths.get("MetalQuest-T3-Capstone/resources/json/locations.json"));
 
             location = new Gson().fromJson(reader, Location.class);
             room = location.getRooms().get(1);
@@ -93,7 +93,7 @@ public class ExternalConverter {
         Map<String, List<String>> wordsMap = new HashMap<>();
 
         try {
-            reader = new BufferedReader(new FileReader("resources/json/verbs.json"));
+            reader = new BufferedReader(new FileReader("MetalQuest-T3-Capstone/resources/json/verbs.json"));
             wordsMap = gson.fromJson(reader, wordsMap.getClass());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -103,7 +103,7 @@ public class ExternalConverter {
 
     public static void getScenes(Integer index) {
         try {
-            reader = new BufferedReader(new FileReader("resources/json/scenes.json"));
+            reader = new BufferedReader(new FileReader("MetalQuest-T3-Capstone/resources/json/scenes.json"));
             List<Scene> scenes = new Gson().fromJson(reader, new TypeToken<List<Scene>>() {
             }.getType());
             System.out.println(scenes.get(index).getText());

@@ -47,7 +47,7 @@ public class GameplayPane extends JPanel{
 
         return item;
     }
-
+    
     public BufferedImage getItemSprite(String item){
         String filePath = "resources/images/"+ item +"_spritesheet.png";
         ImageLoader loader = new ImageLoader();
@@ -61,6 +61,7 @@ public class GameplayPane extends JPanel{
         SpriteSheet ss = new SpriteSheet(spriteSheet);
         return sprite = ss.grabSprite(0,0,20,15);
     }
+   
 
     public BufferedImage getItemImage(String item){
         String filePath = "resources/images/"+ item +".png";

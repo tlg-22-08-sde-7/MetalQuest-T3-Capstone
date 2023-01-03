@@ -18,10 +18,10 @@ public class Frame extends JFrame{
      *   AddSplashPanel -> RemoveSplashPanel -> AddGameplayPanel, AddDescriptionPanel, AddInventoryPanel, AddDirectionsPanel
      * Each panel serves as its own container, controlling the flow of layered panels within it.
      */
-    private final String gameTitle = "Metal Quest";
+    //private final String gameTitle = "Metal Quest";
     private final int frameWidth = 800;
     private final int frameHeight = 500;
-    private final SplashPane splashPane = new SplashPane(gameTitle, 0, 0, frameWidth, frameHeight);
+    private final SplashPane splashPane = new SplashPane("", 0, 0, frameWidth, frameHeight);
     private final GameplayPane gameplayPane = new GameplayPane();
     private final InventoryPane inventoryPane = new InventoryPane();
     private final DescriptionPane descriptionPane = new DescriptionPane();
@@ -353,7 +353,7 @@ public class Frame extends JFrame{
         // Set configurations
 
 
-        this.setTitle(gameTitle);
+        //this.setTitle(gameTitle);
         this.setSize(frameWidth, frameHeight);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // exits app
         this.setVisible(true); //make frame visible
