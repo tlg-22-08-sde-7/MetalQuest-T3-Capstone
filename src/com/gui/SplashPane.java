@@ -8,7 +8,7 @@ public class SplashPane extends JPanel {
 
     private final JLabel label = new JLabel();
     private final Border border = BorderFactory.createLineBorder(Color.red, 3);
-    private final ImageIcon logo = new ImageIcon("MetalQuest-T3-Capstone/resources/images/MetalQuest.gif");
+    private final ImageIcon logo = new ImageIcon("resources/images/MetalQuest.gif");
     private int frameWidth;
     private int frameHeight;
     //private String gameTitle;
