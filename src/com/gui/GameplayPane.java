@@ -35,7 +35,7 @@ public class GameplayPane extends JPanel{
         revalidate();
     }
     public BufferedImage readCurrentRoomImage(String room){
-        String filePath = "resources/images/"+ room +".jpg";
+        String filePath = "MetalQuest-T3-Capstone/resources/images/"+ room +".jpg";
         if (room != null) {
             try {
                 currentRoomImage = ImageIO.read(new File(filePath));

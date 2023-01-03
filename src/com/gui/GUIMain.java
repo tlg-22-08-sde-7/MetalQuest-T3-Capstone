@@ -8,5 +8,6 @@ public class GUIMain {
         new Frame();
        Game game = new Game();
        game.execute();
+       //new MenuBar();
     }
 }
