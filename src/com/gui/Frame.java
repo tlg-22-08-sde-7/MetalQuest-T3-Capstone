@@ -211,9 +211,9 @@ public class Frame extends JFrame{
         gbc.weightx = .10;
         gbc.weighty = .25;
         GUIControllerPane.add(gameplayPane, gbc);
-
         gbc.weightx = .1;
         gbc.weighty = .1;
+
     }
 
     private class RemoveGameplayPanelAction extends AbstractAction {
@@ -277,7 +277,6 @@ public class Frame extends JFrame{
         gbc.gridy = 2;
         gbc.gridwidth = 2;
         gbc.gridheight = 1;
-
         GUIControllerPane.add(descriptionPane, gbc);
 
     }
@@ -360,6 +359,7 @@ public class Frame extends JFrame{
         this.setVisible(true); //make frame visible
         this.setIconImage(imageIcon.getImage()); // change icon of frame
         this.getContentPane().setBackground(Color.black); // change color of background
+
 
         // Add masterPanel to Frame
         this.add(GUIControllerPane);

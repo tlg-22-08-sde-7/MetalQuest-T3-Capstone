@@ -9,6 +9,10 @@ public class GUIControllerPane extends JPanel {
 
     private GUIControllerPane GUIControllerPane;
 
+    public GUIControllerPane(){
+        this.setOpaque(true);
+    }
+
     public GUIControllerPane getInstance() {
         if (GUIControllerPane != null) {
             GUIControllerPane = new GUIControllerPane();
@@ -49,6 +53,7 @@ public class GUIControllerPane extends JPanel {
     }
 
     private void livingRoom() {
+
 
     }
 

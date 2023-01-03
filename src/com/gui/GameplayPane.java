@@ -12,9 +12,8 @@ import java.util.ArrayList;
 
 public class GameplayPane extends JPanel{
 
-    Player player = Player.getPlayer();
 
-    private BufferedImage currentRoomImage;
+    private Room room;
     private final Border border = BorderFactory.createLineBorder(Color.red, 3);
     private int frameWidth;
     private int frameHeight;
@@ -25,54 +24,28 @@ public class GameplayPane extends JPanel{
 
 
     public GameplayPane(){
-        //this.add(createItem("guitar"));
+        this.setOpaque(true);
+        setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
+        JLayeredPane jLayeredPane = new JLayeredPane();
+        room = new Room();
+        room.setVerticalAlignment(JLabel.TOP);
+        room.setHorizontalAlignment(JLabel.CENTER);
+        room.setBounds(0,0,525,300);
+        jLayeredPane.add(room,Integer.valueOf(0),0);
+        add(jLayeredPane);
 
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(getCurrentRoomImage(), 0, 0, 525, 300, this);
-        repaint();
-        revalidate();
-    }
 
     public JLabel createItem(String itemName){
         JLabel item = new JLabel();
-
+        BufferedImage img = getItemImage(itemName);
+        //img.getScaledInstance(100,75,Image.SCALE_SMOOTH);
         ImageIcon imageIcon = new ImageIcon(getItemImage(itemName));
         item.setIcon(imageIcon);
-        item.setBounds(0,0,25,25);
+        //item.setSize(75,100);
+
         return item;
-    }
-
-//   public void renderItem(){
-//       JLabel itemLabel = createItem("guitar");
-//       itemLabel.setBounds(175,275,100,75);
-//       this.add(itemLabel);
-////       for (Object item:player.getLocation().getItems()) {
-////           JLabel itemLabel = createItem((String) item);
-////           itemLabel.setBounds(175,275,100,75);
-////           this.add(itemLabel);
-////       }
-//   }
-
-
-
-
-
-    public BufferedImage getCurrentRoomImage() {
-        String room = player.getLocation().getRoom();
-        String filePath = "resources/images/"+ room +".jpg";
-        ImageLoader loader = new ImageLoader();
-        if (room != null) {
-            try {
-                currentRoomImage = loader.loadImage(filePath);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
-        return currentRoomImage;
     }
 
     public BufferedImage getItemSprite(String item){
