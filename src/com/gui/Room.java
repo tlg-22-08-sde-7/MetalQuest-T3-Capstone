@@ -13,6 +13,7 @@ public class Room extends JLabel {
 
     public Room(){
 
+
     }
 
     @Override

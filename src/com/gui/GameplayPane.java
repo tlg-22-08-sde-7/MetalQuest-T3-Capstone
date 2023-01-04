@@ -9,11 +9,16 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 
 public class GameplayPane extends JPanel{
 
 
     private Room room;
+    private Item item;
+    private JLayeredPane jLayeredPane;
+    Player player = Player.getPlayer();
     private final Border border = BorderFactory.createLineBorder(Color.red, 3);
     private int frameWidth;
     private int frameHeight;
@@ -26,54 +31,99 @@ public class GameplayPane extends JPanel{
     public GameplayPane(){
         this.setOpaque(true);
         setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
-        JLayeredPane jLayeredPane = new JLayeredPane();
+        jLayeredPane = new JLayeredPane();
         room = new Room();
-        room.setVerticalAlignment(JLabel.TOP);
-        room.setHorizontalAlignment(JLabel.CENTER);
         room.setBounds(0,0,525,300);
-        jLayeredPane.add(room,Integer.valueOf(0),0);
+        addRoomItems();
+
+        jLayeredPane.add(room,Integer.valueOf(0));
+
         add(jLayeredPane);
 
     }
-
-
-    public JLabel createItem(String itemName){
-        JLabel item = new JLabel();
-        BufferedImage img = getItemImage(itemName);
-        //img.getScaledInstance(100,75,Image.SCALE_SMOOTH);
-        ImageIcon imageIcon = new ImageIcon(getItemImage(itemName));
-        item.setIcon(imageIcon);
-        //item.setSize(75,100);
-
-        return item;
+    public void enterRoom(){
+        removeRoomItems();
+        addRoomItems();
     }
-    
-    public BufferedImage getItemSprite(String item){
-        String filePath = "resources/images/"+ item +"_spritesheet.png";
-        ImageLoader loader = new ImageLoader();
-        BufferedImage spriteSheet = null;
-        BufferedImage sprite = null;
-        try {
-            spriteSheet = loader.loadImage(filePath);
-        } catch (IOException e) {
-            e.printStackTrace();
+
+    public void addRoomItems(){
+
+        Iterator it =player.getLocation().getItems().iterator();
+
+            while (it.hasNext()){
+                String itemName = (String)it.next();
+
+            switch (itemName){
+                case "guitar":
+                    item = new Item(itemName,100,50);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+                case "cellphone":
+                    item = new Item(itemName,225,228);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+                case "rolex":
+                    item = new Item(itemName,245,220);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+                case "beer":
+                    item = new Item(itemName,435,133);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+                case "oj":
+                    item = new Item(itemName,210,132);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+                case "purplestuff":
+                    item = new Item(itemName,145,145);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+                case "water":
+                    item = new Item(itemName,340,85);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+                case "guitar picks":
+                    item = new Item(itemName,120,75);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+                case "music book":
+                    item = new Item(itemName,25,215);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+                case "shed":
+                    item = new Item(itemName,250,160);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+                case "wallet":
+                    item = new Item(itemName,50,210);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+                case "motorcycle":
+                    item = new Item(itemName,275,120);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+                case "brush":
+                    item = new Item(itemName,40,110);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+                case "cologne":
+                    item = new Item(itemName,160,100);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+            }
         }
-        SpriteSheet ss = new SpriteSheet(spriteSheet);
-        return sprite = ss.grabSprite(0,0,20,15);
     }
-   
 
-    public BufferedImage getItemImage(String item){
-        String filePath = "resources/images/"+ item +".png";
-        ImageLoader loader = new ImageLoader();
-        BufferedImage itemImage = null;
-        try {
-            itemImage = loader.loadImage(filePath);
-        } catch (IOException e) {
-            e.printStackTrace();
+    public void removeRoomItems(){
+        Iterator it = Arrays.stream(jLayeredPane.getComponentsInLayer(1)).iterator();
+        while (it.hasNext()){
+            JLabel item = (JLabel)it.next();
+            jLayeredPane.remove(item);
         }
-        return itemImage;
     }
+
+
+
 
     public int getFrameWidth() {
         return frameWidth;

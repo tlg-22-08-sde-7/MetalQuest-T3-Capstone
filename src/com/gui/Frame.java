@@ -166,7 +166,7 @@ public class Frame extends JFrame{
         @Override
         public void actionPerformed(ActionEvent e) {
             player.moveLocation("north", player);
-
+            gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
         }
     }
@@ -176,7 +176,7 @@ public class Frame extends JFrame{
         @Override
         public void actionPerformed(ActionEvent e) {
             player.moveLocation("south", player);
-
+            gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
         }
     }
@@ -186,7 +186,7 @@ public class Frame extends JFrame{
         @Override
         public void actionPerformed(ActionEvent e) {
             player.moveLocation("west", player);
-
+            gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
         }
     }
@@ -196,7 +196,7 @@ public class Frame extends JFrame{
         @Override
         public void actionPerformed(ActionEvent e) {
             player.moveLocation("east", player);
-
+            gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
         }
     }
