@@ -41,6 +41,10 @@ public class GameplayPane extends JPanel{
         add(jLayeredPane);
 
     }
+    public void enterRoom(){
+        removeRoomItems();
+        addRoomItems();
+    }
 
     public void addRoomItems(){
 
@@ -62,7 +66,59 @@ public class GameplayPane extends JPanel{
                     item = new Item(itemName,245,220);
                     jLayeredPane.add(item,Integer.valueOf(1));
                     break;
+                case "beer":
+                    item = new Item(itemName,435,133);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+                case "oj":
+                    item = new Item(itemName,210,132);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+                case "purplestuff":
+                    item = new Item(itemName,145,145);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+                case "water":
+                    item = new Item(itemName,340,85);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+                case "guitar picks":
+                    item = new Item(itemName,120,75);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+                case "music book":
+                    item = new Item(itemName,25,215);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+                case "shed":
+                    item = new Item(itemName,250,160);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+                case "wallet":
+                    item = new Item(itemName,50,210);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+                case "motorcycle":
+                    item = new Item(itemName,275,120);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+                case "brush":
+                    item = new Item(itemName,40,110);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
+                case "cologne":
+                    item = new Item(itemName,160,100);
+                    jLayeredPane.add(item,Integer.valueOf(1));
+                    break;
             }
+        }
+    }
+
+    public void removeRoomItems(){
+        Iterator it = Arrays.stream(jLayeredPane.getComponentsInLayer(1)).iterator();
+        while (it.hasNext()){
+            JLabel item = (JLabel)it.next();
+            jLayeredPane.remove(item);
         }
     }
 
