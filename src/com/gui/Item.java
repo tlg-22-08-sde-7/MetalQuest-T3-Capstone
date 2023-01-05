@@ -1,20 +1,30 @@
 package com.gui;
 
+import com.metalquest.model.Player;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class Item extends JLabel{
+public class Item extends JLabel implements MouseListener {
 
     BufferedImage img = null;
     private int imgWidth ;
     private int imgHeight ;
+    private String nameOfItem;
+    Player player = Player.getPlayer();
 
 
     public Item (String itemName, int x, int y){
+        setNameOfItem(itemName);
         readItemImage(itemName);
         setBounds(x,y,getImgWidth(),getImgHeight());
+        addMouseListener(this);
+        setToolTipText("Click this Item to add it to inventory.");
+
     }
 
     @Override
@@ -70,11 +80,42 @@ public class Item extends JLabel{
         return imgWidth;
     }
 
-
-
     public Integer getImgHeight() {
         imgHeight = (img.getHeight()/10);
         return imgHeight;
     }
 
+    public String getNameOfItem() {
+        return nameOfItem;
+    }
+
+    public void setNameOfItem(String nameOfItem) {
+        this.nameOfItem = nameOfItem;
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        e.getComponent().setVisible(false);
+        player.getItem(player,getNameOfItem());
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
 }
