@@ -177,15 +177,16 @@ public class Player {
     }
 
     public String toString() {
-        return "========================\n" +
-                "Player Status \n" +
-                "-----------------------\n" +
-                "Money: " + getMoney() + "\n" +
+        return //"========================\n" +
+                //"Player Status \n" +
+                //"-----------------------\n" +
+                //"Money: " + getMoney() + "\n" +
                 "Location: " + getLocation().getRoom() + "\n " + getLocation().getDescription() + " \n" +
-                "Directions: " + getLocation().getDirections() + " \n" + "Items in room: " + getLocation().getItems() +
-                "\n" + "Fame: " + getFame() + "\n" +
-                "Health: " + getHealth() + "\n" +
-                "Inventory: " + getInventory() + "\n" +
-                "========================";
+                //"Directions: " + getLocation().getDirections() +
+                " \n" + "Items in room: " + getLocation().getItems();
+                //"\n" + "Fame: " + getFame() + "\n" +
+                //"Health: " + getHealth() + "\n" +
+                //"Inventory: " + getInventory() + "\n" +
+                //"========================";
     }
 }
