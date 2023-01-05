@@ -23,7 +23,7 @@ public class Frame extends JFrame{
     private final int frameHeight = 500;
     private final SplashPane splashPane = new SplashPane("", 0, 0, frameWidth, frameHeight);
     private final GameplayPane gameplayPane = new GameplayPane();
-    private final InventoryPane inventoryPane = new InventoryPane();
+    private final InventoryPane inventoryPane = InventoryPane.getInstance();
     private final DescriptionPane descriptionPane = DescriptionPane.getInstance();
     private final DirectionsPane directionsPane = new DirectionsPane();
     private final com.metalquest.controller.GUIControllerPane GUIControllerPane = new GUIControllerPane();

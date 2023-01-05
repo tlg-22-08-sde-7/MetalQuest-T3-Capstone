@@ -13,7 +13,6 @@ public class Room extends JLabel {
 
     public Room(){
 
-
     }
 
     @Override
@@ -26,7 +25,7 @@ public class Room extends JLabel {
 
     public BufferedImage getCurrentRoomImage() {
         String room = player.getLocation().getRoom();
-        String filePath = "resources/images/"+ room +".jpg";
+        String filePath = "C:\\StudentWork\\MetalQuest\\MetalQuest-T3-Capstone\\resources\\images\\"+ room +".jpg";
         ImageLoader loader = new ImageLoader();
         if (room != null) {
             try {
@@ -37,6 +36,5 @@ public class Room extends JLabel {
         }
         return currentRoomImage;
     }
-
 
 }
