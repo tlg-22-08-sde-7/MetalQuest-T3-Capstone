@@ -13,7 +13,6 @@ public class Room extends JLabel {
 
     public Room(){
 
-
     }
 
     @Override
@@ -37,6 +36,5 @@ public class Room extends JLabel {
         }
         return currentRoomImage;
     }
-
 
 }

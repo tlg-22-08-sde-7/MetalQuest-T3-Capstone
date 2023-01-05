@@ -1,5 +1,7 @@
 package com.metalquest.model;
 
+import com.gui.InventoryPane;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -58,6 +60,7 @@ public class Player {
         if (itemsInRoom.contains(item) && !inventory.contains(item)) {
             inventory.add(item);
             itemsInRoom.remove(item);
+            InventoryPane.getInstance().addItemToInventoryList(item);
             System.out.println("Items in room: " + itemsInRoom);
             System.out.println("Added: " + item + " to your inventory");
             System.out.println("Your inventory: " + inventory);
