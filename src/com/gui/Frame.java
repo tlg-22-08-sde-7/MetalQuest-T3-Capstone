@@ -46,7 +46,7 @@ public class Frame extends JFrame{
 
         addSplashPanel();
 
-        enterLivingRoom();
+        setLabelText();
     }
 
     // Business Methods
@@ -71,36 +71,8 @@ public class Frame extends JFrame{
     }
 
 
-    private void enterLivingRoom() {
-        // gameplay panel
-
-
-        // description panel
-
-
-        // direction panel
-
-        //this.pack();
-    }
-
-    private void enterKitchen() {
-
-    }
-
-    private void enterBackyard() {
-
-    }
-
-    private void enterMasterBedroom() {
-
-    }
-
-    private void enterBathroom() {
-
-    }
-
-    private void enterGarage() {
-
+    private void setLabelText() {
+        descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
     }
 
     // Splash panel
@@ -168,6 +140,9 @@ public class Frame extends JFrame{
             player.moveLocation("north", player);
             gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
+
+            // TODO: Remove this and add it in the method where the user successfully picks up an item
+            inventoryPane.addItemToInventoryList("Example item from up key");
         }
     }
 
@@ -178,6 +153,9 @@ public class Frame extends JFrame{
             player.moveLocation("south", player);
             gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
+
+            // TODO: Remove this and add it in the method where the user successfully picks up an item
+            inventoryPane.addItemToInventoryList("Example item from down key");
         }
     }
 
@@ -188,6 +166,9 @@ public class Frame extends JFrame{
             player.moveLocation("west", player);
             gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
+
+            // TODO: Remove this and add it in the method where the user successfully picks up an item
+            inventoryPane.addItemToInventoryList("Example item from left key");
         }
     }
 
@@ -198,6 +179,9 @@ public class Frame extends JFrame{
             player.moveLocation("east", player);
             gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
+
+            // TODO: Remove this and add it in the method where the user successfully picks up an item
+            inventoryPane.addItemToInventoryList("Example item from right key");
         }
     }
 
@@ -351,15 +335,12 @@ public class Frame extends JFrame{
                 "C:\\StudentWork\\MetalQuest\\MetalQuest-T3-Capstone\\resources\\images\\rockstar.png"); // creates Image Icon
 
         // Set configurations
-
-
         //this.setTitle(gameTitle);
         this.setSize(frameWidth, frameHeight);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // exits app
         this.setVisible(true); //make frame visible
         this.setIconImage(imageIcon.getImage()); // change icon of frame
         this.getContentPane().setBackground(Color.black); // change color of background
-
 
         // Add masterPanel to Frame
         this.add(GUIControllerPane);
