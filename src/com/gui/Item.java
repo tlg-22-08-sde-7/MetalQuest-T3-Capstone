@@ -68,7 +68,7 @@ public class Item extends JLabel implements MouseListener {
 
 
     public void readItemImage(String item){
-        String filePath = "resources/images/"+ item +".png";
+        String filePath = "C:\\StudentWork\\MetalQuest\\MetalQuest-T3-Capstone\\resources\\images\\"+ item +".png";
         ImageLoader loader = new ImageLoader();
         try {
             img = loader.loadImage(filePath);

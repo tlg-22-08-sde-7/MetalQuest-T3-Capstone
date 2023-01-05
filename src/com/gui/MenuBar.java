@@ -1,69 +1,99 @@
-package com.gui;
-
-import javax.swing.*;
-import java.awt.event.*;
-import java.awt.FlowLayout;
-
-public class MenuBar extends JFrame implements ActionListener{
-    JMenuBar menuBar;
-    JMenu fileMenu;
-    JMenu volumeMenu;
-    JMenu helpMenu;
-    JMenuItem loadItem;
-    JMenuItem saveItem;
-    JMenuItem exitItem;
-
-    MenuBar() {
-
-        this.setSize(500, 500);
-        this.setLayout(new FlowLayout());
-        this.setVisible(true);
-
-        menuBar = new JMenuBar();
-
-        fileMenu = new JMenu("File");
-        volumeMenu = new JMenu("Volume");
-        helpMenu = new JMenu("Help");
-
-        loadItem = new JMenuItem("Load");
-        saveItem = new JMenuItem("Save");
-        exitItem = new JMenuItem("Exit");
-
-        loadItem.addActionListener((ActionListener) this);
-        saveItem.addActionListener((ActionListener) this);
-        exitItem.addActionListener((ActionListener) this);
-
-        fileMenu.setMnemonic(KeyEvent.VK_F); // Alt + f for file
-        volumeMenu.setMnemonic(KeyEvent.VK_E); // Alt + e for edit
-        helpMenu.setMnemonic(KeyEvent.VK_H); // Alt + h for help
-        loadItem.setMnemonic(KeyEvent.VK_L); // l for load
-        saveItem.setMnemonic(KeyEvent.VK_S); // s for save
-        exitItem.setMnemonic(KeyEvent.VK_E); // e for exit
-
-        fileMenu.add(loadItem);
-        fileMenu.add(saveItem);
-        fileMenu.add(exitItem);
-
-        menuBar.add(fileMenu);
-        menuBar.add(volumeMenu);
-        menuBar.add(helpMenu);
-
-        this.setJMenuBar(menuBar);
-
-        this.setVisible(true);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-        if(e.getSource()==loadItem) {
-            System.out.println("*beep boop* you loaded a file");
-        }
-        if(e.getSource()==saveItem) {
-            System.out.println("*beep boop* you saved a file");
-        }
-        if(e.getSource()==exitItem) {
-            System.exit(0);
-        }
-    }
-}
+//package com.gui;
+//
+//import com.gui.*;
+//
+//import javax.sound.sampled.LineUnavailableException;
+//import javax.sound.sampled.UnsupportedAudioFileException;
+//
+//import javax.swing.*;
+//import java.awt.*;
+//import java.awt.event.*;
+//import java.io.IOException;
+//
+//public class MenuBar() {
+//    JButton musicButton = new JButton("MUSIC");
+//    JButton sfxButton = new JButton("SoundFX");
+//    JButton volumeDownButton = new JButton("Music Vol -");
+//    JButton volumeUpButton = new JButton("Music Vol +");
+//
+//    public MenuBar() {
+//
+//        JFrame settingsFrame = new JFrame("Settings");
+//        settingsFrame.setSize(400, 400);
+//        settingsFrame.setVisible(true);
+//        settingsFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+//
+//        JPanel settingsPanel = new JPanel();
+//        settingsPanel.setBounds(0, 0, 400, 400);
+//        settingsPanel.setBackground(Color.black);
+//        settingsPanel.setOpaque(true);
+//
+//        musicButton.setForeground(Color.red);
+//        musicButton.setBackground(Color.black);
+//        musicButton.setOpaque(false);
+//        musicButton.setBorderPainted(false);
+//        musicButton.setFont(new Font("Helvetica", Font.BOLD, 20));
+//        settingsPanel.add(musicButton);
+//
+//        sfxButton.setForeground(Color.red);
+//        sfxButton.setBackground(Color.black);
+//        sfxButton.setOpaque(false);
+//        sfxButton.setBorderPainted(false);
+//        sfxButton.setFont(new Font("Helvetica", Font.BOLD, 20));
+//        settingsPanel.add(sfxButton);
+//
+//        volumeDownButton.setForeground(Color.red);
+//        volumeDownButton.setBackground(Color.black);
+//        volumeDownButton.setOpaque(false);
+//        volumeDownButton.setBorderPainted(false);
+//        volumeDownButton.setFont(new Font("Helvetica", Font.BOLD, 20));
+//        settingsPanel.add(volumeDownButton);
+//
+//        volumeUpButton.setForeground(Color.red);
+//        volumeUpButton.setBackground(Color.black);
+//        volumeUpButton.setOpaque(false);
+//        volumeUpButton.setBorderPainted(false);
+//        volumeUpButton.setFont(new Font("Helvetica", Font.BOLD, 20));
+//        settingsPanel.add(volumeUpButton);
+//        settingsPanel.setLayout(new GridLayout(2, 2));
+//
+//
+//        volumeUpButton.addActionListener(e ->
+//        {
+//            final float volume = Music.getVolume();
+//            if (volume < 0.90f) {
+//                Music.setVolume(volume + 0.10f);
+//            } else {
+//                Music.setVolume(1.0f);
+//            }
+//        });
+//
+//        volumeDownButton.addActionListener(e ->
+//
+//        {
+//            final float volume = Music.getVolume();
+//
+//            if (volume > 0.10f) {
+//                Music.setVolume(volume - 0.10f);
+//            } else {
+//                Music.setVolume(0.0f);
+//            }
+//        });
+//
+//
+//        musicButton.addActionListener(e ->
+//        {
+//            try {
+//                Music.playerSelectMusic();
+//            } catch (UnsupportedAudioFileException | LineUnavailableException | IOException ex) {
+//                throw new RuntimeException(ex);
+//            }
+//        });
+//
+//        sfxButton.addActionListener(e ->
+//                playerSelectEffect());
+//
+//        settingsFrame.setContentPane(settingsPanel);
+//        settingsFrame.setLocationRelativeTo(UI.frame);
+//    }
+//}
