@@ -24,7 +24,7 @@ public class Frame extends JFrame{
     private final SplashPane splashPane = new SplashPane("", 0, 0, frameWidth, frameHeight);
     private final GameplayPane gameplayPane = new GameplayPane();
     private final InventoryPane inventoryPane = new InventoryPane();
-    private final DescriptionPane descriptionPane = new DescriptionPane();
+    private final DescriptionPane descriptionPane = DescriptionPane.getInstance();
     private final DirectionsPane directionsPane = new DirectionsPane();
     private final com.metalquest.controller.GUIControllerPane GUIControllerPane = new GUIControllerPane();
     private Action removeSplashPanelAction;
@@ -110,6 +110,8 @@ public class Frame extends JFrame{
             addGameplayPanel();
             addDescriptionPanel();
             addDirectionsPanel();
+
+            descriptionPane.setLabelText(player.toString());
 
             // Add direction bindings to GUIControllerPane
             // up
