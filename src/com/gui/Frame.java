@@ -18,13 +18,13 @@ public class Frame extends JFrame{
      *   AddSplashPanel -> RemoveSplashPanel -> AddGameplayPanel, AddDescriptionPanel, AddInventoryPanel, AddDirectionsPanel
      * Each panel serves as its own container, controlling the flow of layered panels within it.
      */
-    private final String gameTitle = "Metal Quest";
+    //private final String gameTitle = "Metal Quest";
     private final int frameWidth = 800;
     private final int frameHeight = 500;
-    private final SplashPane splashPane = new SplashPane(gameTitle, 0, 0, frameWidth, frameHeight);
+    private final SplashPane splashPane = new SplashPane("", 0, 0, frameWidth, frameHeight);
     private final GameplayPane gameplayPane = new GameplayPane();
     private final InventoryPane inventoryPane = new InventoryPane();
-    private final DescriptionPane descriptionPane = new DescriptionPane();
+    private final DescriptionPane descriptionPane = DescriptionPane.getInstance();
     private final DirectionsPane directionsPane = new DirectionsPane();
     private final com.metalquest.controller.GUIControllerPane GUIControllerPane = new GUIControllerPane();
     private Action removeSplashPanelAction;
@@ -139,6 +139,8 @@ public class Frame extends JFrame{
             addDescriptionPanel();
             addDirectionsPanel();
 
+            descriptionPane.setLabelText(player.toString());
+
             // Add direction bindings to GUIControllerPane
             // up
             GUIControllerPane.getInputMap().put(upKey, "upAction");
@@ -166,7 +168,7 @@ public class Frame extends JFrame{
         @Override
         public void actionPerformed(ActionEvent e) {
             player.moveLocation("north", player);
-
+            gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
         }
     }
@@ -176,7 +178,7 @@ public class Frame extends JFrame{
         @Override
         public void actionPerformed(ActionEvent e) {
             player.moveLocation("south", player);
-
+            gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
         }
     }
@@ -186,7 +188,7 @@ public class Frame extends JFrame{
         @Override
         public void actionPerformed(ActionEvent e) {
             player.moveLocation("west", player);
-
+            gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
         }
     }
@@ -196,7 +198,7 @@ public class Frame extends JFrame{
         @Override
         public void actionPerformed(ActionEvent e) {
             player.moveLocation("east", player);
-
+            gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
         }
     }
@@ -211,9 +213,9 @@ public class Frame extends JFrame{
         gbc.weightx = .10;
         gbc.weighty = .25;
         GUIControllerPane.add(gameplayPane, gbc);
-
         gbc.weightx = .1;
         gbc.weighty = .1;
+
     }
 
     private class RemoveGameplayPanelAction extends AbstractAction {
@@ -277,7 +279,6 @@ public class Frame extends JFrame{
         gbc.gridy = 2;
         gbc.gridwidth = 2;
         gbc.gridheight = 1;
-
         GUIControllerPane.add(descriptionPane, gbc);
 
     }
@@ -354,12 +355,13 @@ public class Frame extends JFrame{
         // Set configurations
 
 
-        this.setTitle(gameTitle);
+        //this.setTitle(gameTitle);
         this.setSize(frameWidth, frameHeight);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // exits app
         this.setVisible(true); //make frame visible
         this.setIconImage(imageIcon.getImage()); // change icon of frame
         this.getContentPane().setBackground(Color.black); // change color of background
+
 
         // Add masterPanel to Frame
         this.add(GUIControllerPane);

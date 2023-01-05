@@ -8,16 +8,16 @@ public class SplashPane extends JPanel {
 
     private final JLabel label = new JLabel();
     private final Border border = BorderFactory.createLineBorder(Color.red, 3);
-    private final ImageIcon logo = new ImageIcon("resources/images/rockstar.png");
+    private final ImageIcon logo = new ImageIcon("resources/images/MetalQuest.gif");
     private int frameWidth;
     private int frameHeight;
-    private String gameTitle;
+    //private String gameTitle;
     private int xValue;
     private int yValue;
 
 
     public SplashPane(String title, int x, int y, int width, int height) {
-        setGameTitle(title);
+        //setGameTitle(title);
 
         init();
 
@@ -44,11 +44,11 @@ public class SplashPane extends JPanel {
         label.setHorizontalTextPosition(JLabel.CENTER); //set text CENTER of image icon
         label.setVerticalTextPosition(JLabel.TOP); // set text TOP of image
         label.setForeground(Color.red); // changes font color
-        label.setFont(new Font("Serif", Font.BOLD, 40)); // set font of text
+        //label.setFont(new Font("Serif", Font.BOLD, 40)); // set font of text
         label.setIconTextGap(-20); // set gap of text to image
         label.setVerticalAlignment(JLabel.CENTER); // set vertical position of icon + text
         label.setHorizontalAlignment(JLabel.CENTER); // set horizontal position within label
-        label.setText(getGameTitle());
+        //label.setText(getGameTitle());
     }
 
     // Getters and Setters
@@ -67,14 +67,14 @@ public class SplashPane extends JPanel {
     public void setFrameHeight(int frameHeight) {
         this.frameHeight = frameHeight;
     }
-
-    public String getGameTitle() {
-        return gameTitle;
-    }
-
-    public void setGameTitle(String gameTitle) {
-        this.gameTitle = gameTitle;
-    }
+//
+//    public String getGameTitle() {
+//        return gameTitle;
+//    }
+//
+//    public void setGameTitle(String gameTitle) {
+//        this.gameTitle = gameTitle;
+//    }
 
     public int getxValue() {
         return xValue;

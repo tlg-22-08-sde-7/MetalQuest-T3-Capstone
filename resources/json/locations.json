@@ -10,7 +10,8 @@
     "description": "There is a couch a coffee table and a tv. The tv is on.",
     "items": [
       "cellphone",
-      "rolex"
+      "rolex",
+      "guitar"
     ]
   },
   {
@@ -23,8 +24,7 @@
     "items": [
           "oj",
           "purplestuff",
-          "sunnyd",
-          "adultbeverage",
+          "beer",
           "water"
     ]
   },
@@ -35,7 +35,6 @@
     },
     "description": "The backyard has a lone tree, a shed, and a 1950s jalopy.",
     "items": [
-      "tree",
       "shed",
       "jalopy"
     ]
@@ -48,8 +47,9 @@
     },
     "description": "You see your freshly made bed and closet.",
     "items": [
-      "closet",
-      "bed"
+      "wallet",
+      "music book",
+      "guitar picks"
     ]
   },
   {
@@ -59,9 +59,9 @@
     },
     "description": "There is a sink, toilet, and shower. On the sink there is a toothbrush, a hair brush, and a make-up kit.",
     "items": [
-      "guitar",
-      "cellphone",
-      "leatherJacket"
+
+      "brush",
+      "cologne"
     ]
   },
   {
@@ -71,7 +71,7 @@
     },
     "description": "Your car sits in the garage.",
     "items": [
-      "car"
+      "motorcycle"
     ]
   }
 ]

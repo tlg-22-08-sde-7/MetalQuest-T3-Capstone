@@ -40,7 +40,7 @@ public class ExternalConverter {
 
         try {
             // Create a reader
-            reader = Files.newBufferedReader(Paths.get("resources/json/items.json"));
+            reader = Files.newBufferedReader(Paths.get("resources/json/locations.json"));
 
             // Convert JSON array to list of items
             List<Item> items = new Gson().fromJson(reader, new TypeToken<List<Item>>() {
