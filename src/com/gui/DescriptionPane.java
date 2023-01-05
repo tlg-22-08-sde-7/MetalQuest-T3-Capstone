@@ -11,9 +11,17 @@ public class DescriptionPane extends JPanel {
     private final Border border = BorderFactory.createLineBorder(Color.red, 3);
     private final JLabel label = new JLabel("This is some text.");
     private final JTextArea textArea = new JTextArea(7, 30);
+    private static DescriptionPane descriptionPane = null;
 
-    public DescriptionPane() {
+    private DescriptionPane() {
         init();
+    }
+
+    public static DescriptionPane getInstance(){
+        if (descriptionPane == null){
+            descriptionPane = new DescriptionPane();
+        }
+        return descriptionPane;
     }
 
     private void init() {

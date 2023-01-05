@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 public class GameplayPane extends JPanel{
 
@@ -47,70 +48,76 @@ public class GameplayPane extends JPanel{
     }
 
     public void addRoomItems(){
-
+        List<String> inventory = player.getInventory();
         Iterator it =player.getLocation().getItems().iterator();
 
             while (it.hasNext()){
                 String itemName = (String)it.next();
 
-            switch (itemName){
-                case "guitar":
-                    item = new Item(itemName,100,50);
-                    jLayeredPane.add(item,Integer.valueOf(1));
-                    break;
-                case "cellphone":
-                    item = new Item(itemName,225,228);
-                    jLayeredPane.add(item,Integer.valueOf(1));
-                    break;
-                case "rolex":
-                    item = new Item(itemName,245,220);
-                    jLayeredPane.add(item,Integer.valueOf(1));
-                    break;
-                case "beer":
-                    item = new Item(itemName,435,133);
-                    jLayeredPane.add(item,Integer.valueOf(1));
-                    break;
-                case "oj":
-                    item = new Item(itemName,210,132);
-                    jLayeredPane.add(item,Integer.valueOf(1));
-                    break;
-                case "purplestuff":
-                    item = new Item(itemName,145,145);
-                    jLayeredPane.add(item,Integer.valueOf(1));
-                    break;
-                case "water":
-                    item = new Item(itemName,340,85);
-                    jLayeredPane.add(item,Integer.valueOf(1));
-                    break;
-                case "guitar picks":
-                    item = new Item(itemName,120,75);
-                    jLayeredPane.add(item,Integer.valueOf(1));
-                    break;
-                case "music book":
-                    item = new Item(itemName,25,215);
-                    jLayeredPane.add(item,Integer.valueOf(1));
-                    break;
-                case "shed":
-                    item = new Item(itemName,250,160);
-                    jLayeredPane.add(item,Integer.valueOf(1));
-                    break;
-                case "wallet":
-                    item = new Item(itemName,50,210);
-                    jLayeredPane.add(item,Integer.valueOf(1));
-                    break;
-                case "motorcycle":
-                    item = new Item(itemName,275,120);
-                    jLayeredPane.add(item,Integer.valueOf(1));
-                    break;
-                case "brush":
-                    item = new Item(itemName,40,110);
-                    jLayeredPane.add(item,Integer.valueOf(1));
-                    break;
-                case "cologne":
-                    item = new Item(itemName,160,100);
-                    jLayeredPane.add(item,Integer.valueOf(1));
-                    break;
-            }
+                if (inventory.contains(itemName)){
+                    System.out.println(itemName + " has been collected from this room.");
+                }
+                else {
+                    switch (itemName){
+                        case "guitar":
+                            item = new Item(itemName,100,50);
+                            jLayeredPane.add(item,Integer.valueOf(1));
+                            break;
+                        case "cellphone":
+                            item = new Item(itemName,225,228);
+                            jLayeredPane.add(item,Integer.valueOf(1));
+                            break;
+                        case "rolex":
+                            item = new Item(itemName,245,220);
+                            jLayeredPane.add(item,Integer.valueOf(1));
+                            break;
+                        case "beer":
+                            item = new Item(itemName,435,133);
+                            jLayeredPane.add(item,Integer.valueOf(1));
+                            break;
+                        case "oj":
+                            item = new Item(itemName,210,132);
+                            jLayeredPane.add(item,Integer.valueOf(1));
+                            break;
+                        case "purplestuff":
+                            item = new Item(itemName,145,145);
+                            jLayeredPane.add(item,Integer.valueOf(1));
+                            break;
+                        case "water":
+                            item = new Item(itemName,340,85);
+                            jLayeredPane.add(item,Integer.valueOf(1));
+                            break;
+                        case "guitar picks":
+                            item = new Item(itemName,120,75);
+                            jLayeredPane.add(item,Integer.valueOf(1));
+                            break;
+                        case "music book":
+                            item = new Item(itemName,25,215);
+                            jLayeredPane.add(item,Integer.valueOf(1));
+                            break;
+                        case "shed":
+                            item = new Item(itemName,250,160);
+                            jLayeredPane.add(item,Integer.valueOf(1));
+                            break;
+                        case "wallet":
+                            item = new Item(itemName,50,210);
+                            jLayeredPane.add(item,Integer.valueOf(1));
+                            break;
+                        case "motorcycle":
+                            item = new Item(itemName,275,120);
+                            jLayeredPane.add(item,Integer.valueOf(1));
+                            break;
+                        case "brush":
+                            item = new Item(itemName,40,110);
+                            jLayeredPane.add(item,Integer.valueOf(1));
+                            break;
+                        case "cologne":
+                            item = new Item(itemName,160,100);
+                            jLayeredPane.add(item,Integer.valueOf(1));
+                            break;
+                    }
+                }
+
         }
     }
 

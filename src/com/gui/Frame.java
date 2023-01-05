@@ -23,8 +23,8 @@ public class Frame extends JFrame{
     private final int frameHeight = 500;
     private final SplashPane splashPane = new SplashPane("", 0, 0, frameWidth, frameHeight);
     private final GameplayPane gameplayPane = new GameplayPane();
-    private final InventoryPane inventoryPane = new InventoryPane();
-    private final DescriptionPane descriptionPane = new DescriptionPane();
+    private final InventoryPane inventoryPane = InventoryPane.getInstance();
+    private final DescriptionPane descriptionPane = DescriptionPane.getInstance();
     private final DirectionsPane directionsPane = new DirectionsPane();
     private final com.metalquest.controller.GUIControllerPane GUIControllerPane = new GUIControllerPane();
     private Action removeSplashPanelAction;
@@ -111,6 +111,8 @@ public class Frame extends JFrame{
             addDescriptionPanel();
             addDirectionsPanel();
 
+            descriptionPane.setLabelText(player.toString());
+
             // Add direction bindings to GUIControllerPane
             // up
             GUIControllerPane.getInputMap().put(upKey, "upAction");
@@ -140,9 +142,6 @@ public class Frame extends JFrame{
             player.moveLocation("north", player);
             gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
-
-            // TODO: Remove this and add it in the method where the user successfully picks up an item
-            inventoryPane.addItemToInventoryList("Example item from up key");
         }
     }
 
@@ -153,9 +152,6 @@ public class Frame extends JFrame{
             player.moveLocation("south", player);
             gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
-
-            // TODO: Remove this and add it in the method where the user successfully picks up an item
-            inventoryPane.addItemToInventoryList("Example item from down key");
         }
     }
 
@@ -166,9 +162,6 @@ public class Frame extends JFrame{
             player.moveLocation("west", player);
             gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
-
-            // TODO: Remove this and add it in the method where the user successfully picks up an item
-            inventoryPane.addItemToInventoryList("Example item from left key");
         }
     }
 
@@ -179,9 +172,6 @@ public class Frame extends JFrame{
             player.moveLocation("east", player);
             gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
-
-            // TODO: Remove this and add it in the method where the user successfully picks up an item
-            inventoryPane.addItemToInventoryList("Example item from right key");
         }
     }
 
