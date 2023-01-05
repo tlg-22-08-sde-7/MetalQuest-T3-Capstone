@@ -168,6 +168,9 @@ public class Frame extends JFrame{
             player.moveLocation("north", player);
             gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
+
+            // TODO: Remove this and add it in the method where the user successfully picks up an item
+            inventoryPane.addItemToInventoryList("Example item from up key");
         }
     }
 
@@ -178,6 +181,9 @@ public class Frame extends JFrame{
             player.moveLocation("south", player);
             gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
+
+            // TODO: Remove this and add it in the method where the user successfully picks up an item
+            inventoryPane.addItemToInventoryList("Example item from down key");
         }
     }
 
@@ -188,6 +194,9 @@ public class Frame extends JFrame{
             player.moveLocation("west", player);
             gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
+
+            // TODO: Remove this and add it in the method where the user successfully picks up an item
+            inventoryPane.addItemToInventoryList("Example item from left key");
         }
     }
 
@@ -198,6 +207,9 @@ public class Frame extends JFrame{
             player.moveLocation("east", player);
             gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
+
+            // TODO: Remove this and add it in the method where the user successfully picks up an item
+            inventoryPane.addItemToInventoryList("Example item from right key");
         }
     }
 
