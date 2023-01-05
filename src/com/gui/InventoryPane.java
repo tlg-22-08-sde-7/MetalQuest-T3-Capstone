@@ -33,6 +33,7 @@ public class InventoryPane extends JPanel {
         inventoryPane.setBackground(Color.RED);
         inventoryPane.setBorder(border);
         inventoryPane.add(playerInventoryList);
+
         // once functionality is set up
     }
 
