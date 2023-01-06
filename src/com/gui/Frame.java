@@ -143,8 +143,6 @@ public class Frame extends JFrame{
             gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
 
-            // TODO: Remove this and add it in the method where the user successfully picks up an item
-            inventoryPane.addItemToInventoryList("Example item from up key");
         }
     }
 
@@ -155,9 +153,6 @@ public class Frame extends JFrame{
             player.moveLocation("south", player);
             gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
-
-            // TODO: Remove this and add it in the method where the user successfully picks up an item
-            inventoryPane.addItemToInventoryList("Example item from down key");
         }
     }
 
@@ -168,9 +163,6 @@ public class Frame extends JFrame{
             player.moveLocation("west", player);
             gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
-
-            // TODO: Remove this and add it in the method where the user successfully picks up an item
-            inventoryPane.addItemToInventoryList("Example item from left key");
         }
     }
 
@@ -181,9 +173,6 @@ public class Frame extends JFrame{
             player.moveLocation("east", player);
             gameplayPane.enterRoom();
             descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
-
-            // TODO: Remove this and add it in the method where the user successfully picks up an item
-            inventoryPane.addItemToInventoryList("Example item from right key");
         }
     }
 
@@ -334,7 +323,7 @@ public class Frame extends JFrame{
         rightAction = new RightAction();
 
         ImageIcon imageIcon = new ImageIcon(
-                "C:\\StudentWork\\MetalQuest\\MetalQuest-T3-Capstone\\resources\\images\\rockstar.png"); // creates Image Icon
+                "resources/images/rockstar.png"); // creates Image Icon
 
         // Set configurations
         //this.setTitle(gameTitle);
