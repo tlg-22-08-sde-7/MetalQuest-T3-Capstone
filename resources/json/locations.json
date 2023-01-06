@@ -7,7 +7,7 @@
       "EAST": "Garage",
       "WEST": "Master Bedroom"
     },
-    "description": "There is a couch a coffee table and a tv. The tv is on.",
+    "description": "There is a couch and coffee table.On the coffee table are your cellphone and watch.",
     "items": [
       "cellphone",
       "rolex",
@@ -20,7 +20,7 @@
       "SOUTH": "Living Room",
       "EAST": "Backyard"
     },
-    "description": "In the kitchen there is a Fridge",
+    "description": "In the kitchen there are various drinks to choose.",
     "items": [
           "oj",
           "purplestuff",
@@ -33,7 +33,7 @@
     "directions": {
       "WEST": "Kitchen"
     },
-    "description": "The backyard has a lone tree, a shed, and a 1950s jalopy.",
+    "description": "The backyard has a patio with patio furniture, a shed.",
     "items": [
       "shed",
       "jalopy"
@@ -57,7 +57,7 @@
     "directions": {
       "EAST": "Master Bedroom"
     },
-    "description": "There is a sink, toilet, and shower. On the sink there is a toothbrush, a hair brush, and a make-up kit.",
+    "description": "There is a sink, toilet, and shower. On the sink there is a cologne bottle, a hair brush, and other toiletries.",
     "items": [
 
       "brush",
@@ -69,9 +69,17 @@
     "directions": {
       "WEST": "Living Room"
     },
-    "description": "Your car sits in the garage.",
+    "description": "Your motorcycle sits in the garage.",
     "items": [
       "motorcycle"
+    ]
+  },
+  {
+    "room": "Concert",
+    "directions": {
+    },
+    "description": "You are performing at the House of Blues with your band. The crowd is going crazy. YOU ROCK!!!!!",
+    "items": [
     ]
   }
 ]

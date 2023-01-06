@@ -68,7 +68,7 @@ public class Item extends JLabel implements MouseListener {
 
 
     public void readItemImage(String item){
-        String filePath = "resources/images/"+ item +".png";
+        String filePath = "resources/images/"+item+".png";
         ImageLoader loader = new ImageLoader();
         try {
             img = loader.loadImage(filePath);
@@ -119,16 +119,24 @@ public class Item extends JLabel implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if (getNameOfItem().equals("shed")){
-            descriptionPane.setLabelText("You looked inside the Shed and there's nothing in there except spider webs");
+            descriptionPane.setLabelText("You looked inside the Shed and see spider webs and parts for your jalopy.");
         } else if (getNameOfItem().equals("motorcycle")){
             if (player.getInventory().containsAll(getCompletedInventoryList()) ){
-                descriptionPane.setLabelText("You have collected all your items need to have a great performance tonight" +
-                        " at the house of blues. You hop on your motorcycle and head to the concert.");
+                descriptionPane.setLabelText("You have collected all your items needed to have a great performance tonight" +
+                        " at the house of blues. You are ready tp hop on your motorcycle and head to the concert. Double click the motorcycle to head to concert.");
+                if (e.getClickCount() == 2){
+                    player.setLocation("Concert");
+                    e.getComponent().setVisible(false);
+
+
+                }
             }else {
                 descriptionPane.setLabelText("You have not gotten all the items need to have a good performance.");
             }
-
-        }else {
+        }else if (getNameOfItem().equals("jalopy")){
+            descriptionPane.setLabelText("You try to start the engine but the jalopy does not run. Please choose another means of transportation.");
+        }
+        else {
             e.getComponent().setVisible(false);
             player.getItem(player,getNameOfItem());
         }
