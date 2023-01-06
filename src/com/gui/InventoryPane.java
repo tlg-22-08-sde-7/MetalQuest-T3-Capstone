@@ -6,16 +6,38 @@ import java.awt.*;
 
 public class InventoryPane extends JPanel {
 
-    private final Border border = BorderFactory.createLineBorder(Color.red, 3);
+    private static InventoryPane inventoryPane;
+    private static Border border;
+    private static DefaultListModel<String> playerInventory;
+    private static JList<String> playerInventoryList;
 
-    public InventoryPane() {
-        init();
+    private InventoryPane() {}
+
+    public static InventoryPane getInstance() {
+        if (inventoryPane == null) {
+
+            inventoryPane = new InventoryPane();
+
+            init();
+        }
+
+        return inventoryPane;
     }
 
-    private void init() {
-        // TODO: remove this
-        this.setBackground(Color.RED);
-        this.setBorder(border);
+    private static void init() {
+        border = BorderFactory.createLineBorder(Color.red, 3);
+
+        playerInventory = new DefaultListModel<>();
+        playerInventoryList = new JList<>(playerInventory);
+        inventoryPane.setLayout(new BorderLayout());
+        inventoryPane.setBackground(Color.RED);
+        inventoryPane.setBorder(border);
+        inventoryPane.add(playerInventoryList);
+
         // once functionality is set up
+    }
+
+    public void addItemToInventoryList(String item) {
+        playerInventory.addElement(item);
     }
 }
