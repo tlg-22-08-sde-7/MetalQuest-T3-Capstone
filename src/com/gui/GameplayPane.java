@@ -36,9 +36,7 @@ public class GameplayPane extends JPanel{
         room = new Room();
         room.setBounds(0,0,525,300);
         addRoomItems();
-
         jLayeredPane.add(room,Integer.valueOf(0));
-
         add(jLayeredPane);
 
     }
@@ -96,7 +94,7 @@ public class GameplayPane extends JPanel{
                             jLayeredPane.add(item,Integer.valueOf(1));
                             break;
                         case "shed":
-                            item = new Item(itemName,250,160);
+                            item = new Item(itemName,290,157);
                             jLayeredPane.add(item,Integer.valueOf(1));
                             break;
                         case "wallet":
@@ -113,6 +111,10 @@ public class GameplayPane extends JPanel{
                             break;
                         case "cologne":
                             item = new Item(itemName,160,100);
+                            jLayeredPane.add(item,Integer.valueOf(1));
+                            break;
+                        case "jalopy":
+                            item = new Item(itemName,225,185);
                             jLayeredPane.add(item,Integer.valueOf(1));
                             break;
                     }
