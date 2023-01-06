@@ -27,7 +27,7 @@ public class DirectionsPane extends JPanel {
         this.setBackground(Color.ORANGE);
 
         JLabel arrows = new JLabel();
-        ImageIcon arrowsIcon = new ImageIcon("MetalQuest-T3-Capstone/resources/images/arrows.png");
+        ImageIcon arrowsIcon = new ImageIcon("resources/images/arrows.png");
         arrows.setOpaque(true);
         arrows.setHorizontalAlignment(JLabel.CENTER);
         arrows.setVerticalAlignment(JLabel.BOTTOM);

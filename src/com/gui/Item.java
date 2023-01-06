@@ -68,7 +68,7 @@ public class Item extends JLabel implements MouseListener {
 
 
     public void readItemImage(String item){
-        String filePath = "C:\\StudentWork\\MetalQuest\\MetalQuest-T3-Capstone\\resources\\images\\"+ item +".png";
+        String filePath = "resources/images/"+item+".png";
         ImageLoader loader = new ImageLoader();
         try {
             img = loader.loadImage(filePath);
@@ -123,7 +123,11 @@ public class Item extends JLabel implements MouseListener {
         } else if (getNameOfItem().equals("motorcycle")){
             if (player.getInventory().containsAll(getCompletedInventoryList()) ){
                 descriptionPane.setLabelText("You have collected all your items need to have a great performance tonight" +
-                        " at the house of blues. You hop on your motorcycle and head to the concert.");
+                        " at the house of blues. You are ready tp hop on your motorcycle and head to the concert. Press the right arrow key to head to concert.");
+                if (e.getClickCount() == 2){
+                    player.setLocation("Concert");
+
+                }
             }else {
                 descriptionPane.setLabelText("You have not gotten all the items need to have a good performance.");
             }

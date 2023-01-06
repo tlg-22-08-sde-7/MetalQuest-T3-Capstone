@@ -13,7 +13,9 @@ public class ImageLoader {
     public BufferedImage image;
 
     public BufferedImage loadImage(String filePath)throws IOException {
-        image = ImageIO.read(new File(filePath));
+
+            image = ImageIO.read(new File(filePath) );
+
         //image.getScaledInstance(200,200, Image.SCALE_SMOOTH);
         return image;
     }

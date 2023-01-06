@@ -67,11 +67,20 @@
   {
     "room": "Garage",
     "directions": {
-      "WEST": "Living Room"
+      "WEST": "Living Room",
+      "EAST": "Concert"
     },
     "description": "Your car sits in the garage.",
     "items": [
       "motorcycle"
+    ]
+  },
+  {
+    "room": "Concert",
+    "directions": {
+    },
+    "description": "You are performing at the House of Blues with your band. The crowd is going crazy. YOU ROCK!!!!!",
+    "items": [
     ]
   }
 ]
