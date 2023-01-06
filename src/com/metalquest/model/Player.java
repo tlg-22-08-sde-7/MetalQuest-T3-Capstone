@@ -185,7 +185,7 @@ public class Player {
                 //"-----------------------\n" +
                 //"Money: " + getMoney() + "\n" +
                 "Location: " + getLocation().getRoom() + "\n " + getLocation().getDescription() + " \n" +
-                //"Directions: " + getLocation().getDirections() +
+                "Directions: " + getLocation().getDirections() +
                 " \n" + "Items in room: " + getLocation().getItems();
                 //"\n" + "Fame: " + getFame() + "\n" +
                 //"Health: " + getHealth() + "\n" +
