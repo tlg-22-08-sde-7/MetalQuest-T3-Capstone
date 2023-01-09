@@ -101,28 +101,27 @@
 ### Martisha
 #### What features or functions did you work on?
 <ul>
-  <li> </li>
-  <li> </li>
-  <li> </li>
+  <li>Setting up the Main Frame/Splash Screen</li>
+  <li>Directions Pane</li>
+  <li>All JAR releases </li>
 </ul>
 
 #### What are some technical challenges you faced?
-<ul>
-  <li> </li>
-  <li> </li>
-  <li> </li>
-</ul>
+Learning Swing was the biggest challenge. 
 
 #### What is something you're proud of?
-
-
-#### What is something you're proud of?
-
+I'm proud of completing the final capstone and finishing the classroom training.
 
 #### How did you overcome the technical challenge?
+<ul>
+  <li>Watching Youtube videos</li>
+  <li>Referred to documentation</li>
+  <li>Team members</li>
+</ul>
 
 
 #### What Agile principle did you grow to appreciate and put into practice?
+"Our highest priority is to satisfy the customer through early and continuous delivery of valuable software."
 
 -------------------------------------------------------
 
@@ -140,9 +139,6 @@
   <li> </li>
   <li> </li>
 </ul>
-
-#### What is something you're proud of?
-
 
 #### What is something you're proud of?
 
