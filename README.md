@@ -138,7 +138,7 @@ I'm proud of completing the final capstone and finishing the classroom training.
 <ul>
   <li>How to get layered pane to show under our current structural conditions </li>
   <li>Learning swing and how the components work with each other </li>
-  <li>Inheriating code and figuring out how to make the current code do what the customer currently needs </li>
+  <li>Inheriting code and figuring out how to make the current code do what the customer currently needs </li>
 </ul>
 
 #### What is something you're proud of?
