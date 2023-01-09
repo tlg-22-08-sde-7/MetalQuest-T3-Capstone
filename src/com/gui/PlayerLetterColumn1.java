@@ -104,6 +104,6 @@ public class PlayerLetterColumn1 extends Box {
     }
 
     private void setRandomDelta() {
-        randomDelta = (int) (Math.random() * 25) + 9;
+        randomDelta = (int) (Math.random() * 15) + 9;
     }
 }
