@@ -125,7 +125,7 @@ I'm proud of completing the final capstone and finishing the classroom training.
 
 -------------------------------------------------------
 
-### Dominique
+### Domnique
 #### What features or functions did you work on?
 <ul>
   <li>Gameplay Pane </li>
