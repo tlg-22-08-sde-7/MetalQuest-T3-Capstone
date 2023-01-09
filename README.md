@@ -149,6 +149,7 @@ Lots of google, research and reading java docs.
 
 #### What Agile principle did you grow to appreciate and put into practice?
 "At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly."
+
 -------------------------------------------------------
 
 ### Orlando
