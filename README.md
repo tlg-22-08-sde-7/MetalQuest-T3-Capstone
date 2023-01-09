@@ -123,9 +123,15 @@ I'm proud of completing the final capstone and finishing the classroom training.
 #### What Agile principle did you grow to appreciate and put into practice?
 "Our highest priority is to satisfy the customer through early and continuous delivery of valuable software."
 
+#### What would you add or change if you had more time?
+
+
+#### Code Review
+
+
 -------------------------------------------------------
 
-### Dominque
+### Dominique
 #### What features or functions did you work on?
 <ul>
   <li>Gameplay Pane </li>
@@ -149,6 +155,12 @@ Lots of google, research and reading java docs.
 
 #### What Agile principle did you grow to appreciate and put into practice?
 "At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly."
+
+#### What would you add or change if you had more time?
+
+
+#### Code Review
+
 
 -------------------------------------------------------
 
@@ -178,6 +190,11 @@ I'm proud of being able to digest another team's project and successfully create
 
 #### What Agile principle did you grow to appreciate and put into practice?
 "Agile processes promote sustainable development. The sponsors, developers, and users should be able to maintain a constant pace indefinitely."
+
+#### What would you add or change if you had more time?
+
+
+#### Code Review
 
 
 <!-- GETTING STARTED -->
