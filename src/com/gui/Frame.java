@@ -2,11 +2,12 @@ package com.gui;
 
 import com.metalquest.controller.GUIControllerPane;
 import com.metalquest.model.Player;
-import com.metalquest.model.TextParser;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Frame extends JFrame{
     /*
@@ -19,6 +20,7 @@ public class Frame extends JFrame{
      * Each panel serves as its own container, controlling the flow of layered panels within it.
      */
     //private final String gameTitle = "Metal Quest";
+    private static Frame frame;
     private final int frameWidth = 800;
     private final int frameHeight = 500;
     private final SplashPane splashPane = new SplashPane("", 0, 0, frameWidth, frameHeight);
@@ -32,6 +34,7 @@ public class Frame extends JFrame{
     private KeyStroke escapeKey, upKey, downKey, leftKey, rightKey;
     private final GridBagConstraints gbc = new GridBagConstraints();
     private final Player player = Player.getPlayer();
+    private int rounds = 0;
 
     enum Locations {
         UP,
@@ -41,7 +44,7 @@ public class Frame extends JFrame{
     }
 
     // C-Tor
-    Frame() {
+    private Frame() {
         init();
 
         addSplashPanel();
@@ -49,27 +52,56 @@ public class Frame extends JFrame{
         setLabelText();
     }
 
-    // Business Methods
-    private String captureLocationRequest(Locations location) {
-        String direction = null;
-
-        switch (location) {
-            case UP:
-                break;
-            case DOWN:
-                break;
-            case LEFT:
-                break;
-            case RIGHT:
-                break;
-            default:
-                direction = "ERROR: an invalid location was passed to Frame.changeLocation. This" +
-                        " is an application error";
+    // Get singleton Instance
+    public static Frame getInstance() {
+        if (frame == null) {
+            frame = new Frame();
         }
 
-        return direction;
+        return frame;
     }
 
+    // Business Methods
+    public void switchToFinalGame() {
+        // Remove panes
+        this.remove(GUIControllerPane);
+        this.revalidate();
+        this.repaint();
+
+        JTextField textField = new JTextField();
+        textField.addKeyListener(new Keychecker());
+
+        this.setSize(500, 500);
+
+        this.add(textField);
+        this.add(new FallingLettersPane());
+        textField.requestFocus();
+        this.revalidate();
+        this.repaint();
+    }
+
+    public void endGame() {
+        if (++rounds >= 5) {
+            this.getContentPane().removeAll();
+            player.setLocation("Concert");
+            descriptionPane.setLabelText("Your fame is: " + Player.getPlayer().getFame() + "! " +
+                    "Thanks for playing!");
+            this.add(GUIControllerPane);
+            this.revalidate();
+            this.repaint();
+        }
+    }
+
+    static class Keychecker extends KeyAdapter {
+
+        @Override
+        public void keyPressed(KeyEvent event) {
+
+            String ch = "" + event.getKeyChar();
+
+            FallingLettersPane.checkKey(ch);
+        }
+    }
 
     private void setLabelText() {
         descriptionPane.setLabelText("Room: " + player.getLocation().getRoom() + " " + player.getLocation().getDescription());
@@ -202,28 +234,6 @@ public class Frame extends JFrame{
 
     }
 
-    private class RemoveGameplayPanelAction extends AbstractAction {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            // TODO: fill this method
-            /*
-                // Remove welcome panel from masterPanel
-                masterPanel.remove(splashPane);
-
-                // Remove keybindings
-                masterPanel.getInputMap().remove(escapeKey);
-                masterPanel.getActionMap().remove("removeAction");
-
-                repaint();
-
-                // Call next frame
-                addSettingsPanel();
-             */
-        }
-    }
-
-
     // Inventory panel
     private void addInventoryPanel() {
         gbc.gridx = 3;
@@ -235,28 +245,6 @@ public class Frame extends JFrame{
         GUIControllerPane.add(inventoryPane, gbc);
     }
 
-    private class RemoveInventoryPanelAction extends AbstractAction {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            // TODO: fill this method
-            /*
-                // Remove welcome panel from masterPanel
-                masterPanel.remove(splashPane);
-
-                // Remove keybindings
-                masterPanel.getInputMap().remove(escapeKey);
-                masterPanel.getActionMap().remove("removeAction");
-
-                repaint();
-
-             */
-                // Call next frame
-                addGameplayPanel();
-        }
-    }
-
-
     // Description panel
     private void addDescriptionPanel() {
         gbc.gridx = 0;
@@ -264,29 +252,8 @@ public class Frame extends JFrame{
         gbc.gridwidth = 2;
         gbc.gridheight = 1;
         GUIControllerPane.add(descriptionPane, gbc);
-
     }
 
-    private class RemoveDescriptionPanelAction extends AbstractAction {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            // TODO: fill this method
-            /*
-                // Remove welcome panel from masterPanel
-                masterPanel.remove(splashPane);
-
-                // Remove keybindings
-                masterPanel.getInputMap().remove(escapeKey);
-                masterPanel.getActionMap().remove("removeAction");
-
-                repaint();
-
-                // Call next frame
-                addSettingsPanel();
-             */
-        }
-    }
 
     // Directions panel
     private void addDirectionsPanel() {
@@ -297,26 +264,7 @@ public class Frame extends JFrame{
         GUIControllerPane.add(directionsPane, gbc);
     }
 
-    private class RemoveDirectionsPanelAction extends AbstractAction {
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            // TODO: fill this method
-            /*
-                // Remove welcome panel from masterPanel
-                masterPanel.remove(splashPane);
-
-                // Remove keybindings
-                masterPanel.getInputMap().remove(escapeKey);
-                masterPanel.getActionMap().remove("removeAction");
-
-                repaint();
-
-                // Call next frame
-                addSettingsPanel();
-             */
-        }
-    }
 
     // Helper Methods
     private void init() {
@@ -337,7 +285,6 @@ public class Frame extends JFrame{
                 "C:\\StudentWork\\MetalQuest\\MetalQuest-T3-Capstone\\resources\\images\\rockstar.png"); // creates Image Icon
 
         // Set configurations
-        //this.setTitle(gameTitle);
         this.setSize(frameWidth, frameHeight);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // exits app
         this.setVisible(true); //make frame visible
