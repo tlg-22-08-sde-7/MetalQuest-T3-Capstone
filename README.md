@@ -83,7 +83,6 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `tlg-22-08-sde-7`, `MetalQuest-T3-Capstone`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `Metal Quest`, `project_description`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -91,59 +90,113 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+* [![Java][Java]][Java-url]
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- CONTRIBUTORS -->
+## Contributors
+
+### Martisha
+#### What features or functions did you work on?
+<ul>
+  <li> </li>
+  <li> </li>
+  <li> </li>
+</ul>
+
+#### What are some technical challenges you faced?
+<ul>
+  <li> </li>
+  <li> </li>
+  <li> </li>
+</ul>
+
+#### What is something you're proud of?
+
+
+#### What is something you're proud of?
+
+
+#### How did you overcome the technical challenge?
+
+
+#### What Agile principle did you grow to appreciate and put into practice?
+
+-------------------------------------------------------
+
+### Dominique
+#### What features or functions did you work on?
+<ul>
+  <li> </li>
+  <li> </li>
+  <li> </li>
+</ul>
+
+#### What are some technical challenges you faced?
+<ul>
+  <li> </li>
+  <li> </li>
+  <li> </li>
+</ul>
+
+#### What is something you're proud of?
+
+
+#### What is something you're proud of?
+
+
+#### How did you overcome the technical challenge?
+
+
+#### What Agile principle did you grow to appreciate and put into practice?
+
+-------------------------------------------------------
+
+### Orlando
+#### What features or functions did you work on?
+<ul>
+  <li>Setting up main frame to handle all panes</li>
+  <li>End of level mini game</li>
+  <li>Description pane</li>
+  <li>Inventory pane</li>
+  <li>ReadMe</li>
+</ul>
+
+#### What are some technical challenges you faced?
+<ul>
+  <li>Trying to control layout of panes without understanding how to properly manage them</li>
+  <li>Preventing flickering from occuring in multiple objects moving at once</li>
+  <li>Sticking to what the customer asked for and not implementing more</li>
+</ul>
+
+#### How did you overcome the technical challenges?
+
+
+#### What is something you're proud of?
+I'm proud of being able to digest another team's project and successfully create an MVP in the time allotted.
+
+
+#### What Agile principle did you grow to appreciate and put into practice?
+"Agile processes promote sustainable development. The sponsors, developers, and users should be able to maintain a constant pace indefinitely."
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/tlg-22-08-sde-7/MetalQuest-T3-Capstone.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+Fork the project to your local machine.
+Run GUIMain.main() 
+Have fun!
 
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+This latest release allows you to navigate through all of the rooms and pick up the various items. It also allows you to play mini challenges.
+However, there are additional features that may be useful that you may want to add. Feel free to do so!
 
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -152,10 +205,9 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [x] Console based
+- [x] GUI Implemented
+- [x] Mini game playable
 
 See the [open issues](https://github.com/tlg-22-08-sde-7/MetalQuest-T3-Capstone/issues) for a full list of proposed features (and known issues).
 
@@ -193,8 +245,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
-
 Project Link: [https://github.com/tlg-22-08-sde-7/MetalQuest-T3-Capstone](https://github.com/tlg-22-08-sde-7/MetalQuest-T3-Capstone)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -204,9 +254,7 @@ Project Link: [https://github.com/tlg-22-08-sde-7/MetalQuest-T3-Capstone](https:
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
+Thank you to Rennie and TLG Learning for providing the opportunity to work on this project!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -243,3 +291,5 @@ Project Link: [https://github.com/tlg-22-08-sde-7/MetalQuest-T3-Capstone](https:
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com 
+[Java]: https://img.shields.io/badge/-Java-orange
+[Java-url]: https://docs.oracle.com/javase/8/docs/api
