@@ -119,10 +119,6 @@ public class Item extends JLabel implements MouseListener {
         if (getNameOfItem().equals("shed")){
             descriptionPane.setLabelText("You looked inside the Shed and see spider webs and parts for your jalopy.");
         } else if (getNameOfItem().equals("motorcycle")){
-            player.setLocation("Concert");
-            e.getComponent().setVisible(false);
-            Frame.getInstance().switchToFinalGame();
-
             if (player.getInventory().containsAll(getCompletedInventoryList()) ){
                 descriptionPane.setLabelText("You have collected all your items needed to have a great performance tonight" +
                         " at the house of blues. You are ready tp hop on your motorcycle and head to the concert. Double click the motorcycle to head to concert.");

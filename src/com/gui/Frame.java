@@ -36,13 +36,6 @@ public class Frame extends JFrame{
     private final Player player = Player.getPlayer();
     private int rounds = 0;
 
-    enum Locations {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT
-    }
-
     // C-Tor
     private Frame() {
         init();
@@ -75,6 +68,7 @@ public class Frame extends JFrame{
 
         this.add(textField);
         this.add(new FallingLettersPane());
+
         textField.requestFocus();
         this.revalidate();
         this.repaint();
@@ -263,7 +257,6 @@ public class Frame extends JFrame{
         gbc.gridheight = 1;
         GUIControllerPane.add(directionsPane, gbc);
     }
-
 
 
     // Helper Methods

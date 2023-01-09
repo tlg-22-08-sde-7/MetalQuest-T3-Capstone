@@ -17,7 +17,6 @@ public class PlayerLetterColumn2 extends Box {
 
 
     public PlayerLetterColumn2(Color color, Dimension size) {
-        this.color = color;
         bounds = new Rectangle(new Point(125, 0), size);
 
         setKey();
