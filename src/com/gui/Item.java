@@ -35,8 +35,6 @@ public class Item extends JLabel implements MouseListener {
         }else {
             setToolTipText("Click this Item to add it to inventory.");
         }
-
-
     }
 
     @Override
@@ -127,8 +125,7 @@ public class Item extends JLabel implements MouseListener {
                 if (e.getClickCount() == 2){
                     player.setLocation("Concert");
                     e.getComponent().setVisible(false);
-
-
+                    Frame.getInstance().switchToFinalGame();
                 }
             }else {
                 descriptionPane.setLabelText("You have not gotten all the items need to have a good performance.");
@@ -140,7 +137,6 @@ public class Item extends JLabel implements MouseListener {
             e.getComponent().setVisible(false);
             player.getItem(player,getNameOfItem());
         }
-
     }
 
     @Override

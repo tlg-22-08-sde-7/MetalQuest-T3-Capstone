@@ -4,8 +4,7 @@ import com.metalquest.controller.Game;
 
 public class GUIMain {
     public static void main(String[] args) {
-
-        new Frame();
+       Frame.getInstance();
        Game game = new Game();
        game.execute();
        //new MenuBar();
