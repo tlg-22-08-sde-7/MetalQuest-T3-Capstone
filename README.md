@@ -128,26 +128,27 @@ I'm proud of completing the final capstone and finishing the classroom training.
 ### Dominique
 #### What features or functions did you work on?
 <ul>
-  <li> </li>
-  <li> </li>
-  <li> </li>
+  <li>Gameplay Pane </li>
+  <li>Layering the items into the rooms based on player location </li>
+  <li>Making items to be added to inventory when clicked </li>
+  <li>Connect GUI to gameplay</li>
 </ul>
 
 #### What are some technical challenges you faced?
 <ul>
-  <li> </li>
-  <li> </li>
-  <li> </li>
+  <li>How to get layered pane to show under our current structural conditions </li>
+  <li>Learning swing and how the components work with each other </li>
+  <li>Inheriating code and figuring out how to make the current code do what the customer currently needs </li>
 </ul>
 
 #### What is something you're proud of?
-
+How this team used this capstone project to allow our strengths to  help improve each other while finding solutions to problems and effectively communicating ideas. 
 
 #### How did you overcome the technical challenge?
-
+Lots of google, research and reading java docs. 
 
 #### What Agile principle did you grow to appreciate and put into practice?
-
+"At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly."
 -------------------------------------------------------
 
 ### Orlando
