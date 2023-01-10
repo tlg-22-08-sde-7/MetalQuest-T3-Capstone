@@ -128,6 +128,7 @@ I'm proud of completing the final capstone and finishing the classroom training.
 I would add Music/Sound Effects, Settings menu, and a better looking Splash screen.
 
 #### Code Review
+<img src="![Screenshot (14)](https://user-images.githubusercontent.com/100151584/211594146-5dfb0d5a-6966-4231-a38b-ad5b953f4c2b.png)"></img>
 
 
 -------------------------------------------------------
