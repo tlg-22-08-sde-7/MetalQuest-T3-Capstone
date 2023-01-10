@@ -161,7 +161,7 @@ Lots of google, research and reading java docs.
 Use item, drop item, load all images at once, and refactor some code.
 
 #### Code Review
-<img src=""></img>
+<img src="https://github.com/tlg-22-08-sde-7/MetalQuest-T3-Capstone/blob/main/resources/images/Dom%20code%20snippet.png?raw=true"></img>
 
 
 -------------------------------------------------------
