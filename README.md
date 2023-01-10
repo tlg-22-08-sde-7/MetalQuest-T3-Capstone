@@ -161,6 +161,7 @@ Lots of google, research and reading java docs.
 Use item, drop item, load all images at once, and refactor some code.
 
 #### Code Review
+<img src=""></img>
 
 
 -------------------------------------------------------
