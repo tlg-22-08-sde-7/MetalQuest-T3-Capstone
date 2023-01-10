@@ -182,7 +182,11 @@ Lots of google, research and reading java docs.
 </ul>
 
 #### How did you overcome the technical challenges?
-
+<ul>
+  <li>Looked into the proper way to manage layouts - JSwing Layout Managers</li>
+  <li>Moved onto easier task. Came back letter to attack the problem and found an easier solution of drawing the images vs creating moving panes.</li>
+  <li>I tried to remain cognizant but it's still an ongoing process :)</li>
+</ul>
 
 #### What is something you're proud of?
 I'm proud of being able to digest another team's project and successfully create an MVP in the time allotted.
@@ -192,10 +196,10 @@ I'm proud of being able to digest another team's project and successfully create
 "Agile processes promote sustainable development. The sponsors, developers, and users should be able to maintain a constant pace indefinitely."
 
 #### What would you add or change if you had more time?
-
+I would've added more feedback/guidance into the minigame at the end of the level. 
 
 #### Code Review
-
+<img src="https://github.com/tlg-22-08-sde-7/MetalQuest-T3-Capstone/blob/main/resources/images/orlando_code_snippet.png?raw=true"></img>
 
 <!-- GETTING STARTED -->
 ## Getting Started
