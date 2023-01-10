@@ -311,5 +311,5 @@ Thank you to Rennie and TLG Learning for providing the opportunity to work on th
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com 
-[Java]: https://img.shields.io/badge/-Java-orange
+[Java]: https://img.shields.io/badge/-Java%208-red
 [Java-url]: https://docs.oracle.com/javase/8/docs/api
