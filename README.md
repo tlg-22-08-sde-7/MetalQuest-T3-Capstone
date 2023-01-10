@@ -132,7 +132,7 @@ I would add Music/Sound Effects, Settings menu, and a better looking Splash scre
 
 -------------------------------------------------------
 
-### Dominique
+### Dominque
 #### What features or functions did you work on?
 <ul>
   <li>Gameplay Pane </li>
@@ -158,7 +158,7 @@ Lots of google, research and reading java docs.
 "At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly."
 
 #### What would you add or change if you had more time?
-
+Use item, drop item, load all images at once, and refactor some code.
 
 #### Code Review
 
