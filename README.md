@@ -111,7 +111,7 @@
 Learning Swing was the biggest challenge. 
 
 #### What is something you're proud of?
-I'm proud of completing the final capstone and finishing the classroom training.
+I'm proud of completing the final capstone, how well we worked together, and finishing the classroom training.
 
 #### How did you overcome the technical challenge?
 <ul>
