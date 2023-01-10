@@ -82,6 +82,7 @@
 ## About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
+<img src="https://github.com/tlg-22-08-sde-7/MetalQuest-T3-Capstone/blob/main/resources/images/minigame_screenshot.png?raw=true"></img>
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
