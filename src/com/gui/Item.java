@@ -116,6 +116,9 @@ public class Item extends JLabel implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        player.setLocation("Concert");
+        e.getComponent().setVisible(false);
+        Frame.getInstance().switchToFinalGame();
         if (getNameOfItem().equals("shed")){
             descriptionPane.setLabelText("You looked inside the Shed and see spider webs and parts for your jalopy.");
         } else if (getNameOfItem().equals("motorcycle")){
