@@ -124,7 +124,7 @@ I'm proud of completing the final capstone and finishing the classroom training.
 "Our highest priority is to satisfy the customer through early and continuous delivery of valuable software."
 
 #### What would you add or change if you had more time?
-
+I would add Music/Sound Effects, Settings menu, and a better looking Splash screen.
 
 #### Code Review
 
