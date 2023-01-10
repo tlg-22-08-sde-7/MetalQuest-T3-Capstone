@@ -193,7 +193,7 @@ I'm proud of being able to digest another team's project and successfully create
 
 
 #### What Agile principle did you grow to appreciate and put into practice?
-"Agile processes promote sustainable development. The sponsors, developers, and users should be able to maintain a constant pace indefinitely."
+"Our highest priority is to satisfy the customer through early and continuous delivery of valuable software."
 
 #### What would you add or change if you had more time?
 I would've added more feedback/guidance into the minigame at the end of the level. 
