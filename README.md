@@ -24,7 +24,7 @@
 
 <h3 align="center">Metal Quest</h3>
 
-  <p align="center">
+  <p>
     
     A Java GUI based retro adventure game where the player navigates to different rooms to pick up items 
     in order to increase their fame. 
